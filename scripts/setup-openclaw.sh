@@ -4,10 +4,10 @@
 # - Enlaza el AGENTS.md de cada agente al del repo (prompts versionados en git)
 # Sirve tanto para la primera vez como para retomar en otro ordenador.
 #
-# Uso:  REPO=usuario/hack4edu-mentor ./scripts/setup-openclaw.sh
+# Uso:  REPO=alcacere/hack4edu2026 ./scripts/setup-openclaw.sh
 set -euo pipefail
 
-REPO="${REPO:?Define REPO=usuario/nombre-repo}"
+REPO="${REPO:-alcacere/hack4edu2026}"
 OPENCLAW_HOME="${OPENCLAW_HOME:-$HOME/goinfre/openclaw/home}"
 WS="$OPENCLAW_HOME/workspace"
 AGENTS=(coordinator builder researcher writer reviewer)

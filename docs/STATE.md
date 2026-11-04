@@ -2,6 +2,7 @@
 
 > Lo mantiene el coordinator. Se actualiza al final de cada bloque y tras cada `DECISIÓN:`.
 > Si llegas nuevo: lee esto, luego `docs/PROTOCOLO.md`, luego los issues `status:doing`.
+> Bases oficiales: `hack4edu_2026_Bases_de_participacion.md` (raíz del repo).
 
 ## Ahora mismo
 - Bloque actual: B1 (mié 01:00–05:00)
@@ -23,7 +24,7 @@ Fuera de alcance: memoria entre sesiones, RAG de currículos, voz, LMS, login.
 ## Decisiones tomadas
 - Presupuesto API: 0 €. Modelo local vía Ollama. Por defecto Gemma 4 E4B (Apache-2.0).
 - Licencia: MIT.
-- Repo: privado ahora; público el jueves antes de las 21:00 con OK humano.
+- Repo: `alcacere/hack4edu2026`, **público** desde ya (issues incluidos). Demo pública desplegada solo con OK humano.
 - Formato final: vídeo de 3 min.
 - Memoria compartida: GitHub Issues + este fichero.
 

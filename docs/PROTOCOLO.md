@@ -2,6 +2,12 @@
 
 Este fichero lo leen TODOS los agentes al empezar cada sesión. Si algo de tu AGENTS.md contradice este protocolo, manda este protocolo.
 
+## 0. Documentos de referencia
+- **Bases oficiales:** `hack4edu_2026_Bases_de_participacion.md` (raíz del repo) — plazos, entregables, licencias y criterios de evaluación. Si algo choca con las bases, mandan las bases.
+- **Estado del proyecto:** `docs/STATE.md`.
+- **Investigación de los 29 retos:** `docs/research/informe-retos-hack4edu.md`.
+- **Prompts de los agentes:** `openclaw/agents/<agente>/AGENTS.md`. **Montaje:** `docs/OPS.md`.
+
 ## 1. La memoria es GitHub, no tu cabeza
 - **Fuente de verdad:** los Issues de este repo + `docs/STATE.md`.
 - Tu carpeta `memory/` local es solo borrador. Lo que no está en un issue o en `STATE.md` **no existe**: otro ordenador u otra sesión no lo verá.
@@ -68,7 +74,7 @@ Haz commit y push de lo que tengas aunque esté a medias (en rama si rompe `main
   - coordinator → `docs/STATE.md`, `docs/PROTOCOLO.md`, `openclaw/`
 - Mensaje de commit: `[<agente>] descripción breve (refs #<n>)`. No uses `Closes #n`: cierra el reviewer.
 
-## 7. Seguridad (el repo y sus issues serán PÚBLICOS el jueves)
+## 7. Seguridad (el repo y sus issues YA SON PÚBLICOS)
 - Nunca escribas en issues, commits o ficheros: tokens, claves, contraseñas, `openclaw.json` real, emails o datos personales de nadie, ni datos de docentes de las pruebas (usa "Docente A/B/C").
 - Datos de demo: 100 % sintéticos.
 - No instales dependencias ni skills que no hayas revisado.

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Retomar el proyecto en un ordenador nuevo sin perder contexto.
 # Requisitos: openclaw, gh, git y ollama instalados.
-# Uso:  REPO=usuario/hack4edu-mentor ./new-machine.sh
+# Uso:  REPO=alcacere/hack4edu2026 ./new-machine.sh
 set -euo pipefail
 
-REPO="${REPO:?Define REPO=usuario/nombre-repo}"
+REPO="${REPO:-alcacere/hack4edu2026}"
 OPENCLAW_HOME="${OPENCLAW_HOME:-$HOME/goinfre/openclaw/home}"
 
 gh auth status >/dev/null 2>&1 || gh auth login

@@ -1,0 +1,10 @@
+.env
+node_modules/
+dist/
+*.gguf
+*.safetensors
+openclaw/openclaw.json
+.DS_Store
+*.webm
+*.mp4
+api/fixtures/raw/

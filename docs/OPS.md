@@ -1,6 +1,6 @@
 # Kit de operaciones — agentes OpenClaw + GitHub como memoria
 
-Copia todo este contenido en la raíz del repo del proyecto y haz commit.
+Kit en la raíz del repo `alcacere/hack4edu2026`. Bases oficiales: `hack4edu_2026_Bases_de_participacion.md`.
 
 ```
 docs/PROTOCOLO.md            Reglas de comunicación por issues (todos los agentes lo leen)
@@ -15,12 +15,12 @@ scripts/new-machine.sh       Retomar en otro ordenador
 
 ## Primera vez (≈15 min)
 
-1. **Repo privado en GitHub** (lo creáis vosotros): `gh repo create <usuario>/hack4edu-mentor --private`
-2. **Autenticación de gh** con un token *fine-grained* limitado a ESE repo (Contents RW, Issues RW, Metadata R). Así los agentes no pueden tocar el resto de tus repos.
-   `gh auth login --with-token < token.txt && rm token.txt`
-3. Copia este kit al repo, `git add -A && git commit -m "[humano] kit de operaciones" && git push`.
+1. **Repo:** ya existe y es público: `alcacere/hack4edu2026`. Cada humano que lance agentes necesita permiso de escritura (`gh api repos/alcacere/hack4edu2026 --jq .permissions.push` → `true`).
+2. **Autenticación de gh.** Lo ideal es un token *fine-grained* limitado a este repo (Contents RW, Issues RW, Metadata R), pero GitHub solo deja crearlo al dueño (alcacere). Si es tu máquina y no eres alcacere: `gh auth login` normal, y recuerda que los agentes podrán tocar tus otros repos (los prompts lo prohíben).
+   Con token: `gh auth login --with-token < token.txt && rm token.txt`
+3. Clona el repo: `gh repo clone alcacere/hack4edu2026`.
 4. Labels: `bash scripts/setup-github.sh`
-5. Conectar agentes: `REPO=<usuario>/hack4edu-mentor bash scripts/setup-openclaw.sh`
+5. Conectar agentes: `REPO=alcacere/hack4edu2026 bash scripts/setup-openclaw.sh`
 6. Cambios en tu `openclaw.json` actual (o usa la plantilla):
    - `agents.defaults.memory.search.provider: "none"` (quita el aviso de OpenAI)
    - `coordinator.subagents.allowAgents` incluye `builder`
@@ -31,10 +31,10 @@ scripts/new-machine.sh       Retomar en otro ordenador
 
 ## Retomar desde otro ordenador
 ```bash
-REPO=<usuario>/hack4edu-mentor bash new-machine.sh
+REPO=alcacere/hack4edu2026 bash new-machine.sh
 ```
 Después: `openclaw gateway` y al coordinator: *"Retoma desde docs/STATE.md y los issues abiertos."*
 Las conversaciones antiguas no viajan; todo lo importante está en issues y STATE.md.
 
-## Antes de hacer público el repo (jueves)
-Los issues y su historial también se hacen públicos. Revisa con `gh issue list --state all` y `git log -p | grep -iE "token|key|password|@"` que no haya secretos ni datos personales.
+## El repo es público
+Los issues, comentarios y commits son visibles para cualquiera desde ya. Revisa periódicamente con `gh issue list --state all` y `git log -p | grep -iE "token|key|password|@"` que no haya secretos ni datos personales.
