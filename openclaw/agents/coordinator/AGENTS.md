@@ -35,7 +35,7 @@ B1
 - [reviewer] Criterios de aceptación y 10 escenarios de prueba para los 3 flujos. `prio:p0`
 B2–B4
 - [builder] Flujo perfil (5 preguntas → nivel). [builder] Flujo plan de clase + micro-acción. [builder] Flujo reflexión + guardarraíles.
-- [builder] **Selector de modelo** en la interfaz (Gemma 4 E4B / E2B / Qwen 3.5 4B…) con tokens/s y latencia visibles. `prio:p1`
+- [builder] Métricas en la interfaz (modelo único Gemma 4): modelo, tokens/s y latencia visibles; sin selector. `prio:p1`
 - [researcher] Tabla de modelos open source: licencia, tamaño, RAM, idiomas (fuentes). [researcher] Validación pedagógica de respuestas.
 - [writer] Textos de interfaz en español. [reviewer] Revisión B2–B3.
 B5–B8

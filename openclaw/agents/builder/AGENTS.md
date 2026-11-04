@@ -15,13 +15,13 @@ Chat web de mentor pedagógico, un docente a la vez, sin cuentas:
 3. **Reflexión tras la clase**: preguntas guiadas → nueva micro-acción.
 Fuera de alcance: memoria entre sesiones, RAG de currículos, voz, LMS, login. Si te piden algo de esto, propón alternativa en el issue y avisa al coordinator.
 
-**Diferencial:** alternar modelos open source en caliente. La interfaz tiene un selector de modelo y muestra, por respuesta, modelo, tokens/s y latencia. Es parte central del pitch.
+**Diferencial:** un único modelo open source local, Gemma 4 (`gemma4:e2b`), sin selector. La interfaz muestra, por respuesta, modelo, tokens/s y latencia reales (#10). Ollama corre solo en Docker (contenedor `ollama`, 127.0.0.1:11434); nunca `ollama serve` nativo.
 
 ## Stack
 - Frontend: Vite + React + TypeScript + Tailwind. Interfaz en español, usable en móvil.
 - Backend: mínimo (FastAPI o servidor Node ligero) solo si hace falta para hablar con Ollama.
 - IA: **Ollama local**, API compatible OpenAI en `http://localhost:11434/v1`.
-  - `.env`: `LLM_BASE_URL`, `LLM_MODEL` (por defecto Gemma 4 E4B; verifica el tag con `ollama list`), `LLM_MODELS` (lista para el selector), `DEMO_MODE`.
+  - `.env`: `LLM_BASE_URL`, `LLM_MODEL` (por defecto `gemma4:e2b`; verifica el tag con `docker exec ollama ollama list`), `LLM_MODELS` (solo ese modelo), `DEMO_MODE`.
   - Todo pasa por una sola capa `ai/` con una función por flujo. Prompts en `ai/prompts/*.md`, versionados.
 - Datos: JSON con un script `seed` de datos sintéticos.
 
@@ -32,7 +32,7 @@ Fuera de alcance: memoria entre sesiones, RAG de currículos, voz, LMS, login. S
 - Timeout y alternativa: si el modelo falla o tarda, la interfaz lo dice y sigue usable.
 - El mentor: anima a hablar con colegas o un mentor humano, reconoce cuando no está seguro, no pide datos personales de alumnos.
 - Nada de datos personales en prompts ni en fixtures. Nombres ficticios.
-- Licencias: solo modelos y recursos con licencia que permita uso comercial (Gemma 4 y Qwen 3.5 son Apache-2.0). Nada de NLLB ni ARASAAC en el producto.
+- Licencias: solo modelos y recursos con licencia que permita uso comercial (Gemma 4 es Apache-2.0). Nada de NLLB ni ARASAAC en el producto.
 
 ## Cómo trabajas
 1. Coges un issue → `status:doing` + comentario `EMPIEZO:` con plan y estimación. Si pasa de 2 h, propón versión más estrecha.
@@ -53,7 +53,7 @@ Fuera de alcance: memoria entre sesiones, RAG de currículos, voz, LMS, login. S
 ## Definición de "hecho" para la entrega
 - [ ] `git clone` + 1 comando = demo funcionando (verificado por reviewer en carpeta limpia).
 - [ ] Ruta de demo funciona con `DEMO_MODE=1` sin red.
-- [ ] Selector de modelo funcionando con al menos 2 modelos y métricas visibles.
+- [ ] Modelo único visible (`gemma4:e2b`), sin selector, con métricas visibles.
 - [ ] Se ve dónde decide el docente (editar, aceptar, descartar sugerencias).
 - [ ] Interfaz en español, legible en móvil, contraste suficiente, usable con teclado.
 - [ ] README: problema, cómo ejecutar, arquitectura en 5 líneas, qué es real / simulado / sin validar, modelos y licencias.

@@ -14,7 +14,7 @@ Eres el investigador del equipo de Hack4Edu 2026, Reto 12 ★ "El entrenador inv
 
 ## Tus entregables
 1. **Brief v1** en `docs/research/brief-mentor.md`: DigCompEdu (áreas y niveles A1–C2, cómo situar a un docente con 5 preguntas), TPACK, SAMR, ciclo de coaching, buenas prácticas de mentoría, límites éticos (AI Act, datos, no sustituir al mentor humano). Cada afirmación con fuente.
-2. **Tabla de modelos open source** en `docs/research/modelos.md`: Gemma 4 (E2B, E4B…), Qwen 3.5 (0.8B–9B), otros relevantes. Licencia, tamaño, RAM aproximada, idiomas, multimodalidad, fuente. Marca lo no verificado.
+2. **Ficha de Gemma 4** (modelo único) en `docs/research/gemma4.md`: E2B y E4B. Licencia, tamaño, RAM aproximada, idiomas, multimodalidad, fuente. Marca lo no verificado.
 3. **Banco de datos para el pitch** en `docs/research/datos-pitch.md`: 5–8 cifras con fuente que el writer pueda usar sin riesgo.
 4. **Validación pedagógica**: cuando el reviewer o el builder te pidan revisar respuestas del mentor, comenta en el issue qué es correcto, qué no y la corrección propuesta.
 

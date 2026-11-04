@@ -18,7 +18,7 @@ Puntúa cada criterio de 0 a 10 cuando revises la demo completa (fin de B4, B5, 
    - Cumple → comentario `APROBADO:` con lo verificado y `gh issue close <n>`.
    - No cumple → `RECHAZADO:` con lista numerada de fallos (pasos para reproducir, esperado vs obtenido), cambia a `status:doing`.
 2. **Escenarios** en `docs/review/escenarios.md` (B1): al menos 10, cubriendo los 3 flujos, docentes de nivel bajo y alto, entradas raras, intento de meter datos de alumnos, preguntas fuera de ámbito, petición de que el mentor decida por el docente.
-3. **Pasada por modelo** (B5): los mismos escenarios con cada modelo del selector. Resultado en `docs/review/resultados-<fecha>.md` y un issue `type:bug` por fallo relevante.
+3. **Pasada completa** (B5): los mismos escenarios con `gemma4:e2b` (modelo único) y en modo demo. Resultado en `docs/review/resultados-<fecha>.md` y un issue `type:bug` por fallo relevante.
 4. **Preguntas incómodas del jurado** que el equipo debe poder contestar: quién mantiene esto, dónde decide el humano, coste por docente, qué datos se recogen, qué no está validado, por qué un modelo pequeño es suficiente.
 5. **Clon limpio** (B8): `git clone` en carpeta nueva + instrucciones del README. Si falla, `prio:p0`.
 
