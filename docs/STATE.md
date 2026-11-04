@@ -6,11 +6,13 @@
 
 ## Ahora mismo
 - Bloque actual: B1 casi cerrado (mié 01:00–05:00). Siguiente: B2 a las 09:00.
-- Último update: 2026-11-04 03:58 por coordinator
-- Qué funciona hoy: `npm install && npm run demo` en un clon limpio enseña «hola mentor» con respuesta grabada, sin modelo ni red (#2, probado por el builder en un namespace sin red). La ruta real contra un servidor falso compatible OpenAI también (#1). NO probado: respuesta de Gemma 4 vía Ollama real.
-- Entregado y pendiente de reviewer (`status:review`): #2 (demo mode), #3 (brief v1), #4 (persona y pitch v0), #5 (criterios y escenarios E1–E10).
-- Bloqueado: #1 (`needs-human`): Ollama no está instalado en la máquina del builder (7 GB de RAM, sin GPU; `gemma4:e4b` pesa 6,6 GB).
-- Próximo hito demostrable: flujo de perfil adaptando respuestas (B2).
+- Último update: 2026-11-04 08:55 por coordinator (retoma en máquina nueva)
+- Máquina actual: 16 núcleos, 30 GB de RAM, sin GPU. Ollama debe correr **solo en Docker** (contenedor `ollama`, puerto 11434, Docker rootless). Nadie ejecuta `ollama serve` nativo. **A las 08:55 el contenedor aún NO existe** (`docker ps -a` vacío, 11434 cerrado) y los modelos descargados en la máquina anterior no se trajeron: hay que crearlo y volver a descargar.
+- Qué funciona hoy: `npm install && npm run demo` en un clon limpio enseña «hola mentor» con respuesta grabada, sin modelo ni red (#2, aprobado por el reviewer). Con Ollama real se midió en la máquina anterior (7 GB, #1); no se ha repetido en esta.
+- Aprobado: #2. Entregado, `status:review`: #1 (builder), #5 (criterios y escenarios E1–E10). Rechazados, vuelven a `doing`: #3 (researcher), #4 (writer); ver `docs/review/resultados-b1.md`.
+- Pendiente de cambio pequeño en #1: `LLM_MODEL` por defecto a `gemma4:e2b` en `.env.example` y `ai/config.ts`.
+- `needs-human`: #17, #21 (tareas de los humanos).
+- Próximo hito demostrable: flujo de perfil adaptando respuestas (B2, #6).
 - Avisos: (1) el reviewer no tiene shell, así que no puede commitear ni comentar; el coordinator publicó sus ficheros (`c783e3e`). (2) Dos cifras del informe de retos son erróneas (Sudáfrica 5 USD; ProFuturo 87,2 % vs 17,2 %); ver #3. (3) «Ceiba» es nombre provisional del mentor.
 
 ## Producto (alcance estrecho, confirmado)
@@ -20,15 +22,16 @@ Chat web de mentor pedagógico, un docente a la vez, sin cuentas. Tres flujos:
 3. **Reflexionar tras una clase** — preguntas guiadas → nueva micro-acción.
 Siempre: anima a consultar con colegas o mentor humano, reconoce incertidumbre, no pide datos de alumnos.
 
-**Diferencial de pitch:** corre con modelos open source locales (Gemma 4 por defecto) y permite **alternar de modelo** en caliente para mostrar coste 0, privacidad y funcionamiento offline.
+**Diferencial de pitch:** corre con **un único modelo open source local, Gemma 4**, para mostrar coste 0, privacidad y funcionamiento offline. (Antes: selector con varios modelos; descartado el 2026-11-04 por decisión humana.)
 
 Fuera de alcance: memoria entre sesiones, RAG de currículos, voz, LMS, login.
 
 ## Decisiones tomadas
-- Presupuesto API: 0 €. Modelo local vía Ollama. Por defecto Gemma 4 E4B (Apache-2.0).
+- Presupuesto API: 0 €. Modelo local vía Ollama en Docker.
+- **Un solo modelo: Gemma 4** (2026-11-04, Ariel). Sin selector de modelos ni Qwen. Tag por defecto `gemma4:e2b` (Apache-2.0; medido 3,1 s en caliente y 14,6 tok/s en la máquina anterior). `gemma4:e4b` solo si se mide en la máquina nueva y compensa; lo decide un humano. Efecto en el backlog: #10 se reduce a mostrar modelo, tokens/s y latencia (sin selector); #7 pasa a justificar Gemma 4 (licencia, tamaño, RAM, idiomas).
 - Licencia: MIT.
 - Repo: `alcacere/hack4edu2026`, **público** desde ya (issues incluidos). Demo pública desplegada solo con OK humano.
-- Formato final: vídeo de 3 min.
+- Formato final (#25, Ariel): vídeo de 3 min + presentación de 5 min + enlace a GitHub.
 - Memoria compartida: GitHub Issues + este fichero.
 
 ## Calendario (hora Madrid)
@@ -63,7 +66,18 @@ npm install && npm run dev      # http://localhost:5173 → «Saludar al mentor�
 ```
 El navegador llama a `/llm/…` y Vite lo reenvía a `LLM_BASE_URL` (por defecto `http://localhost:11434/v1`). No hay backend aparte. La app envía `reasoning_effort=none` (variable `LLM_REASONING_EFFORT`): sin eso Gemma 4 y Qwen 3.5 «piensan» antes de responder y en CPU tardan ~10× más.
 
-**En la máquina del builder (7 GB de RAM, sin GPU, Ollama en espacio de usuario, sin sudo):**
+**Máquina actual (30 GB, sin GPU): Ollama en Docker. No uses `ollama serve` nativo.**
+```bash
+# Pendiente de crear (OK humano): el contenedor aún no existe a 2026-11-04 08:55
+docker run -d --name ollama --restart unless-stopped -p 127.0.0.1:11434:11434 \
+  -v ollama:/root/.ollama -e OLLAMA_KEEP_ALIVE=30m ollama/ollama
+docker exec ollama ollama pull gemma4:e2b
+docker exec ollama ollama list
+LLM_MODEL=gemma4:e2b LLM_MODELS=gemma4:e2b npm run dev
+```
+Las cifras de latencia de abajo son de la máquina anterior; hay que repetirlas aquí (#1).
+
+**(Obsoleto) En la máquina anterior del builder (7 GB de RAM, sin GPU, Ollama en espacio de usuario, sin sudo):**
 ```bash
 # Ollama 0.40.14 oficial (ollama.com/download → release de GitHub, SHA-256 verificado), extraído en goinfre:
 OLLAMA_DIR=~/goinfre/ollama   # dist/ = binario, models/ = modelos
