@@ -4,9 +4,11 @@ import { AIError, type ChatRequest, type ChatResult, type LLMProvider } from '..
 interface Options {
   baseUrl: string
   timeoutMs: number
+  /** Valor de `reasoning_effort` (Ollama: 'none' desactiva el razonamiento). Vacío = no se envía. */
+  reasoningEffort?: string
 }
 
-export function createOpenAIProvider({ baseUrl, timeoutMs }: Options): LLMProvider {
+export function createOpenAIProvider({ baseUrl, timeoutMs, reasoningEffort }: Options): LLMProvider {
   return {
     id: 'llm',
     async chat(req: ChatRequest, signal?: AbortSignal): Promise<ChatResult> {
@@ -23,7 +25,14 @@ export function createOpenAIProvider({ baseUrl, timeoutMs }: Options): LLMProvid
         res = await fetch(`${baseUrl}/chat/completions`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ model: req.model, messages: req.messages, stream: false }),
+          // reasoning_effort 'none': Gemma 4 y Qwen 3.5 «piensan» por defecto; en CPU eso
+          // multiplica la latencia (medido: 433 tokens en ~80 s con razonamiento vs 46 en 4 s sin él).
+          body: JSON.stringify({
+            model: req.model,
+            messages: req.messages,
+            stream: false,
+            ...(reasoningEffort ? { reasoning_effort: reasoningEffort } : {}),
+          }),
           signal: ctrl.signal,
         })
       } catch {

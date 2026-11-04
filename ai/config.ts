@@ -8,6 +8,8 @@ export interface AIConfig {
   defaultModel: string
   models: string[]
   timeoutMs: number
+  /** `reasoning_effort` que se envía al modelo. Por defecto 'none' (sin razonamiento: mucho más rápido en CPU). */
+  reasoningEffort: string
   demoMode: boolean
 }
 
@@ -36,6 +38,7 @@ export function loadConfig(env: Record<string, string | undefined> = import.meta
     defaultModel,
     models,
     timeoutMs: Number.isFinite(timeout) && timeout > 0 ? timeout : 60000,
+    reasoningEffort: (env.LLM_REASONING_EFFORT ?? 'none').trim(),
     demoMode: env.DEMO_MODE === '1' || env.DEMO_MODE === 'true' || urlDemoFlag(),
   }
 }

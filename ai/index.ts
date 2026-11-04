@@ -12,7 +12,11 @@ export const config: AIConfig = loadConfig()
 
 export const provider: LLMProvider = config.demoMode
   ? createFixtureProvider()
-  : createOpenAIProvider({ baseUrl: config.baseUrl, timeoutMs: config.timeoutMs })
+  : createOpenAIProvider({
+      baseUrl: config.baseUrl,
+      timeoutMs: config.timeoutMs,
+      reasoningEffort: config.reasoningEffort,
+    })
 
 // ---- Flujos: una función por flujo ----
 

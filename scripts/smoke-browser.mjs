@@ -18,7 +18,8 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 let ws
 try {
   let targets
-  for (let i = 0; i < 50; i++) {
+  // Hasta 60 s: con poca RAM libre (p. ej. un modelo cargado en Ollama) Chrome tarda en arrancar.
+  for (let i = 0; i < 300; i++) {
     try { targets = await (await fetch(`http://127.0.0.1:${port}/json`)).json(); break } catch { await sleep(200) }
   }
   if (!targets) throw new Error(`Chrome no arrancó (${chrome}). Prueba CHROME=<ruta> o SMOKE_NO_SANDBOX=1.`)
@@ -62,6 +63,12 @@ try {
     metrics: document.querySelector('article dl')?.innerText.replace(/\\n/g,' ') ?? null,
     alert: document.querySelector('[role=alert]')?.innerText.replace(/\\n/g,' ') ?? null,
     stillUsable: !!document.querySelector('button') })`)
+  if (process.env.SMOKE_SHOT) {
+    // Captura PNG de la página tal cual queda (para docs/pitch/).
+    const { writeFileSync } = await import('node:fs')
+    const shot = await send('Page.captureScreenshot', { format: 'png' })
+    writeFileSync(process.env.SMOKE_SHOT, Buffer.from(shot.data, 'base64'))
+  }
   const origin = new URL(url).origin
   const external = requests.filter((u) => !u.startsWith(origin) && !u.startsWith('data:'))
   const llmCalls = requests.filter((u) => u.includes('/llm/'))
