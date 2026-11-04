@@ -25,7 +25,7 @@ export function createOpenAIProvider({ baseUrl, timeoutMs, reasoningEffort }: Op
         res = await fetch(`${baseUrl}/chat/completions`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          // reasoning_effort 'none': Gemma 4 y Qwen 3.5 «piensan» por defecto; en CPU eso
+          // reasoning_effort 'none': Gemma 4 «piensa» por defecto; en CPU eso
           // multiplica la latencia (medido: 433 tokens en ~80 s con razonamiento vs 46 en 4 s sin él).
           body: JSON.stringify({
             model: req.model,

@@ -57,6 +57,15 @@ export default function App() {
           Modelo
         </label>
         <div className="mt-1 flex flex-col gap-2 sm:flex-row">
+          {config.models.length === 1 ? (
+            // Modelo único (Gemma 4, decisión del 2026-11-04 en #1): sin selector, solo el nombre.
+            <output
+              id="modelo"
+              className="flex min-h-11 flex-1 items-center rounded-lg border border-stone-300 bg-stone-50 px-3 text-base font-medium text-stone-900"
+            >
+              {model}
+            </output>
+          ) : (
           <select
             id="modelo"
             value={model}
@@ -70,6 +79,7 @@ export default function App() {
               </option>
             ))}
           </select>
+          )}
           {status === 'loading' ? (
             <button
               type="button"
@@ -90,7 +100,7 @@ export default function App() {
         </div>
         <p className="mt-2 text-sm text-stone-700">
           {config.demoMode
-            ? 'En modo demo el selector está bloqueado: las respuestas vienen de fixtures/.'
+            ? 'En modo demo las respuestas vienen de fixtures/: no se llama al modelo.'
             : `Modelo local vía Ollama (${config.upstreamUrl}). Coste 0 €, nada sale de este ordenador.`}
         </p>
       </section>
@@ -102,7 +112,7 @@ export default function App() {
           <div role="alert" className="rounded-xl border-2 border-red-700 bg-red-50 p-4 text-red-900">
             <p className="font-semibold">{error}</p>
             <p className="mt-1 text-sm">
-              Puedes volver a intentarlo, elegir otro modelo o abrir la demo grabada con{' '}
+              Puedes volver a intentarlo{config.models.length > 1 ? ', elegir otro modelo' : ''} o abrir la demo grabada con{' '}
               <a className="underline" href="?demo=1">
                 ?demo=1
               </a>

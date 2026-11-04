@@ -45,9 +45,9 @@ try {
     await sleep(200)
   }
   const before = await evaluate(`({ title: document.title, badge: document.querySelector('[role=status]')?.textContent ?? null,
-    models: [...document.querySelectorAll('#modelo option')].map(o => o.value), selectDisabled: document.querySelector('#modelo')?.disabled })`)
-  if (process.env.SMOKE_MODEL) {
-    // Cambia el selector como lo haría un usuario (setter nativo + evento change para React).
+    models: [...document.querySelectorAll('#modelo option')].map(o => o.value), modelText: document.querySelector('#modelo')?.textContent ?? null, selectDisabled: document.querySelector('#modelo')?.disabled })`)
+  if (process.env.SMOKE_MODEL && (await evaluate(`document.querySelector('#modelo')?.tagName === 'SELECT'`))) {
+    // Solo si hay selector (LLM_MODELS con más de un modelo). Cambia el selector como lo haría un usuario (setter nativo + evento change para React).
     await evaluate(`(() => { const s = document.querySelector('#modelo');
       Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set.call(s, ${JSON.stringify(process.env.SMOKE_MODEL)});
       s.dispatchEvent(new Event('change', { bubbles: true })); })()`)

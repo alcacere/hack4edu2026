@@ -27,9 +27,9 @@ function urlDemoFlag(): boolean {
 }
 
 export function loadConfig(env: Record<string, string | undefined> = import.meta.env): AIConfig {
-  const defaultModel = env.LLM_MODEL || 'gemma4:e4b'
-  // Sin .env usamos la misma lista que .env.example, para que `npm run dev` funcione tal cual.
-  const models = parseList(env.LLM_MODELS ?? 'gemma4:e4b,gemma4:e2b,qwen3.5:4b')
+  const defaultModel = env.LLM_MODEL || 'gemma4:e2b'
+  // Sin .env usamos lo mismo que .env.example (modelo único Gemma 4, #1), para que `npm run dev` funcione tal cual.
+  const models = parseList(env.LLM_MODELS ?? 'gemma4:e2b')
   if (!models.includes(defaultModel)) models.unshift(defaultModel)
   const timeout = Number(env.LLM_TIMEOUT_MS)
   return {

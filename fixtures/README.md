@@ -9,7 +9,7 @@ Formato:
   "version": 1,
   "origen": "cómo se obtuvo (modelo y fecha, o «escrito a mano»)",
   "entries": [
-    { "key": "default", "text": "…", "recordedModel": "gemma4:e4b" | null, "recordedTokensPerSec": 12.3 | null }
+    { "key": "default", "text": "…", "recordedModel": "gemma4:e2b" | null, "recordedTokensPerSec": 12.3 | null }
   ]
 }
 ```
