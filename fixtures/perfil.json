@@ -1,6 +1,43 @@
 {
   "flow": "perfil",
-  "version": 1,
-  "origen": "Estructura preparada. Las respuestas se graban cuando el flujo exista (B2–B4). Solo datos sintéticos y nombres ficticios.",
-  "entries": []
+  "version": 2,
+  "origen": "Escrito a mano por el builder el 2026-11-04 (no generado por un modelo): una salida JSON por nivel, con la forma que pide ai/prompts/perfil.md. 100 % sintético, sin datos personales. La clave es el código del nivel que calcula la app (app/src/perfil/datos.ts); el área por donde empezar la calcula y muestra la app, por eso aquí no se nombra.",
+  "entries": [
+    {
+      "key": "A1",
+      "text": "{\"explicacion\": \"Ya usas la tecnología para preparar tus clases y para comunicarte, y eso es una buena base. Ahora puede ayudarte una primera idea sencilla dentro del aula, con algo que ya conoces.\", \"primerPaso\": \"Esta semana podrías enseñar en clase una sola imagen o un vídeo corto desde tu móvil y comentar después con un colega cómo reaccionó el grupo.\"}",
+      "recordedModel": null,
+      "recordedTokensPerSec": null
+    },
+    {
+      "key": "A2",
+      "text": "{\"explicacion\": \"Ya has probado materiales digitales y los usas para mostrar cosas en clase. Ahora puede ayudarte ver cómo lo hacen tus colegas y elegir con qué seguir.\", \"primerPaso\": \"Esta semana podrías cerrar una clase con tres preguntas rápidas a mano alzada y comentar con un colega qué te dijeron las respuestas.\"}",
+      "recordedModel": null,
+      "recordedTokensPerSec": null
+    },
+    {
+      "key": "B1",
+      "text": "{\"explicacion\": \"Usas la tecnología en varias situaciones y tus alumnos ya la han usado en alguna actividad. El siguiente paso es fijarte en qué funciona y cuándo.\", \"primerPaso\": \"Esta semana podrías anotar en dos líneas qué aprendieron en una actividad con tecnología y compartir esa nota con un colega.\"}",
+      "recordedModel": null,
+      "recordedTokensPerSec": null
+    },
+    {
+      "key": "B2",
+      "text": "{\"explicacion\": \"Eliges herramientas según lo que quieres conseguir y ajustas la clase con lo que ves. Puedes ordenar ese repertorio y probar algo nuevo con calma.\", \"primerPaso\": \"Esta semana podrías contar a un colega una actividad que te funcionó y pedirle que te cuente una suya.\"}",
+      "recordedModel": null,
+      "recordedTokensPerSec": null
+    },
+    {
+      "key": "C1",
+      "text": "{\"explicacion\": \"Tienes una forma propia de usar la tecnología, la revisas y ya acompañas a otros colegas. Compartir lo que aprendes te ayuda a renovarlo.\", \"primerPaso\": \"Esta semana podrías revisar con un colega una de tus formas de evaluar con tecnología y apuntar una duda que os surja.\"}",
+      "recordedModel": null,
+      "recordedTokensPerSec": null
+    },
+    {
+      "key": "C2",
+      "text": "{\"explicacion\": \"Rediseñas actividades, enseñas a tu alumnado a usar la tecnología con criterio y formas a colegas. Te sirve tener espacio para probar ideas nuevas y contarlas.\", \"primerPaso\": \"Esta semana podrías documentar en media página una actividad nueva y comentarla con tu mentor o con un colega antes de repetirla.\"}",
+      "recordedModel": null,
+      "recordedTokensPerSec": null
+    }
+  ]
 }

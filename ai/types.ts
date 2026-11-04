@@ -13,6 +13,8 @@ export interface ChatRequest {
   messages: ChatMessage[]
   /** Clave opcional para elegir una respuesta concreta dentro del fixture del flujo. */
   fixtureKey?: string
+  /** Pide al servidor salida JSON (Ollama: response_format json_object). */
+  json?: boolean
 }
 
 export interface ChatResult {
@@ -32,7 +34,7 @@ export interface LLMProvider {
   chat(req: ChatRequest, signal?: AbortSignal): Promise<ChatResult>
 }
 
-export type AIErrorCode = 'timeout' | 'unreachable' | 'http' | 'empty' | 'fixture'
+export type AIErrorCode = 'timeout' | 'unreachable' | 'http' | 'empty' | 'fixture' | 'invalid'
 
 export class AIError extends Error {
   code: AIErrorCode

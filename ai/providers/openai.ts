@@ -31,6 +31,7 @@ export function createOpenAIProvider({ baseUrl, timeoutMs, reasoningEffort }: Op
             model: req.model,
             messages: req.messages,
             stream: false,
+            ...(req.json ? { response_format: { type: 'json_object' } } : {}),
             ...(reasoningEffort ? { reasoning_effort: reasoningEffort } : {}),
           }),
           signal: ctrl.signal,

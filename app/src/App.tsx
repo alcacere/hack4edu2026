@@ -1,14 +1,16 @@
 import { useRef, useState } from 'react'
 import { AIError, config, holaMentor, type ChatResult } from '@ai/index'
+import { Metricas } from './Metricas'
+import { Perfil } from './perfil/Perfil'
+import { useNivelSesion } from './session'
 
 type Status = 'idle' | 'loading' | 'done' | 'error'
-
-function formatMs(ms: number) {
-  return ms < 1000 ? `${Math.round(ms)} ms` : `${(ms / 1000).toFixed(1)} s`
-}
+type Vista = 'inicio' | 'perfil'
 
 export default function App() {
   const [model, setModel] = useState(config.defaultModel)
+  const [vista, setVista] = useState<Vista>('inicio')
+  const { nivel } = useNivelSesion()
   const [status, setStatus] = useState<Status>('idle')
   const [result, setResult] = useState<ChatResult | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -52,6 +54,19 @@ export default function App() {
         )}
       </header>
 
+      {nivel && vista !== 'perfil' && (
+        <p className="text-base text-stone-800" data-nivel-sesion={nivel.code}>
+          Tu punto de partida: <span className="font-semibold">{nivel.nombre}</span> ({nivel.code}, orientativo).{' '}
+          <button type="button" className="underline focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-500" onClick={() => setVista('perfil')}>
+            Ver o cambiar
+          </button>
+        </p>
+      )}
+
+      {vista === 'perfil' ? (
+        <Perfil model={model} onSalir={() => setVista('inicio')} />
+      ) : (
+      <>
       <section className="rounded-xl border border-stone-300 bg-white p-4 shadow-sm">
         <label htmlFor="modelo" className="block text-sm font-semibold text-stone-800">
           Modelo
@@ -97,6 +112,13 @@ export default function App() {
               Saludar al mentor
             </button>
           )}
+          <button
+            type="button"
+            onClick={() => setVista('perfil')}
+            className="min-h-11 rounded-lg border-2 border-emerald-800 px-4 font-semibold text-emerald-900 hover:bg-emerald-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400"
+          >
+            {nivel ? 'Mi punto de partida' : 'Conocerte: 5 preguntas'}
+          </button>
         </div>
         <p className="mt-2 text-sm text-stone-700">
           {config.demoMode
@@ -124,29 +146,12 @@ export default function App() {
         {result && status !== 'error' && (
           <article className="rounded-xl border border-emerald-300 bg-emerald-50 p-4">
             <p className="whitespace-pre-wrap text-lg leading-relaxed">{result.text}</p>
-            <dl className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-stone-700">
-              <div className="flex gap-1">
-                <dt className="font-semibold">Modelo:</dt>
-                <dd>{result.model}</dd>
-              </div>
-              <div className="flex gap-1">
-                <dt className="font-semibold">Latencia:</dt>
-                <dd>{formatMs(result.latencyMs)}</dd>
-              </div>
-              <div className="flex gap-1">
-                <dt className="font-semibold">Tokens/s:</dt>
-                <dd>{result.tokensPerSec ? result.tokensPerSec.toFixed(1) : '—'}</dd>
-              </div>
-              {result.source === 'demo' && (
-                <div className="flex gap-1">
-                  <dt className="font-semibold">Origen:</dt>
-                  <dd>fixture grabado</dd>
-                </div>
-              )}
-            </dl>
+            <Metricas result={result} />
           </article>
         )}
       </section>
+      </>
+      )}
 
       <footer className="mt-auto text-xs text-stone-600">
         Prototipo Hack4Edu 2026 · Reto 12 · Licencia MIT. Las ideas del mentor son propuestas: decide el docente.
