@@ -16,10 +16,11 @@ http
       let body = ''
       req.on('data', (c) => (body += c))
       req.on('end', () => {
-        const { model = 'mock', response_format } = JSON.parse(body || '{}')
+        const { model = 'mock', response_format, messages = [] } = JSON.parse(body || '{}')
+        const nivel = String(messages.at(-1)?.content ?? '').match(/código ([ABC][12])/)?.[1] ?? 'A1'
         const content =
           response_format && mockJson
-            ? JSON.stringify({ explicacion: `[mock ${model}] Explicación de prueba. No soy un modelo.`, primerPaso: '[mock] Primer paso de prueba: coméntalo con un colega.' })
+            ? JSON.stringify({ nivel, explicacion: `[mock ${model}] Explicación de prueba. No soy un modelo.`, primerPaso: '[mock] Primer paso de prueba: coméntalo con un colega.' })
             : `[mock ${model}] Hola, soy el servidor de prueba. No soy un modelo.`
         console.log(`#${++n} ${new Date().toISOString()} json=${!!response_format}`)
         setTimeout(() => {

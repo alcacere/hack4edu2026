@@ -55,7 +55,7 @@ try {
   await send('Page.navigate', { url })
   await waitFor(`!!document.querySelector('#modelo')`)
   await evaluate(`sessionStorage.clear()`)
-  if (!(await click('Conocerte'))) throw new Error('No encuentro el botón «Conocerte: 5 preguntas».')
+  if (!(await click('Conocernos'))) throw new Error('No encuentro el botón «Conocernos (5 preguntas)».')
   await waitFor(`[...document.querySelectorAll('button')].some(b => b.textContent.includes('Empezar'))`)
   await click('Empezar')
   const preguntas = []
@@ -83,15 +83,17 @@ try {
     scrollHorizontal: document.documentElement.scrollWidth > window.innerWidth,
   })`)
   let correccion = null
+  const llmTrasResultado = llmBodies.length
   if (process.env.SMOKE_CORREGIR) {
     await evaluate(`(() => { const s = document.querySelector('#corregir-nivel');
       Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value').set.call(s, ${JSON.stringify(process.env.SMOKE_CORREGIR)});
       s.dispatchEvent(new Event('change', { bubbles: true })); })()`)
     await sleep(300)
-    correccion = await evaluate(`({ nivel: document.querySelector('[data-nivel]')?.innerText,
+    correccion = await evaluate(`({ nivel: document.querySelector('[data-nivel]')?.innerText, etiqueta: document.querySelector('[data-corregido]')?.innerText ?? null,
       confirmacion: document.querySelector('#corregir-nivel ~ [role=status]')?.innerText })`)
     await click('Volver al inicio')
     await sleep(200)
+    correccion.llmAlCorregir = llmBodies.length - llmTrasResultado
     correccion.cabecera = await evaluate(`document.querySelector('[data-nivel-sesion]')?.innerText ?? null`)
   }
   const sesion = await evaluate(`sessionStorage.getItem('ceiba.perfil.v1')`)

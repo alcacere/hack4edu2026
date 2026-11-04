@@ -3,6 +3,7 @@ import { AIError, config, holaMentor, type ChatResult } from '@ai/index'
 import { Metricas } from './Metricas'
 import { Perfil } from './perfil/Perfil'
 import { useNivelSesion } from './session'
+import { es } from './copy/es'
 
 type Status = 'idle' | 'loading' | 'done' | 'error'
 type Vista = 'inicio' | 'perfil'
@@ -117,7 +118,7 @@ export default function App() {
             onClick={() => setVista('perfil')}
             className="min-h-11 rounded-lg border-2 border-emerald-800 px-4 font-semibold text-emerald-900 hover:bg-emerald-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400"
           >
-            {nivel ? 'Mi punto de partida' : 'Conocerte: 5 preguntas'}
+            {nivel ? es.perfil.resultadoTitulo : es.bienvenida.opcionPerfil}
           </button>
         </div>
         <p className="mt-2 text-sm text-stone-700">

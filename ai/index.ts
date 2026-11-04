@@ -5,10 +5,11 @@ import { createFixtureProvider } from './providers/fixtures'
 import { PROMPTS } from './prompts'
 import { AIError, type ChatRequest, type ChatResult, type LLMProvider } from './types'
 import { extractJsonObject, type Validation } from './json'
-import { validatePerfil, type PerfilOut } from './schemas'
+import { validatePerfil, type NivelCode, type PerfilOut } from './schemas'
 
 export * from './types'
-export type { PerfilOut } from './schemas'
+export { NIVEL_CODES } from './schemas'
+export type { NivelCode, PerfilOut } from './schemas'
 export type { AIConfig }
 
 export const config: AIConfig = loadConfig()
@@ -67,7 +68,7 @@ async function chatJson<T>(
 }
 
 export interface PerfilInput {
-  nivelCode: string
+  nivelCode: NivelCode
   nivelNombre: string
   areaBaja: string
   /** Pares área → opción elegida (texto). Las preguntas saltadas no se envían. */
@@ -77,7 +78,7 @@ export interface PerfilInput {
 /** B2 · Flujo 1: explica en llano el punto de partida (ya calculado por la app) y propone un primer paso. */
 export function perfilRapido(model: string, input: PerfilInput, signal?: AbortSignal): Promise<JsonResult<PerfilOut>> {
   const user =
-    `Nivel: ${input.nivelNombre}. Área por donde empezar: ${input.areaBaja}.\n` +
+    `Nivel: ${input.nivelNombre} (código ${input.nivelCode}). Área por donde empezar: ${input.areaBaja}.\n` +
     `Respuestas: ${input.respuestas.map((r) => `${r.area} → ${r.respuesta}`).join('; ')}.`
   return chatJson(
     {
@@ -89,7 +90,7 @@ export function perfilRapido(model: string, input: PerfilInput, signal?: AbortSi
         { role: 'user', content: user },
       ],
     },
-    validatePerfil,
+    (v) => validatePerfil(v, input.nivelCode),
     signal,
   )
 }

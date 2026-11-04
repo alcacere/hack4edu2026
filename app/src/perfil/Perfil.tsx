@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AIError, perfilRapido, type JsonResult, type PerfilOut } from '@ai/index'
 import { Metricas } from '../Metricas'
+import { es } from '../copy/es'
 import { useNivelSesion } from '../session'
 import { calcularResultado, NIVELES, nivelPorCode, PREGUNTAS, type NivelCode, type Respuesta, type Resultado } from './datos'
 
@@ -17,7 +18,7 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
   // -1 = intro; 0..4 = pregunta; 5 = resultado
   const [paso, setPaso] = useState(perfil ? PREGUNTAS.length : -1)
   const [elecciones, setElecciones] = useState<Eleccion[]>(() => PREGUNTAS.map(() => undefined))
-  const [ia, setIa] = useState<{ status: 'idle' | 'loading' | 'done' | 'error'; out?: JsonResult<PerfilOut>; error?: string }>({
+  const [ia, setIa] = useState<{ status: 'idle' | 'loading' | 'done' | 'error'; out?: JsonResult<PerfilOut>; error?: { docente: string; tecnico: string } }>({
     status: 'idle',
   })
   const [aviso, setAviso] = useState<string | null>(null)
@@ -52,7 +53,7 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
       setIa({ status: 'done', out })
     } catch (e) {
       if (ctrl.signal.aborted && !(e instanceof AIError && e.code === 'timeout')) return
-      setIa({ status: 'error', error: e instanceof AIError ? e.message : 'Ha pasado algo inesperado al hablar con el modelo.' })
+      setIa({ status: 'error', error: textoError(e) })
     }
   }
 
@@ -78,12 +79,11 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
     return (
       <section className="rounded-xl border border-stone-300 bg-white p-4 shadow-sm" aria-labelledby="perfil-h">
         <h2 id="perfil-h" ref={headingRef} tabIndex={-1} className="text-xl font-bold text-emerald-900 focus:outline-none">
-          Conocerte: 5 preguntas
+          {es.perfil.titulo}
         </h2>
-        <p className="mt-2 text-base">Son 5 preguntas cortas. No es un examen: sirve para que mis ideas se ajusten a ti.</p>
-        <p className="mt-1 text-base">
-          No hay respuestas buenas ni malas. Si una pregunta no encaja con tu escuela, puedes saltarla.
-        </p>
+        <p className="mt-2 text-base">{es.perfil.intro}</p>
+        <p className="mt-1 text-base">{es.perfil.introSaltar}</p>
+        <p className="mt-1 text-base text-stone-700">{es.bienvenida.opcionPerfilAyuda}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           <button type="button" className={btnPrimary} onClick={() => setPaso(0)}>
             Empezar
@@ -115,14 +115,14 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
           <fieldset>
             <legend className="w-full">
               <span className="block text-sm font-semibold text-stone-700">
-                Pregunta {paso + 1} de {PREGUNTAS.length}
+                {es.perfil.progreso(paso + 1, PREGUNTAS.length)}
               </span>
               <h2 ref={headingRef} tabIndex={-1} className="mt-1 text-xl font-bold text-emerald-900 focus:outline-none">
                 {p.texto}
               </h2>
             </legend>
             <div className="mt-3 flex flex-col gap-2">
-              {[...p.opciones.map((o, i) => ({ v: i as Respuesta, label: o })), { v: 'skip' as const, label: 'Esta pregunta no encaja con mi escuela (saltar)' }].map(
+              {[...p.opciones.map((o, i) => ({ v: i as Respuesta, label: o })), { v: 'skip' as const, label: es.comun.saltar }].map(
                 ({ v, label }) => (
                   <label
                     key={String(v)}
@@ -146,10 +146,10 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
           </fieldset>
           <div className="mt-4 flex flex-wrap gap-2">
             <button type="button" className={btnSecondary} onClick={() => (paso === 0 ? setPaso(-1) : setPaso(paso - 1))}>
-              Atrás
+              {es.comun.anterior}
             </button>
             <button type="submit" className={btnPrimary} disabled={actual === undefined}>
-              {ultima ? 'Ver mi punto de partida' : 'Siguiente'}
+              {ultima ? es.perfil.verResultado : es.comun.siguiente}
             </button>
           </div>
         </form>
@@ -166,26 +166,29 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
     <section className="flex flex-col gap-3" aria-labelledby="resultado-h" data-perfil-resultado>
       <article className="rounded-xl border border-emerald-300 bg-emerald-50 p-4">
         <h2 id="resultado-h" ref={headingRef} tabIndex={-1} className="text-sm font-semibold uppercase tracking-wide text-emerald-900 focus:outline-none">
-          Tu punto de partida
+          {es.perfil.resultadoTitulo}
         </h2>
         <p className="mt-1 text-3xl font-bold text-emerald-950" data-nivel={nivel.code}>
           {nivel.nombre}{' '}
-          <span className="text-base font-normal text-stone-700">({nivel.code} en el marco europeo DigCompEdu)</span>
+          <span className="text-base font-normal text-stone-700">({es.perfil.codigoOpcional(nivel.code)})</span>
+          {corregido && (
+            <span className="ml-2 inline-block rounded-full border-2 border-emerald-800 bg-white px-2 py-0.5 align-middle text-sm font-semibold text-emerald-900" data-corregido>
+              {es.perfil.corregidoEtiqueta}
+            </span>
+          )}
         </p>
         {corregido && (
           <p className="mt-1 text-sm text-stone-800">
-            Lo has elegido tú. Las 5 preguntas proponían: {propuesto.nombre} ({propuesto.code}).
+            Las 5 preguntas proponían: {propuesto.nombre} ({propuesto.code}).
           </p>
         )}
 
         <div aria-live="polite" className="mt-3">
-          {ia.status === 'loading' && !corregido && <p className="text-stone-700">El mentor está redactando la explicación…</p>}
+          {ia.status === 'loading' && !corregido && <p className="text-stone-700">{es.perfil.calculando}</p>}
           <p className="text-lg leading-relaxed" data-explicacion>
             {usarIa ? ia.out!.data.explicacion : nivel.descripcion}
           </p>
-          <p className="mt-2 text-base">
-            <span className="font-semibold">Por dónde empezar:</span> {perfil.resultado.areaBaja}.
-          </p>
+          <p className="mt-2 text-base font-medium">{es.perfil.areaInicio(perfil.resultado.areaBaja)}</p>
           {usarIa && (
             <p className="mt-2 text-base">
               <span className="font-semibold">Un primer paso posible (decides tú):</span> {ia.out!.data.primerPaso}
@@ -194,8 +197,7 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
         </div>
 
         <p className="mt-3 rounded-lg border-2 border-amber-700 bg-amber-50 p-3 text-base font-semibold text-amber-950" data-aviso-orientativo>
-          Es un punto de partida orientativo, no una nota. No es una evaluación ni un certificado: sirve solo para elegir ideas
-          que te encajen y no sale de esta pestaña.
+          {es.perfil.avisoOrientativo} <span className="font-normal">{es.perfil.avisoUso}</span>
         </p>
 
         {perfil.resultado.respondidas < 3 && (
@@ -206,8 +208,9 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
 
         <div className="mt-4">
           <label htmlFor="corregir-nivel" className="block text-base font-semibold text-stone-900">
-            ¿No te reconoces? Cámbialo:
+            {es.perfil.corregirBoton}
           </label>
+          <p className="text-sm text-stone-700">{es.perfil.corregirAyuda}</p>
           <select
             id="corregir-nivel"
             value={nivel.code}
@@ -217,7 +220,7 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
               setAviso(
                 code === perfil.resultado.code
                   ? `Vuelvo a usar ${nivelPorCode(code).nombre}, el que proponían las 5 preguntas.`
-                  : `Hecho, uso ${nivelPorCode(code).nombre} a partir de ahora. Tú te conoces mejor que cinco preguntas.`,
+                  : es.perfil.corregidoConfirmacion(nivelPorCode(code).nombre),
               )
             }}
             className="mt-1 min-h-11 w-full rounded-lg border border-stone-400 bg-white px-3 text-base focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-600 sm:w-auto"
@@ -261,20 +264,22 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
 
       {ia.status === 'error' && !corregido && (
         <div role="alert" className="rounded-xl border-2 border-red-700 bg-red-50 p-4 text-red-900">
-          <p className="font-semibold">{ia.error}</p>
-          <p className="mt-1 text-sm">
-            Te muestro la descripción general del nivel. Puedes reintentarlo o abrir la demo grabada con{' '}
-            <a className="underline" href="?demo=1">
-              ?demo=1
-            </a>
-            .
-          </p>
+          <p className="font-semibold">{es.errores.titulo}</p>
+          <p className="mt-1">{ia.error?.docente}</p>
+          <p className="mt-1 text-sm">Mientras, te muestro la descripción general del nivel.</p>
+          <details className="mt-1 text-sm">
+            <summary className="cursor-pointer">{es.errores.verDetalle}</summary>
+            {ia.error?.tecnico}
+          </details>
+          <a className="mt-1 inline-block text-sm underline" href="?demo=1">
+            {es.errores.abrirDemo}
+          </a>
           <button
             type="button"
             className={`${btnSecondary} mt-2 border-red-800 text-red-900`}
             onClick={() => void explicar(perfil.resultado, elecciones.map((e) => (e === 'skip' || e === undefined ? null : e)))}
           >
-            Reintentar
+            {es.comun.reintentar}
           </button>
         </div>
       )}
@@ -284,9 +289,27 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
           Repetir las 5 preguntas
         </button>
         <button type="button" className={btnSecondary} onClick={onSalir}>
-          Volver al inicio
+          {es.comun.volverInicio}
         </button>
       </div>
     </section>
   )
+}
+
+function textoError(e: unknown): { docente: string; tecnico: string } {
+  if (!(e instanceof AIError)) return es.errores.desconocido
+  switch (e.code) {
+    case 'unreachable':
+      return es.errores.unreachable
+    case 'timeout':
+      return { docente: es.errores.timeout.docente, tecnico: e.message }
+    case 'http':
+      return { docente: es.errores.http.docente, tecnico: e.message }
+    case 'empty':
+      return es.errores.empty
+    case 'invalid':
+      return es.errores.invalida
+    case 'fixture':
+      return es.errores.fixture
+  }
 }
