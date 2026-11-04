@@ -12,7 +12,7 @@ const waitMs = Number(process.argv[3] || 3000)
 const chrome = process.env.CHROME || 'google-chrome'
 const port = 9333 + Math.floor(Math.random() * 500)
 const profile = mkdtempSync(join(tmpdir(), 'smoke-chrome-'))
-const proc = spawn(chrome, ['--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, '--no-first-run', 'about:blank'], { stdio: 'ignore' })
+const proc = spawn(chrome, ['--headless=new', `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, '--no-first-run', ...(process.env.SMOKE_NO_SANDBOX ? ['--no-sandbox'] : []), 'about:blank'], { stdio: 'ignore' })
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 let ws
@@ -21,6 +21,7 @@ try {
   for (let i = 0; i < 50; i++) {
     try { targets = await (await fetch(`http://127.0.0.1:${port}/json`)).json(); break } catch { await sleep(200) }
   }
+  if (!targets) throw new Error(`Chrome no arrancó (${chrome}). Prueba CHROME=<ruta> o SMOKE_NO_SANDBOX=1.`)
   const page = targets.find((t) => t.type === 'page')
   ws = new WebSocket(page.webSocketDebuggerUrl)
   await new Promise((r) => ws.addEventListener('open', r, { once: true }))

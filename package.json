@@ -10,7 +10,9 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "mock-llm": "node scripts/mock-llm.mjs"
+    "mock-llm": "node scripts/mock-llm.mjs",
+    "build:demo": "DEMO_MODE=1 vite build",
+    "smoke": "node scripts/smoke-browser.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -26,5 +28,7 @@
     "typescript": "~5.9.3",
     "vite": "^8.0.0"
   },
-  "engines": { "node": ">=20.19" }
+  "engines": {
+    "node": ">=20.19"
+  }
 }
