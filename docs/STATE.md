@@ -57,17 +57,38 @@ Con la app ya abierta en modo normal, añadir `?demo=1` a la URL fuerza también
 
 **Con modelo local (Ollama):**
 ```bash
-ollama pull gemma4:e4b          # o gemma4:e2b / qwen3.5:4b (tags verificados el 2026-11-04)
+ollama pull gemma4:e4b          # o gemma4:e2b / qwen3.5:4b
 cp .env.example .env            # opcional: ajusta LLM_MODEL / LLM_MODELS / LLM_TIMEOUT_MS
 npm install && npm run dev      # http://localhost:5173 → «Saludar al mentor»
 ```
-El navegador llama a `/llm/…` y Vite lo reenvía a `LLM_BASE_URL` (por defecto `http://localhost:11434/v1`). No hay backend aparte.
+El navegador llama a `/llm/…` y Vite lo reenvía a `LLM_BASE_URL` (por defecto `http://localhost:11434/v1`). No hay backend aparte. La app envía `reasoning_effort=none` (variable `LLM_REASONING_EFFORT`): sin eso Gemma 4 y Qwen 3.5 «piensan» antes de responder y en CPU tardan ~10× más.
+
+**En la máquina del builder (7 GB de RAM, sin GPU, Ollama en espacio de usuario, sin sudo):**
+```bash
+# Ollama 0.40.14 oficial (ollama.com/download → release de GitHub, SHA-256 verificado), extraído en goinfre:
+OLLAMA_DIR=~/goinfre/ollama   # dist/ = binario, models/ = modelos
+export OLLAMA_HOST=127.0.0.1:11434 OLLAMA_MODELS=$OLLAMA_DIR/models
+export OLLAMA_MAX_LOADED_MODELS=1 OLLAMA_KEEP_ALIVE=30m   # solo cabe un modelo a la vez en RAM
+$OLLAMA_DIR/dist/bin/ollama serve &      # escucha solo en 127.0.0.1; parar: kill %1
+$OLLAMA_DIR/dist/bin/ollama list         # gemma4:e2b (4,6 GB), qwen3.5:4b (3,3 GB)
+# Precalentar ANTES de la demo (la carga en frío tarda 2–7 min aquí):
+curl -s http://127.0.0.1:11434/api/generate -d '{"model":"gemma4:e2b","keep_alive":"30m"}'
+LLM_MODEL=gemma4:e2b LLM_MODELS=gemma4:e2b,qwen3.5:4b npm run dev
+```
+Medido el 2026-11-04 en la interfaz (Chrome headless, `scripts/smoke-browser.mjs`), latencia de punta a punta del saludo:
+
+| Modelo | En frío (carga + respuesta) | En caliente | Tokens/s en caliente |
+|---|---|---|---|
+| `gemma4:e2b` | 121,7 s (444 s la primera vez tras descargar) | 3,1 s | 14,6 |
+| `qwen3.5:4b` | 136,1 s (166 s por API) | 7,2 s | 7,0 |
+
+Con 7 GB los dos modelos no caben a la vez: **cambiar de modelo en el selector descarga el anterior y la primera respuesta del nuevo es «en frío»** (supera el timeout por defecto de 60 s; la interfaz lo dice y sigue usable). Para la demo en directo con selector: un portátil de 16 GB con `OLLAMA_MAX_LOADED_MODELS=2`, o grabar el cambio de modelo en el vídeo. `gemma4:e4b` no se ha probado (no descargado: no cabe bien en 7 GB).
 
 **Pruebas sin Ollama:** `npm run mock-llm` (servidor falso compatible OpenAI en :11555) y `LLM_BASE_URL=http://localhost:11555/v1 npm run dev`.
-**Smoke test:** `npm run smoke -- http://localhost:5173/` (Chrome headless: pulsa el botón y lista respuesta, métricas, alertas y peticiones externas).
+**Smoke test:** `npm run smoke -- http://localhost:5173/ [esperaMs]` (Chrome headless: pulsa el botón y lista respuesta, métricas, alertas y peticiones externas). `SMOKE_MODEL=qwen3.5:4b` cambia el selector antes; `SMOKE_SHOT=fichero.png` guarda una captura.
 **Versión estática demo:** `npm run build:demo && npm run preview` → http://localhost:4173.
 
-Estado (2026-11-04 04:20): ruta demo verificada sin red; ruta real verificada solo contra el mock, **no con Ollama** (no está instalado en la máquina del builder; ver #1).
+Estado (2026-11-04 04:40): ruta demo verificada sin red (el fixture `hola` ahora es texto generado por `gemma4:e2b`); ruta real verificada **con Ollama real** y los dos modelos (`gemma4:e2b`, `qwen3.5:4b`) en la máquina del builder (ver #1). Capturas: `docs/pitch/captura-hola-*.png`.
 
 ## Preguntas abiertas para humanos
 - #25 — Formato de entrega: las bases dicen «ppt **o** vídeo» en una sección y «presentación **y** vídeo» en otra. Recomendación del coordinator: vídeo de 3 min + presentación de 5 min. Pendiente de respuesta humana.
