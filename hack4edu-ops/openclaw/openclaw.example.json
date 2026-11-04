@@ -1,0 +1,91 @@
+{
+  "wizard": {
+    "accessMode": "guarded",
+    "lastRunVersion": "2026.10.10",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "plugins": {
+    "entries": {
+      "anthropic": {
+        "config": { "sessionCatalog": { "enabled": false } },
+        "enabled": true
+      },
+      "codex": {
+        "config": { "sessionCatalog": { "enabled": false } }
+      }
+    }
+  },
+  "telemetry": { "enabled": false },
+  "agents": {
+    "defaults": {
+      "models": {
+        "anthropic/claude-opus-5-5": { "agentRuntime": { "id": "claude-cli" } }
+      },
+      "model": "anthropic/claude-opus-5-5",
+      "authInheritance": { "agentId": "main" },
+      "systemAgent": { "agentId": "coordinator" },
+      "heartbeat": { "agentId": "coordinator" },
+      "workspace": "__OPENCLAW_HOME__/workspace",
+      "memory": { "search": { "provider": "none" } }
+    },
+    "ownership": "explicit",
+    "entries": {
+      "coordinator": {
+        "name": "coordinator",
+        "workspace": "__OPENCLAW_HOME__/workspace/coordinator",
+        "agentDir": "__OPENCLAW_HOME__/agents/coordinator/agent",
+        "identity": { "name": "Chief of Staff", "emoji": "🧭", "theme": "calm, accountable coordination" },
+        "subagents": {
+          "allowAgents": ["researcher", "writer", "reviewer", "builder"],
+          "delegationMode": "prefer"
+        }
+      },
+      "researcher": {
+        "name": "researcher",
+        "workspace": "__OPENCLAW_HOME__/workspace/researcher",
+        "agentDir": "__OPENCLAW_HOME__/agents/researcher/agent",
+        "identity": { "name": "Researcher", "emoji": "🔎", "theme": "curious, evidence-led research" },
+        "subagents": { "allowAgents": [] }
+      },
+      "writer": {
+        "name": "writer",
+        "workspace": "__OPENCLAW_HOME__/workspace/writer",
+        "agentDir": "__OPENCLAW_HOME__/agents/writer/agent",
+        "identity": { "name": "Writer", "emoji": "✍️", "theme": "clear, audience-aware writing" },
+        "subagents": { "allowAgents": [] }
+      },
+      "reviewer": {
+        "name": "reviewer",
+        "workspace": "__OPENCLAW_HOME__/workspace/reviewer",
+        "agentDir": "__OPENCLAW_HOME__/agents/reviewer/agent",
+        "identity": { "name": "Reviewer", "emoji": "🔍", "theme": "careful, independent review" },
+        "tools": {
+          "allow": ["read", "exec"],
+          "deny": ["edit", "apply_patch"]
+        },
+        "subagents": { "allowAgents": [] }
+      },
+      "builder": {
+        "name": "builder",
+        "workspace": "__OPENCLAW_HOME__/workspace/builder",
+        "agentDir": "__OPENCLAW_HOME__/agents/builder/agent",
+        "identity": { "name": "Builder", "emoji": "🛠️", "theme": "pragmatic, ship-the-demo engineering" },
+        "model": "anthropic/claude-opus-5-5",
+        "subagents": { "allowAgents": [] }
+      }
+    }
+  },
+  "talk": { "agentId": "coordinator" },
+  "gateway": {
+    "mode": "local",
+    "port": 18789,
+    "bind": "loopback",
+    "auth": { "mode": "token", "token": "__GATEWAY_TOKEN__" },
+    "tailscale": { "mode": "off" }
+  },
+  "tools": { "profile": "full" },
+  "hooks": {
+    "internal": { "entries": { "session-memory": { "enabled": true } } }
+  }
+}
