@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Fuentes del sistema: nada que descargar, funciona sin red. */
+html { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
