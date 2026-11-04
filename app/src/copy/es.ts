@@ -148,7 +148,7 @@ export const es = {
       compromiso: 'aprender y compartir con colegas',
     },
     avisoOrientativo: 'Es un punto de partida orientativo. No es una nota ni una evaluación.',
-    avisoUso: 'Solo lo uso para elegir ideas que te sirvan. No se guarda ni se envía a nadie.',
+    avisoUso: 'Solo lo uso para elegir ideas que te sirvan. No sale de este navegador y se borra al cerrar la pestaña.',
     corregirBoton: 'No me reconozco: cambiar',
     corregirTitulo: 'Elige el punto de partida que mejor te describe',
     corregirAyuda: 'Tú te conoces mejor que cinco preguntas. Usaré el que elijas.',
