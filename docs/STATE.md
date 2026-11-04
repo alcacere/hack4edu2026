@@ -5,11 +5,13 @@
 > Bases oficiales: `hack4edu_2026_Bases_de_participacion.md` (raíz del repo).
 
 ## Ahora mismo
-- Bloque actual: B1 (mié 01:00–05:00)
-- Último update: 2026-11-04 03:45 por coordinator
-- Qué funciona hoy: nada ejecutable todavía. Hecho: kit de agentes aplicado en la raíz, labels creadas, backlog inicial creado (issues #1–#25).
-- B1 en curso: #1 y #2 (builder), #3 (researcher), #4 (writer), #5 (reviewer). Objetivo de B1: 05:00; si hay retraso, `HANDOFF:` y se retoma antes de B2 (09:00).
-- Próximo hito demostrable: repo con esqueleto que responde "hola mentor"
+- Bloque actual: B1 casi cerrado (mié 01:00–05:00). Siguiente: B2 a las 09:00.
+- Último update: 2026-11-04 03:58 por coordinator
+- Qué funciona hoy: `npm install && npm run demo` en un clon limpio enseña «hola mentor» con respuesta grabada, sin modelo ni red (#2, probado por el builder en un namespace sin red). La ruta real contra un servidor falso compatible OpenAI también (#1). NO probado: respuesta de Gemma 4 vía Ollama real.
+- Entregado y pendiente de reviewer (`status:review`): #2 (demo mode), #3 (brief v1), #4 (persona y pitch v0), #5 (criterios y escenarios E1–E10).
+- Bloqueado: #1 (`needs-human`): Ollama no está instalado en la máquina del builder (7 GB de RAM, sin GPU; `gemma4:e4b` pesa 6,6 GB).
+- Próximo hito demostrable: flujo de perfil adaptando respuestas (B2).
+- Avisos: (1) el reviewer no tiene shell, así que no puede commitear ni comentar; el coordinator publicó sus ficheros (`c783e3e`). (2) Dos cifras del informe de retos son erróneas (Sudáfrica 5 USD; ProFuturo 87,2 % vs 17,2 %); ver #3. (3) «Ceiba» es nombre provisional del mentor.
 
 ## Producto (alcance estrecho, confirmado)
 Chat web de mentor pedagógico, un docente a la vez, sin cuentas. Tres flujos:
