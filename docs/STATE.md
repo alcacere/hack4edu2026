@@ -43,7 +43,29 @@ Fuera de alcance: memoria entre sesiones, RAG de currículos, voz, LMS, login.
 | Margen | Jue 21–23:59 | Entrega objetivo 23:00 |
 
 ## Cómo arrancar la demo
-(lo rellena el builder en cuanto exista)
+> Lo mantiene el builder. Requisitos: Node ≥ 20.19 (probado con Node 24) y, para el modelo real, Ollama.
+
+**Demo grabada (sin modelo ni red), la ruta segura:**
+```bash
+git clone https://github.com/alcacere/hack4edu2026 && cd hack4edu2026
+npm install
+npm run demo            # DEMO_MODE=1 → http://localhost:5173
+```
+Con la app ya abierta en modo normal, añadir `?demo=1` a la URL fuerza también el modo demo.
+
+**Con modelo local (Ollama):**
+```bash
+ollama pull gemma4:e4b          # o gemma4:e2b / qwen3.5:4b (tags verificados el 2026-11-04)
+cp .env.example .env            # opcional: ajusta LLM_MODEL / LLM_MODELS / LLM_TIMEOUT_MS
+npm install && npm run dev      # http://localhost:5173 → «Saludar al mentor»
+```
+El navegador llama a `/llm/…` y Vite lo reenvía a `LLM_BASE_URL` (por defecto `http://localhost:11434/v1`). No hay backend aparte.
+
+**Pruebas sin Ollama:** `npm run mock-llm` (servidor falso compatible OpenAI en :11555) y `LLM_BASE_URL=http://localhost:11555/v1 npm run dev`.
+**Smoke test:** `npm run smoke -- http://localhost:5173/` (Chrome headless: pulsa el botón y lista respuesta, métricas, alertas y peticiones externas).
+**Versión estática demo:** `npm run build:demo && npm run preview` → http://localhost:4173.
+
+Estado (2026-11-04 04:20): ruta demo verificada sin red; ruta real verificada solo contra el mock, **no con Ollama** (no está instalado en la máquina del builder; ver #1).
 
 ## Preguntas abiertas para humanos
 - #25 — Formato de entrega: las bases dicen «ppt **o** vídeo» en una sección y «presentación **y** vídeo» en otra. Recomendación del coordinator: vídeo de 3 min + presentación de 5 min. Pendiente de respuesta humana.
