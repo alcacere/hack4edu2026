@@ -5,15 +5,15 @@
 > Bases oficiales: `hack4edu_2026_Bases_de_participacion.md` (raíz del repo).
 
 ## Ahora mismo
-- Bloque actual: B1 casi cerrado (mié 01:00–05:00). Siguiente: B2 a las 09:00.
-- Último update: 2026-11-04 08:55 por coordinator (retoma en máquina nueva)
-- Máquina actual: 16 núcleos, 30 GB de RAM, sin GPU. Ollama debe correr **solo en Docker** (contenedor `ollama`, puerto 11434, Docker rootless). Nadie ejecuta `ollama serve` nativo. **A las 08:55 el contenedor aún NO existe** (`docker ps -a` vacío, 11434 cerrado) y los modelos descargados en la máquina anterior no se trajeron: hay que crearlo y volver a descargar.
-- Qué funciona hoy: `npm install && npm run demo` en un clon limpio enseña «hola mentor» con respuesta grabada, sin modelo ni red (#2, aprobado por el reviewer). Con Ollama real se midió en la máquina anterior (7 GB, #1); no se ha repetido en esta.
-- Aprobado: #2. Entregado, `status:review`: #1 (builder), #5 (criterios y escenarios E1–E10). Rechazados, vuelven a `doing`: #3 (researcher), #4 (writer); ver `docs/review/resultados-b1.md`.
-- Pendiente de cambio pequeño en #1: `LLM_MODEL` por defecto a `gemma4:e2b` en `.env.example` y `ai/config.ts`.
+- Bloque actual: B2 (mié 09:00–13:00), adelantado: los 4 agentes entregaron a las 09:00. Siguiente: B3 (plan de clase, #9) ya lanzado.
+- Último update: 2026-11-04 09:10 por coordinator
+- Máquina: 16 núcleos, 30 GB de RAM, sin GPU. Ollama **solo en Docker** (contenedor `ollama`, 127.0.0.1:11434, volumen `ollama`, rootless). Nadie ejecuta `ollama serve` nativo. `gemma4:e2b` descargado (4,6 GB).
+- Qué funciona hoy: demo grabada sin red (`npm run demo`, #2 aprobado) y **flujo de perfil #6** (5 preguntas → nivel calculado por la app, explicación de Gemma en JSON validado con 1 reintento, nivel corregible, aviso «no es una nota»), en demo y con `gemma4:e2b` real. Medido por el builder en esta máquina: 5,8 s en frío, 0,8–1,0 s el saludo en caliente (~52 tok/s), explicación de perfil 2,6–4,8 s. Aún lo verifica el reviewer.
+- En `status:review` (los revisa el reviewer ahora): #1, #3 (rev. 2), #4 (rev. 2), #6, #7 (ficha Gemma 4), #8 (textos `es.ts`). Aprobados/cerrados: #2, #5 (lo cerró el coordinator), #25.
+- En curso: builder #9 (plan de clase), researcher #11 (validación pedagógica del perfil), writer #16 (guion de pruebas con docentes).
 - `needs-human`: #17, #21 (tareas de los humanos).
-- Próximo hito demostrable: flujo de perfil adaptando respuestas (B2, #6).
-- Avisos: (1) el reviewer no tiene shell, así que no puede commitear ni comentar; el coordinator publicó sus ficheros (`c783e3e`). (2) Dos cifras del informe de retos son erróneas (Sudáfrica 5 USD; ProFuturo 87,2 % vs 17,2 %); ver #3. (3) «Ceiba» es nombre provisional del mentor.
+- Próximo hito demostrable: flujo de plan de clase con micro-acción (B3, #9).
+- Avisos: (1) El reviewer ya tiene shell y comenta/commitea él mismo. (2) Dos cifras del informe de retos son erróneas (Sudáfrica 5 USD; ProFuturo 87,2 % vs 17,2 %); ver #3. (3) «Ceiba» es nombre provisional del mentor. (4) `~/.gitconfig` global tiene `merge.conflictstyle=zdiff3`, que git 2.34 no soporta: `git pull --rebase` falla al haber que fusionar; los agentes usan `GIT_CONFIG_GLOBAL=/dev/null` solo en ese comando (pendiente de que un humano cambie a `diff3`). (5) Memoria del contenedor con el modelo cargado: ~8,5 GB.
 
 ## Producto (alcance estrecho, confirmado)
 Chat web de mentor pedagógico, un docente a la vez, sin cuentas. Tres flujos:
@@ -68,7 +68,7 @@ El navegador llama a `/llm/…` y Vite lo reenvía a `LLM_BASE_URL` (por defecto
 
 **Máquina actual (30 GB, sin GPU): Ollama en Docker. No uses `ollama serve` nativo.**
 ```bash
-# Pendiente de crear (OK humano): el contenedor aún no existe a 2026-11-04 08:55
+# Creado el 2026-11-04 09:00 (comando exacto)
 docker run -d --name ollama --restart unless-stopped -p 127.0.0.1:11434:11434 \
   -v ollama:/root/.ollama -e OLLAMA_KEEP_ALIVE=30m ollama/ollama
 docker exec ollama ollama pull gemma4:e2b
