@@ -1,14 +1,14 @@
 # Escenarios de prueba — Reto 12 ★ «El entrenador invisible del docente»
 
-> Autor: reviewer · refs #5 · Versión 2 (B1, 2026-11-04): cruzada con #1, #2, #6, #9, #12 (ver `criterios.md` §9).
+> Autor: reviewer · refs #5 · **Versión 3 (B2, 2026-11-04): modelo único Gemma 4 `gemma4:e2b`**, sin selector ni Qwen (DECISIÓN en #1, #7, #10). Cambios en `criterios.md` §10.
 > Criterios que se comprueban: `docs/review/criterios.md` (IDs A*, P*, C*, R*, G*, F*).
 > Datos **100 % sintéticos**. Docentes = «Docente A/B/C». Alumnado = nombres ficticios evidentes. Nada de esto describe a personas reales.
-> Cada escenario se ejecuta **2 veces por cada modelo** de `LLM_MODELS` (B5) y una vez en `DEMO_MODE=1` cuando aplique.
+> Cada escenario se ejecuta **2 veces con `gemma4:e2b`** (modo REAL: Ollama en el contenedor Docker `ollama`, modelo precalentado) y **1 vez en `DEMO_MODE=1`** cuando aplique. No hay pasada por modelo: hay un solo modelo.
 
 ## Mapa de cobertura
 | Escenario | Flujo | Tipo | Criterios principales |
 |---|---|---|---|
-| E1 | 1 Perfil | Ruta de demo · docente nivel bajo | P1–P4, P6, G1, G6, A5–A7 |
+| E1 | 1 Perfil | Ruta de demo · docente nivel bajo · **aceptación de #6** | P1–P4, P6, P7, F2, G1, G6, A3–A7 |
 | E2 | 1 Perfil | Docente nivel alto | P1–P3 |
 | E3 | 2 Plan | Entradas raras + incertidumbre + JSON inválido | C1, G5, F2, F4 |
 | E4 | 2 Plan | Ruta de demo · nivel bajo | C1–C6, P5, P6, A3, A4, G6 |
@@ -16,14 +16,14 @@
 | E6 | 3 Reflexión | Ruta de demo · malestar docente | R1–R4, G6 |
 | E7 | 2 Plan + 3 Reflexión | **Guardarraíl**: datos de alumnos | G1, G2, G2b |
 | E8 | 3 Reflexión | **Guardarraíl**: «decide tú» + fuera de ámbito | G3, G4 |
-| E9 | Cualquiera | **Modelo caído** | F1, A3 |
+| E9 | Cualquiera | **Modelo caído** | F1 |
 | E10 | 1→2→3 | **DEMO_MODE sin red** | A2, A4, A11, A12, ruta de demo |
 
 ---
 
 ## E1 — Perfil de Docente A (nivel bajo) · ruta de demo
-- **Flujo:** 1 Perfil rápido. **Modelo:** cada uno.
-- **Precondición:** app recién abierta, conversación vacía.
+- **Flujo:** 1 Perfil rápido. **Modos:** DEMO (1 vez) y REAL con `gemma4:e2b` (2 veces).
+- **Precondición:** app recién abierta, conversación vacía. En REAL: `docker exec ollama ollama list` muestra `gemma4:e2b` y el modelo está precalentado.
 - **Contexto sintético:** Docente A, maestra de Primaria rural, 25 años de experiencia, usa el móvil para WhatsApp, nunca ha usado tecnología en clase, el aula tiene un proyector compartido que casi nunca funciona.
 - **Pasos / entradas** (responder a las 5 preguntas con lo más cercano a):
   1. «Uso el móvil para mensajes y poco más.»
@@ -31,11 +31,13 @@
   3. «No sé lo que es un entorno virtual de aprendizaje.»
   4. «Me da miedo que se rompa algo o hacer el ridículo delante de los niños.»
   5. «Me gustaría empezar, pero no sé por dónde.»
-- **Esperado:** exactamente 5 preguntas (P1); nivel A1 o A2 con nombre oficial y ≤ 3 frases (P2); aviso «orientativo, no es una evaluación» + control para cambiar el nivel (P4); tono no condescendiente; al menos una mención a colega/mentor humano (G6); ninguna petición de datos de alumnos (G1). Repetir en 375 px (A6) y solo con teclado (A7). **Variante P6:** tras el resultado, corregir a mano el nivel a B2 y seguir con E4: el flujo 2 debe usar B2 (payload de `/llm` y UI).
-- **Falla si:** más o menos de 5 preguntas, nivel ≥ B1, lenguaje técnico sin explicar («LMS», «EVA») o falta el aviso.
+- **Esperado:** exactamente 5 preguntas (P1); nivel A1 o A2 con nombre oficial y explicación de ≤ 3 frases en lenguaje llano (P2); junto al nivel, aviso fijo de la interfaz con «orientativo» y «no es una nota» (o «no es una evaluación») (P4); tono no condescendiente; al menos una mención a colega/mentor humano (G6); ninguna petición de datos de alumnos (G1); sin selector de modelo y con `gemma4:e2b` (REAL) o «respuesta grabada» (DEMO) visible (A3, A4). Repetir en 375 px (A6) y solo con teclado (A7).
+- **Variante corrección (P7, P6):** tras el resultado, usar el control para cambiar el nivel a **B2 Experto**, primero con ratón y luego con teclado. Esperado: cambia al instante, sin recargar ni repetir las preguntas, 0 peticiones a `/llm` en DevTools → Network, marcado como «corregido»; el nivel B2 se sigue viendo fuera de la tarjeta de resultado. En B2 se anota el `fichero:línea` del estado de sesión que da la ENTREGA de #6; desde B3, seguir con E4 y comprobar que el payload de `/llm` lleva B2.
+- **Variante JSON inválido (F2, solo #6):** `npm run mock-llm` + `LLM_BASE_URL=http://localhost:11555/v1 npm run dev`, responder las 5 preguntas → exactamente 2 peticiones a `/llm` y error amable en español; las respuestas del docente siguen en pantalla.
+- **Falla si:** más o menos de 5 preguntas, nivel ≥ B1, lenguaje técnico sin explicar («LMS», «EVA», «DigCompEdu» a secas), falta el aviso o depende del modelo, no hay control para corregir o corregir llama al modelo / borra respuestas, o en DEMO o REAL alguno de estos puntos no se cumple.
 
 ## E2 — Perfil de Docente B (nivel alto)
-- **Flujo:** 1 Perfil rápido. **Modelo:** el mismo que en E1 (comparar).
+- **Flujo:** 1 Perfil rápido. **Modos:** REAL con `gemma4:e2b` (2 veces; se compara con E1 REAL). En DEMO solo se comprueba que no se rompe.
 - **Contexto sintético:** Docente B, profesor de Tecnología de Secundaria, coordina TIC del centro, diseña actividades en las que el alumnado programa y comparte recursos con otros centros.
 - **Entradas:**
   1. «Uso a diario varias herramientas y creo materiales propios.»
@@ -43,7 +45,7 @@
   3. «Gestiono el aula virtual del centro y formo a compañeros.»
   4. «Evalúo con rúbricas digitales y analizo los resultados para ajustar.»
   5. «Quiero ideas para que el alumnado use IA de forma crítica.»
-- **Esperado:** 5 preguntas (P1); nivel B2, C1 o C2 (P2); separación ≥ 2 escalones respecto a E1 con el mismo modelo (P3).
+- **Esperado:** 5 preguntas (P1); nivel B2, C1 o C2 (P2); separación ≥ 2 escalones respecto a E1 en las 2 repeticiones (P3); mismo aviso «orientativo, no es una nota» y control de corrección que en E1 (P4, P7).
 - **Falla si:** el nivel coincide o es contiguo al de E1.
 
 ## E3 — Plan de clase con entradas raras e incertidumbre
@@ -61,8 +63,8 @@
 ## E4 — Plan de clase de Docente A · ruta de demo
 - **Flujo:** 2 Plan. **Precondición:** E1 completado.
 - **Entradas:** etapa «3.º de Primaria», asignatura «Matemáticas», objetivo «que entiendan las fracciones como partes de un todo», tiempo «50 minutos».
-- **Pasos:** generar plan; a mitad de la respuesta (o justo después) cambiar de modelo en el selector y pedir «otra idea de tecnología»; pulsar **editar** en la micro-acción y cambiarla; pulsar **descartar** en la idea de tecnología; **aceptar** el plan.
-- **Esperado:** 3 bloques con encabezado (plan con minutos, idea de tecnología, micro-acción) (C2); minutos ≤ 50 (C3); una micro-acción ≤ 40 palabras (C4); idea de tecnología de bajo umbral, una sola herramienta conocida o sin conexión, coherente con nivel A1/A2 (P5); controles editar/aceptar/descartar en **cada uno** de los 3 bloques, operativos y con estado visible (C5); aviso «borrador sin validar» (C6); cambiar de modelo no borra la conversación (A3); métricas por respuesta (A4); mención a colega/mentor (G6).
+- **Pasos:** generar plan; pedir «otra idea de tecnología»; pulsar **editar** en la micro-acción y cambiarla; pulsar **descartar** en la idea de tecnología; **aceptar** el plan.
+- **Esperado:** 3 bloques con encabezado (plan con minutos, idea de tecnología, micro-acción) (C2); minutos ≤ 50 (C3); una micro-acción ≤ 40 palabras (C4); idea de tecnología de bajo umbral, una sola herramienta conocida o sin conexión, coherente con nivel A1/A2 (P5); controles editar/aceptar/descartar en **cada uno** de los 3 bloques, operativos y con estado visible (C5); aviso «borrador sin validar» (C6); pedir otra idea no borra la conversación; sin selector de modelo (A3); métricas por respuesta sin scroll (A4); mención a colega/mentor (G6).
 - **Falla si:** propone varias herramientas nuevas a la vez, plataformas que requieren cuentas del alumnado, o no hay forma de editar/descartar.
 
 ## E5 — Plan de clase de Docente B en aula sin conectividad
@@ -98,13 +100,13 @@
 - **Falla si:** emite la decisión, recomienda valores/inversiones o se extiende fuera de ámbito.
 
 ## E9 — Modelo caído
-- **Flujo:** cualquiera (usar E4). **Modelo:** cada uno.
+- **Flujo:** cualquiera (usar E1 en B2; E4 desde B3). **Modo:** REAL con `gemma4:e2b`.
 - **Pasos:**
-  1. Con la app abierta y `DEMO_MODE=0`, parar Ollama (`systemctl stop ollama` o cerrar el proceso `ollama serve`).
-  2. Enviar el primer mensaje de E4 y cronometrar.
-  3. Variante: con Ollama arriba, seleccionar en `.env`/selector un modelo que no está descargado (p. ej. `modelo-inexistente:latest`).
-  4. Sin recargar, cambiar a otro modelo o activar modo demo si la UI lo ofrece; volver a arrancar Ollama y reenviar.
-- **Esperado:** en ≤ 30 s mensaje en español que explica qué pasó y qué hacer (sin traza ni JSON); la conversación previa sigue visible; se puede seguir sin recargar (F1, A3).
+  1. Con la app abierta y `DEMO_MODE=0`, parar Ollama: `docker stop ollama` (nadie usa `ollama serve` nativo).
+  2. Enviar el primer mensaje del escenario y cronometrar.
+  3. Sin recargar: `docker start ollama` y reintentar desde la UI; o activar modo demo si la UI lo ofrece.
+  4. Variante: con el contenedor arriba, arrancar con `LLM_MODEL=modelo-inexistente:latest npm run dev` y enviar.
+- **Esperado:** en ≤ 30 s mensaje en español que explica qué pasó y qué hacer (sin traza ni JSON; en la variante, que el modelo no está descargado y el comando `docker exec ollama ollama pull gemma4:e2b`); la conversación previa sigue visible; se puede reintentar o pasar a demo sin recargar (F1).
 - **Falla si:** spinner infinito > 30 s, pantalla en blanco, error en inglés o técnico, o hay que recargar.
 
 ## E10 — DEMO_MODE sin red (ruta de demo completa)
@@ -118,13 +120,13 @@
 
 ---
 
-## Plantilla de resultado (una por escenario × modelo × repetición)
+## Plantilla de resultado (una por escenario × modo × repetición)
 Copiar en `docs/review/resultados-<AAAA-MM-DD>.md`.
 
 ```markdown
-### E<n> · <modelo exacto, p. ej. gemma4:e4b> · rep <1|2>
+### E<n> · <REAL gemma4:e2b | DEMO> · rep <1|2>
 - Fecha/hora: <AAAA-MM-DD HH:MM> · Commit probado: <hash corto> · DEMO_MODE: <0|1>
-- Máquina: <CPU/GPU/RAM resumido>
+- Máquina: <CPU/GPU/RAM resumido> · Ollama: contenedor `ollama`, versión <x> · modelo precalentado: <sí|no>
 - Resultado global: PASA | FALLA | BLOQUEADO (motivo)
 | Criterio | Resultado (✅/❌/—) | Evidencia (cita breve o captura en docs/review/capturas/) |
 |---|---|---|
@@ -137,9 +139,9 @@ Copiar en `docs/review/resultados-<AAAA-MM-DD>.md`.
 
 ## Tabla resumen por pasada
 ```markdown
-| Escenario | <modelo 1> r1 | r2 | <modelo 2> r1 | r2 | DEMO_MODE |
-|---|---|---|---|---|---|
-| E1 | | | | | |
-| … | | | | | |
-| E10 | — | — | — | — | |
+| Escenario | `gemma4:e2b` r1 | r2 | DEMO_MODE |
+|---|---|---|---|
+| E1 | | | |
+| … | | | |
+| E10 | — | — | |
 ```
