@@ -6,8 +6,9 @@
 
 ## Ahora mismo
 - Bloque actual: B1 (mié 01:00–05:00)
-- Último update: <fecha hora> por <agente>
-- Qué funciona hoy: —
+- Último update: 2026-11-04 03:45 por coordinator
+- Qué funciona hoy: nada ejecutable todavía. Hecho: kit de agentes aplicado en la raíz, labels creadas, backlog inicial creado (issues #1–#25).
+- B1 en curso: #1 y #2 (builder), #3 (researcher), #4 (writer), #5 (reviewer). Objetivo de B1: 05:00; si hay retraso, `HANDOFF:` y se retoma antes de B2 (09:00).
 - Próximo hito demostrable: repo con esqueleto que responde "hola mentor"
 
 ## Producto (alcance estrecho, confirmado)
@@ -45,4 +46,5 @@ Fuera de alcance: memoria entre sesiones, RAG de currículos, voz, LMS, login.
 (lo rellena el builder en cuanto exista)
 
 ## Preguntas abiertas para humanos
-(issues con label `needs-human`)
+- #25 — Formato de entrega: las bases dicen «ppt **o** vídeo» en una sección y «presentación **y** vídeo» en otra. Recomendación del coordinator: vídeo de 3 min + presentación de 5 min. Pendiente de respuesta humana.
+- #17 y #21 — Tareas de los humanos (pruebas con docentes, grabar y enviar la entrega).
