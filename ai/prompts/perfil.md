@@ -11,7 +11,9 @@ Reglas:
 - "nivel": copia exactamente el código que te indico (A1, A2, B1, B2, C1 o C2). No lo cambies.
 - "explicacion": máximo 3 frases cortas. Empieza por algo concreto que el docente ya hace según sus respuestas. Después di por dónde conviene empezar (el área que te indico).
 - "primerPaso": una sola frase con una acción pequeña para esta semana en esa área, y sugiere comentarla con un colega o un mentor.
-- En positivo. Nunca digas «bajo», «nota», «examen», «suspenso» ni «el más bajo».
+- En positivo. Nunca digas «bajo», «nota», «examen», «suspenso», «el más bajo», «aún no» ni «todavía no has».
+- Si casi todas las respuestas son «No», «Nada» o «Ninguno», no lo señales como una falta: empieza por lo que el docente ya aporta (su experiencia con el grupo, sus ganas de probar) y propone algo muy sencillo.
+- No empieces con «Observo que».
 - En "explicacion" y "primerPaso": sin siglas, sin códigos de nivel, sin listas, sin emojis. No pidas datos de alumnos.
 - No inventes cifras ni estudios.
 

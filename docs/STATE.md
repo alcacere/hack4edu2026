@@ -77,6 +77,14 @@ LLM_MODEL=gemma4:e2b LLM_MODELS=gemma4:e2b npm run dev
 ```
 Las cifras de latencia de abajo son de la máquina anterior; hay que repetirlas aquí (#1).
 
+**Medido en la máquina actual** (builder, 2026-11-04 ~09:10; 16 núcleos, 30 GB, sin GPU; Ollama en Docker, `gemma4:e2b` Q4_K_M; latencia de punta a punta en la interfaz, `npm run smoke`):
+
+| Qué | En frío (1.ª petición) | En caliente | Tokens/s |
+|---|---|---|---|
+| Saludo «hola mentor» | 5,8 s | 0,8–1,0 s | ~52 |
+| Perfil (explicación JSON, 8 ejecuciones E1/E2) | — | 2,6–4,8 s | 18–37 |
+
+
 **(Obsoleto, solo como registro: Qwen 3.5 y el selector se descartaron el 2026-11-04) En la máquina anterior del builder (7 GB de RAM, sin GPU, Ollama en espacio de usuario, sin sudo):**
 ```bash
 # Ollama 0.40.14 oficial (ollama.com/download → release de GitHub, SHA-256 verificado), extraído en goinfre:
@@ -98,7 +106,8 @@ Medido el 2026-11-04 en la interfaz (Chrome headless, `scripts/smoke-browser.mjs
 
 Con 7 GB los dos modelos no caben a la vez: **cambiar de modelo en el selector descarga el anterior y la primera respuesta del nuevo es «en frío»** (supera el timeout por defecto de 60 s; la interfaz lo dice y sigue usable). Para la demo en directo con selector: un portátil de 16 GB con `OLLAMA_MAX_LOADED_MODELS=2`, o grabar el cambio de modelo en el vídeo. `gemma4:e4b` no se ha probado (no descargado: no cabe bien en 7 GB).
 
-**Pruebas sin Ollama:** `npm run mock-llm` (servidor falso compatible OpenAI en :11555) y `LLM_BASE_URL=http://localhost:11555/v1 npm run dev`.
+**Pruebas sin Ollama:** `npm run mock-llm` (servidor falso compatible OpenAI en :11555) y `LLM_BASE_URL=http://localhost:11555/v1 npm run dev`. Por defecto responde texto **no JSON** (sirve para comprobar el reintento único del perfil: 2 peticiones y error amable); con `MOCK_JSON=1` responde un JSON válido del perfil.
+**Smoke del perfil (#6):** `npm run smoke:perfil -- http://localhost:5173/ [esperaMs]` responde las 5 preguntas y lista nivel, explicación, aviso, métricas, alertas y peticiones a `/llm`. `SMOKE_ANSWERS=0,0,0,0,1` (E1, por defecto) o `4,4,3,4,4` (E2); `SMOKE_CORREGIR=B2` corrige el nivel a mano (P6/P7); `SMOKE_WIDTH=375` para móvil; `SMOKE_SHOT=fichero.png` para captura.
 **Smoke test:** `npm run smoke -- http://localhost:5173/ [esperaMs]` (Chrome headless: pulsa el botón y lista respuesta, métricas, alertas y peticiones externas). `SMOKE_SHOT=fichero.png` guarda una captura.
 **Versión estática demo:** `npm run build:demo && npm run preview` → http://localhost:4173.
 
