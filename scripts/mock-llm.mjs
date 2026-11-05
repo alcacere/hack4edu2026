@@ -2,7 +2,7 @@
 // sin Ollama: `npm run mock-llm` y en otra terminal `LLM_BASE_URL=http://localhost:11555/v1 npm run dev`.
 // MOCK_DELAY_MS controla la espera (útil para probar el timeout). NO es un modelo: responde un texto fijo.
 // Por defecto responde texto NO JSON (sirve para probar el reintento único, criterio F2: 2 peticiones).
-// MOCK_JSON=1: si la petición pide JSON (response_format), responde un JSON válido del flujo perfil.
+// MOCK_JSON=1: si la petición pide JSON (response_format), responde un JSON válido del flujo (perfil o plan).
 import http from 'node:http'
 
 const port = Number(process.env.MOCK_PORT || 11555)
@@ -18,8 +18,21 @@ http
       req.on('end', () => {
         const { model = 'mock', response_format, messages = [] } = JSON.parse(body || '{}')
         const nivel = String(messages.at(-1)?.content ?? '').match(/código ([ABC][12])/)?.[1] ?? 'A1'
+        const esPlan = response_format?.type === 'json_schema' && response_format.json_schema?.name === 'plan'
+        const nSes = esPlan ? response_format.json_schema.schema.properties.sesiones.minItems : 0
+        const paso = { texto: '[mock] Paso de prueba.', fuente: 'A1' }
+        const plan = {
+          titulo: '[mock] Plan de prueba',
+          objetivo: 'No soy un modelo.',
+          sesiones: Array.from({ length: nSes }, (_, i) => ({ titulo: `Sesión ${i + 1}`, minutos: 15, pasos: [paso, paso, paso] })),
+          materiales: ['[mock] Pizarra'],
+          comprobacion: ['[mock] Pregunta de salida'],
+          microaccion: '[mock] Coméntalo con un colega.',
+        }
         const content =
-          response_format && mockJson
+          esPlan && mockJson
+            ? JSON.stringify(plan)
+            : response_format && mockJson
             ? JSON.stringify({ nivel, explicacion: `[mock ${model}] Explicación de prueba. No soy un modelo.`, primerPaso: '[mock] Primer paso de prueba: coméntalo con un colega.' })
             : `[mock ${model}] Hola, soy el servidor de prueba. No soy un modelo.`
         console.log(`#${++n} ${new Date().toISOString()} json=${!!response_format}`)

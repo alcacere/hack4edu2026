@@ -1,6 +1,6 @@
 // Contrato común de la capa ai/. Los componentes solo ven esto.
 
-export type FlowId = 'hola' | 'perfil' | 'plan' | 'reflexion'
+export type FlowId = 'perfil' | 'plan'
 
 export interface ChatMessage {
   role: 'system' | 'user' | 'assistant'

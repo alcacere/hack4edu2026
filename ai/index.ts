@@ -28,21 +28,6 @@ export const provider: LLMProvider = config.demoMode
 
 // ---- Flujos: una función por flujo ----
 
-/** B1: saludo «hola mentor». */
-export function holaMentor(model: string, signal?: AbortSignal): Promise<ChatResult> {
-  return provider.chat(
-    {
-      flow: 'hola',
-      model,
-      messages: [
-        { role: 'system', content: PROMPTS.hola },
-        { role: 'user', content: 'Hola, mentor.' },
-      ],
-    },
-    signal,
-  )
-}
-
 export interface JsonResult<T> {
   data: T
   /** Métricas de la respuesta válida (la última petición). */

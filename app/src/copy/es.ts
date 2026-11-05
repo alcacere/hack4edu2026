@@ -15,8 +15,8 @@ export type NivelCodigo = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'
 
 export const es = {
   app: {
-    titulo: `${mentorName} · mentor para docentes`,
-    pie: 'Prototipo Hack4Edu 2026 · Reto 12 · Licencia MIT. Las ideas del mentor son propuestas: decides tú.',
+    titulo: `${mentorName} · planes de estudio sin internet`,
+    pie: 'Prototipo Hack4Edu 2026 · Reto 12 · Licencia MIT. Basado en el Currículo Nacional del Perú; no es un material oficial. Ceiba propone: decides tú.',
   },
 
   comun: {
@@ -159,6 +159,31 @@ export const es = {
   },
 
   plan: {
+    pedidoEtiqueta: '¿Qué plan necesitas?',
+    pedidoEjemplo: 'Ej.: plan de estudio para 5.º de primaria sobre el ciclo del agua, 2 sesiones de 45 minutos',
+    gradoEtiqueta: 'Grado',
+    gradoElegir: 'Elige…',
+    gradoNombre: (g: number) => `${g}.º de primaria`,
+    temaEtiqueta: 'Tema',
+    sesionesEtiqueta: 'Sesiones',
+    minutosEtiqueta: 'Minutos por sesión',
+    sinDispositivos: 'El alumnado no tiene dispositivos ni internet',
+    faltaGrado: '¿Para qué grado es? Elígelo arriba y vuelve a pulsar «Preparar plan».',
+    sinMaterial: (g: number) => `No tengo material sobre este tema para ${g}.º de primaria.`,
+    sinMaterialAyuda: 'Prefiero decírtelo antes que inventarme un plan. No se ha generado nada.',
+    otrosGrados: (g: number) => `Sí lo tengo en otro grado. Puedes usarlo como base para ${g}.º, sabiendo que no está pensado para ese grado:`,
+    usarFichaDe: (g: number, tema: string) => `Usar la ficha de ${g}.º: ${tema}`,
+    temasDisponibles: (g: number) => `Lo que tengo para ${g}.º de primaria:`,
+    fuentesTitulo: 'Fichas de la biblioteca que voy a usar',
+    fichaDeOtroGrado: (fichaG: number, g: number) => `Ficha de ${fichaG}.º usada como base para ${g}.º, por elección tuya.`,
+    sinRevisar: 'Pendiente de revisión docente',
+    avisoBorrador: 'Borrador sin validar, generado por una IA a partir de la biblioteca. Revísalo antes de usarlo en clase.',
+    editableAyuda: 'Puedes cambiar cualquier texto pulsando sobre él. Abre la etiqueta de un paso para ver en qué parte de la ficha se apoya.',
+    objetivo: 'Objetivo',
+    sesionNumero: (n: number) => `Sesión ${n}`,
+    materiales: 'Materiales',
+    comprobacion: 'Cómo comprobar lo aprendido',
+    imprimir: 'Imprimir',
     titulo: 'Planificar una clase',
     intro: 'Cuéntame la clase. Con estos datos te propongo un borrador que puedes cambiar todo lo que quieras.',
     campos: {
@@ -172,8 +197,8 @@ export const es = {
       },
     },
     avisoDatosAlumnos: 'No hace falta escribir nombres ni datos de tus alumnos. Con «un alumno» o «parte del grupo» basta.',
-    generar: 'Preparar borrador',
-    generando: 'Preparando el borrador…',
+    generar: 'Preparar plan',
+    generando: 'Redactando el plan en este ordenador…',
     bloques: {
       plan: 'Plan de la clase',
       tecnologia: 'Idea con tecnología (opcional)',
@@ -210,7 +235,7 @@ export const es = {
     borrador: 'Esto es un borrador generado por una IA. Revísalo antes de usarlo en clase.',
     decides: 'Yo propongo. Decides tú.',
     privacidad:
-      'Todo se queda en este ordenador: el mentor funciona sin internet y no guarda la conversación al cerrar la página.',
+      'Todo se queda en este ordenador: funciona sin internet y no guarda nada al cerrar la página.',
     privacidadDemo: 'Modo demo: las respuestas están grabadas de antemano. No se usa el modelo ni internet.',
     limites:
       'Soy una IA: puedo equivocarme y no conozco tu escuela ni a tus alumnos. No doy consejo legal, médico ni psicológico. Para temas delicados, habla con un colega, la dirección o tu mentor.',

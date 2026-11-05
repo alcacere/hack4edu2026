@@ -1,10 +1,8 @@
 // Proveedor de demo: misma interfaz que el real, pero responde con textos grabados en fixtures/.
 // No usa red ni modelo. Las métricas de modelo (tokens/s) solo se muestran si se grabaron de verdad.
 import { AIError, type ChatRequest, type ChatResult, type FlowId, type LLMProvider } from '../types'
-import hola from '@fixtures/hola.json'
 import perfil from '@fixtures/perfil.json'
 import plan from '@fixtures/plan.json'
-import reflexion from '@fixtures/reflexion.json'
 
 export interface FixtureEntry {
   key: string
@@ -22,10 +20,8 @@ export interface FixtureFile {
 }
 
 const FIXTURES: Record<FlowId, FixtureFile> = {
-  hola: hola as FixtureFile,
   perfil: perfil as FixtureFile,
   plan: plan as FixtureFile,
-  reflexion: reflexion as FixtureFile,
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))

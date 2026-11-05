@@ -53,7 +53,7 @@ try {
   await send('Network.enable')
   await send('Page.enable')
   await send('Page.navigate', { url })
-  await waitFor(`!!document.querySelector('#modelo')`)
+  await waitFor(`!!document.querySelector('#pedido')`)
   await evaluate(`sessionStorage.clear()`)
   if (!(await click('Conocernos'))) throw new Error('No encuentro el botón «Conocernos (5 preguntas)».')
   await waitFor(`[...document.querySelectorAll('button')].some(b => b.textContent.includes('Empezar'))`)

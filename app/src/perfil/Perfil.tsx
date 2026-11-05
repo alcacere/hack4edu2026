@@ -296,7 +296,7 @@ export function Perfil({ model, onSalir }: { model: string; onSalir: () => void 
   )
 }
 
-function textoError(e: unknown): { docente: string; tecnico: string } {
+export function textoError(e: unknown): { docente: string; tecnico: string } {
   if (!(e instanceof AIError)) return es.errores.desconocido
   switch (e.code) {
     case 'unreachable':
