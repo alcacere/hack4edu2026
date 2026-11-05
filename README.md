@@ -66,4 +66,4 @@ npm run smoke:plan -- http://localhost:5173/    # con la app en marcha y Chrome 
 
 ## Licencias
 
-Código: [MIT](LICENSE). Documentación y fichas: [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es_ES). Sin datos reales de alumnos ni de docentes.
+Código: [MIT](LICENSE). Fuente Source Serif 4, incluida en la app: [SIL OFL 1.1](https://openfontlicense.org). Documentación y fichas: [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es_ES). Sin datos reales de alumnos ni de docentes.

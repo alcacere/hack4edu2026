@@ -1,9 +1,54 @@
 @import "tailwindcss";
+/* Fuente empaquetada con la app (OFL-1.1): nada que descargar, funciona sin red. */
+@import "@fontsource/source-serif-4/latin-600.css";
 
-/* Fuentes del sistema: nada que descargar, funciona sin red. */
+/*
+ * Identidad de Ceiba: papel cálido, verde profundo y un acento de barro.
+ * Se redefinen las escalas para que todas las pantallas, también el perfil, compartan paleta.
+ * Todo el texto mantiene un contraste AA sobre sus fondos.
+ */
+@theme {
+  --font-serif: "Source Serif 4", ui-serif, Georgia, serif;
+
+  --color-emerald-50: #eef5ef;
+  --color-emerald-100: #dcebdf;
+  --color-emerald-300: #a9c9b0;
+  --color-emerald-400: #7fae8a;
+  --color-emerald-500: #4f8a5f;
+  --color-emerald-600: #2f6f45;
+  --color-emerald-700: #24593a;
+  --color-emerald-800: #1d4a30;
+  --color-emerald-900: #163a26;
+
+  --color-stone-50: #faf6ee;
+  --color-stone-100: #f2ece0;
+  --color-stone-300: #dcd3c2;
+  --color-stone-400: #8f8573;
+  --color-stone-500: #7a7162;
+  --color-stone-600: #5f574b;
+  --color-stone-700: #4a4339;
+  --color-stone-800: #363029;
+  --color-stone-900: #241f1a;
+
+  --color-barro-100: #f8e7dd;
+  --color-barro-500: #bd5f3c;
+  --color-barro-700: #8c3a20;
+}
+
+/* Fuentes del sistema para el texto corrido. */
 html { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 
+[contenteditable]:hover { background: var(--color-stone-100); }
+
 /* Al imprimir queda solo el plan: una hoja para llevar al aula. */
+.solo-impresion { display: none; }
 @media print {
+  @page { margin: 16mm; }
+  html { font-size: 13px; } /* el tamaño manda en toda la hoja: el plan cabe en una página */
+  body { background: white; }
   .no-print { display: none !important; }
+  .solo-impresion { display: block; }
+  .hoja { border: 0 !important; box-shadow: none !important; padding: 0 !important; }
+  .hoja section { break-inside: avoid; }
+  [contenteditable]:hover { background: none; }
 }

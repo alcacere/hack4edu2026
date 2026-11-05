@@ -52,12 +52,18 @@ try {
   await send('Network.enable')
   await send('Runtime.enable')
   await send('Page.enable')
+  // Ancho real: la ventana headless no baja de unos 500 px.
+  if (process.env.SMOKE_WIDTH) await send('Emulation.setDeviceMetricsOverride', { width, height: 800, deviceScaleFactor: 1, mobile: true })
   await send('Page.navigate', { url })
   if (!(await waitFor(`!!document.querySelector('#pedido')`, 20000))) throw new Error('No aparece el cuadro de pedido.')
   await evaluate(`(() => { const t = document.querySelector('#pedido');
     Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(t, ${JSON.stringify(texto)});
     t.dispatchEvent(new Event('input', { bubbles: true })); })()`)
   await sleep(100)
+  if (process.env.SMOKE_SHOT_INICIO) {
+    const s = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })
+    writeFileSync(process.env.SMOKE_SHOT_INICIO, Buffer.from(s.data, 'base64'))
+  }
   await submit()
   const t0 = Date.now()
   await sleep(300)
@@ -68,6 +74,11 @@ try {
       s.dispatchEvent(new Event('change', { bubbles: true })); })()`)
     await sleep(100)
     await submit()
+  }
+  if (process.env.SMOKE_SHOT_LOADING) {
+    await sleep(1500)
+    const s = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })
+    writeFileSync(process.env.SMOKE_SHOT_LOADING, Buffer.from(s.data, 'base64'))
   }
   const fuentesAlInstante = await evaluate(`[...document.querySelectorAll('[data-ficha]')].map(f => f.dataset.ficha)`)
   if (!faltaGrado || process.env.SMOKE_GRADO) await waitFor(fin, waitMs)
@@ -87,14 +98,36 @@ try {
     metricas: document.querySelector('[data-metricas]')?.innerText.replace(/\\n/g, ' ') ?? null,
     alerta: document.querySelector('[role=alert]')?.innerText.replace(/\\n/g, ' ') ?? null,
     scrollHorizontal: document.documentElement.scrollWidth > window.innerWidth,
+    anchoVentana: window.innerWidth,
+    conexion: document.querySelector('[data-conexion]')?.innerText.replace(/\\n/g, ' ') ?? null,
   })`)
   if (process.env.SMOKE_SHOT) {
     const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })
     writeFileSync(process.env.SMOKE_SHOT, Buffer.from(shot.data, 'base64'))
   }
+  // SMOKE_INTERACT=1: edita un paso, copia y guarda el PDF de la impresión.
+  let interaccion = null
+  if (process.env.SMOKE_INTERACT) {
+    await send('Browser.grantPermissions', { origin: new URL(url).origin, permissions: ['clipboardReadWrite', 'clipboardSanitizedWrite'] })
+    await send('Page.bringToFront')
+    await evaluate(`(() => { const e = document.querySelector('[data-paso] [data-editable]'); e.focus(); document.execCommand('selectAll'); document.execCommand('insertText', false, 'PASO EDITADO POR EL DOCENTE') })()`)
+    await evaluate(`[...document.querySelectorAll('[data-plan] button')].find(b => b.textContent === 'Copiar').click()`)
+    await sleep(300)
+    const copiado = await evaluate(`navigator.clipboard.readText()`)
+    interaccion = { editadoEnCopia: copiado?.includes('PASO EDITADO POR EL DOCENTE'), controlesEnCopia: copiado?.includes('Imprimir') || /Puedes cambiar cualquier/.test(copiado ?? ''), fuenteEnCopia: copiado?.includes('Basado en:'), inicioCopia: copiado?.slice(0, 160) }
+    const pdf = await send('Page.printToPDF', { printBackground: true })
+    if (process.env.SMOKE_PDF) writeFileSync(process.env.SMOKE_PDF, Buffer.from(pdf.data, 'base64'))
+  }
+  // SMOKE_OFFLINE=1: corta la red del navegador y lee el indicador de conexión.
+  let conexionSinRed = null
+  if (process.env.SMOKE_OFFLINE) {
+    await send('Network.emulateNetworkConditions', { offline: true, latency: 0, downloadThroughput: 0, uploadThroughput: 0 })
+    await sleep(300)
+    conexionSinRed = await evaluate(`document.querySelector('[data-conexion]')?.innerText ?? null`)
+  }
   const origin = new URL(url).origin
   console.log(JSON.stringify({
-    texto, segundos, faltaGrado, fuentesAlInstante, ...resultado, llmCalls: llmBodies.length,
+    texto, segundos, faltaGrado, fuentesAlInstante, ...resultado, interaccion, conexionSinRed, llmCalls: llmBodies.length,
     textoEnPayload: llmBodies.some((b) => b.includes(texto)),
     // SMOKE_PROHIBIDAS=a,b: palabras que no pueden aparecer en ninguna petición al modelo (datos de alumnos).
     prohibidasEnPayload: (process.env.SMOKE_PROHIBIDAS || '').split(',').filter((w) => w && llmBodies.some((b) => b.includes(w))),

@@ -16,6 +16,10 @@ export type NivelCodigo = 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2'
 export const es = {
   app: {
     titulo: `${mentorName} · planes de estudio sin internet`,
+    lema: 'Planes de estudio para primaria, sin internet',
+    conRed: 'Todo se queda en este ordenador',
+    sinRed: 'Sin internet: funciona igual',
+    modeloLocal: 'Modelo local',
     pie: 'Prototipo Hack4Edu 2026 · Reto 12 · Licencia MIT. Basado en el Currículo Nacional del Perú; no es un material oficial. Ceiba propone: decides tú.',
   },
 
@@ -160,6 +164,12 @@ export const es = {
 
   plan: {
     pedidoEtiqueta: '¿Qué plan necesitas?',
+    temasBiblioteca: 'O empieza por un tema de la biblioteca',
+    duracion: (ses: number, min: number) => `${ses} ${ses === 1 ? 'sesión' : 'sesiones'} de ${min} min`,
+    cambiarPedido: 'Cambiar',
+    pasoEntendido: 'Pedido entendido',
+    pasoFicha: (tema: string) => `Ficha encontrada: ${tema}`,
+    basadoEn: 'Basado en',
     pedidoEjemplo: 'Ej.: plan de estudio para 5.º de primaria sobre el ciclo del agua, 2 sesiones de 45 minutos',
     gradoEtiqueta: 'Grado',
     gradoElegir: 'Elige…',
@@ -174,7 +184,7 @@ export const es = {
     otrosGrados: (g: number) => `Sí lo tengo en otro grado. Puedes usarlo como base para ${g}.º, sabiendo que no está pensado para ese grado:`,
     usarFichaDe: (g: number, tema: string) => `Usar la ficha de ${g}.º: ${tema}`,
     temasDisponibles: (g: number) => `Lo que tengo para ${g}.º de primaria:`,
-    fuentesTitulo: 'Fichas de la biblioteca que voy a usar',
+    fuentesTitulo: 'Basado en estas fichas de la biblioteca',
     fichaDeOtroGrado: (fichaG: number, g: number) => `Ficha de ${fichaG}.º usada como base para ${g}.º, por elección tuya.`,
     sinRevisar: 'Pendiente de revisión docente',
     avisoBorrador: 'Borrador sin validar, generado por una IA a partir de la biblioteca. Revísalo antes de usarlo en clase.',
