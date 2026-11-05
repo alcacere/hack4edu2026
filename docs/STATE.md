@@ -8,7 +8,7 @@
 - Plan vigente: `docs/PLAN.md` (aprobado por un humano el 2026-11-05). Manda sobre el alcance anterior de este fichero y de los issues.
 - Último update: 2026-11-05 por builder.
 - Máquina de demo: portátil de 7,5 GB de RAM, 8 núcleos, sin GPU. Ollama 0.40.14 **en Docker** en `127.0.0.1:11435` (`.env`: `LLM_BASE_URL=http://localhost:11435/v1`), con `gemma4:e2b`. El Ollama nativo 0.12.11 de esta máquina (puerto 11434) no puede ejecutar Gemma 4 y no se usa.
-- Qué funciona hoy: pantalla de plan de estudio con biblioteca local, modelo real y modo demo. Resultados: `docs/review/resultados-2026-11-05.md`.
+- Qué funciona hoy: pantalla de plan de estudio con biblioteca local, modelo real (18–41 s por plan) y modo demo. Sin probar aún: modo avión real. Resultados: `docs/review/resultados-2026-11-05.md`.
 - Falta, y lo hace una persona: contrastar las fichas con los documentos oficiales del MINEDU, confirmar con la sede el reto y la modalidad, probar con docentes, y grabar y enviar el vídeo y la presentación.
 
 ## Producto (alcance vigente)

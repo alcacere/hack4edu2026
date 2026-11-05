@@ -25,7 +25,7 @@ Apagamos el wifi. La docente escribe: «plan de estudio para quinto de primaria 
 
 Ceiba entiende el grado, el tema y el tiempo, y ella puede corregirlos. Enseguida ve de qué ficha va a partir. [DECIDE EL DOCENTE.]
 
-Unos segundos después tiene el plan: objetivo, sesiones, pasos, materiales que hay en una escuela rural y cómo comprobar lo aprendido.
+En menos de un minuto tiene el plan: objetivo, sesiones, pasos, materiales que hay en una escuela rural y cómo comprobar lo aprendido.
 
 Cada paso dice en qué se apoya. Lo abrimos y aquí está el texto de la ficha.
 
