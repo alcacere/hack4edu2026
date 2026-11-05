@@ -1,5 +1,5 @@
 // Flujo 1 · Perfil rápido: 5 preguntas → punto de partida DigCompEdu (issue #6).
-// Fuente: docs/research/brief-v1.md §1, «Tabla: 5 preguntas candidatas → nivel DigCompEdu [H]».
+// Fuente: marco DigCompEdu (5 preguntas → nivel).
 // Los cortes son una hipótesis propia del equipo, SIN VALIDAR (se prueban en B6). El nivel es un punto
 // de partida orientativo que el docente puede corregir; nunca una nota (DECISIÓN en #4 y #6).
 // Textos: app/src/copy/es.ts (zona del writer, #8). Aquí solo la lógica.

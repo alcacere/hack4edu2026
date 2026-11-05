@@ -6,7 +6,7 @@ Un docente de primaria escribe «plan de estudio para 5.º sobre el ciclo del ag
 
 ## Por qué
 
-Muchos docentes de escuelas rurales preparan sus clases solos y con mala conexión, y el acompañamiento pierde efecto cuando los programas crecen (`docs/research/brief-v1.md`). Ceiba acerca a ese docente una ayuda práctica para planificar y termina cada plan con una acción pequeña para su semana. Ceiba propone; decide el docente.
+Muchos docentes de escuelas rurales preparan sus clases solos y con mala conexión, y el acompañamiento pierde efecto cuando los programas crecen. Ceiba acerca a ese docente una ayuda práctica para planificar y termina cada plan con una acción pequeña para su semana. Ceiba propone; decide el docente.
 
 ## Ponerlo en marcha
 
@@ -48,13 +48,13 @@ Pedido del docente
 
 ## Modelo
 
-Gemma 4 E2B (`gemma4:e2b`) de Google DeepMind, licencia [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), ejecutado con [Ollama](https://ollama.com). Ficha y fuentes: `docs/research/gemma4.md`.
+Gemma 4 E2B (`gemma4:e2b`) de Google DeepMind, licencia [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), ejecutado con [Ollama](https://ollama.com).
 
 ## Qué es real y qué no
 
 | | |
 |---|---|
-| **Real** | Búsqueda en la biblioteca, generación con el modelo local, validación, funcionamiento sin red. Mediciones: `docs/review/resultados-2026-11-05.md` |
+| **Real** | Búsqueda en la biblioteca, generación con el modelo local, validación, funcionamiento sin red. |
 | **Grabado** | En `npm run demo`, el plan es una respuesta real del modelo guardada en `fixtures/`, solo para los temas grabados, y la interfaz lo indica |
 | **Sin revisar** | Todo el contenido. El mapa de temas y las 8 fichas son un borrador orientado al currículo del Perú, sin contrastar con el MINEDU. Los artículos vienen de enciclopedias abiertas, editables por cualquiera, y pueden tener errores. La interfaz lo marca como pendiente de revisión |
 | **Sin validar** | No hemos demostrado que Ceiba mejore la enseñanza ni el aprendizaje. Citar una ficha no garantiza que el paso sea fiel a ella: por eso el docente puede abrir la fuente y cada plan es un borrador. Los cortes de nivel del perfil tampoco están validados |
@@ -66,10 +66,6 @@ npm run typecheck && npm run build && npm run library:check
 npm run smoke:plan -- http://localhost:5173/    # con la app en marcha y Chrome instalado
 ```
 
-## Presentación
-
-Presentación de 5 minutos, con guion en las notas: `docs/pitch/ceiba-presentacion.pptx`. Guion del vídeo: `docs/pitch/pitch-v1.md`.
-
 ## Licencias
 
-Código: [MIT](LICENSE). Fuente Source Serif 4, incluida en la app: [SIL OFL 1.1](https://openfontlicense.org). Documentación: [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es_ES). Biblioteca: CC BY-SA, con el detalle en `library/README.md` y los créditos de cada artículo en `library/ATRIBUCIONES.md`. Sin datos reales de alumnos ni de docentes.
+Código: [MIT](LICENSE). Fuente Source Serif 4, incluida en la app: [SIL OFL 1.1](https://openfontlicense.org). Biblioteca: CC BY-SA, con el detalle en `library/README.md` y los créditos de cada artículo en `library/ATRIBUCIONES.md`. Sin datos reales de alumnos ni de docentes.

@@ -1,7 +1,7 @@
 # Persona del mentor — v0.1
 
 > Estado: **borrador v0.1** del writer (issue #4), corregido tras el RECHAZADO del reviewer y la DECISIÓN del coordinator sobre el nivel DigCompEdu. Lo usa el builder para el prompt de sistema del mentor.
-> Niveles DigCompEdu y su traducción oficial: `docs/research/brief-v1.md` §1. Textos de interfaz: `app/src/copy/es.ts` (#8).
+> Textos de interfaz: `app/src/copy/es.ts`.
 > Modelo: el mentor funciona con un único modelo local, Gemma 4.
 
 ## 1. Quién es

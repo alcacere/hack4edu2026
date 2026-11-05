@@ -70,7 +70,7 @@ export const es = {
       'Son 5 preguntas cortas sobre lo que hiciste el último mes. No es un examen: no hay respuestas buenas ni malas.',
     introSaltar: 'Si una pregunta no encaja con tu escuela, sáltala.',
     progreso: (n: number, total: number) => `Pregunta ${n} de ${total}`,
-    // Preguntas y opciones: docs/research/brief-v1.md §1 (tabla de 5 preguntas). Opciones de 0 a 4 puntos.
+    // Preguntas y opciones basadas en DigCompEdu. Opciones de 0 a 4 puntos.
     preguntas: [
       {
         id: 'contenidos',
