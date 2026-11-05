@@ -15,6 +15,12 @@ export interface ChatRequest {
   fixtureKey?: string
   /** Pide al servidor salida JSON (Ollama: response_format json_object). */
   json?: boolean
+  /** Si hay esquema, el servidor guía la salida con él (response_format json_schema). */
+  jsonSchema?: object
+  /** Tiempo máximo de esta petición; si falta, el de la configuración. */
+  timeoutMs?: number
+  /** Tope de tokens de salida, para que una respuesta desbocada no bloquee la CPU. */
+  maxTokens?: number
 }
 
 export interface ChatResult {

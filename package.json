@@ -13,7 +13,9 @@
     "mock-llm": "node scripts/mock-llm.mjs",
     "build:demo": "DEMO_MODE=1 vite build",
     "smoke": "node scripts/smoke-browser.mjs",
-    "smoke:perfil": "node scripts/smoke-perfil.mjs"
+    "smoke:perfil": "node scripts/smoke-perfil.mjs",
+    "smoke:plan": "node scripts/smoke-plan.mjs",
+    "library:check": "node scripts/check-library.ts"
   },
   "dependencies": {
     "react": "^19.2.0",

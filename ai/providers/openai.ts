@@ -13,11 +13,12 @@ export function createOpenAIProvider({ baseUrl, timeoutMs, reasoningEffort }: Op
     id: 'llm',
     async chat(req: ChatRequest, signal?: AbortSignal): Promise<ChatResult> {
       const ctrl = new AbortController()
+      const limiteMs = req.timeoutMs ?? timeoutMs
       let timedOut = false
       const timer = setTimeout(() => {
         timedOut = true
         ctrl.abort()
-      }, timeoutMs)
+      }, limiteMs)
       signal?.addEventListener('abort', () => ctrl.abort(), { once: true })
       const t0 = performance.now()
       let res: Response
@@ -31,7 +32,12 @@ export function createOpenAIProvider({ baseUrl, timeoutMs, reasoningEffort }: Op
             model: req.model,
             messages: req.messages,
             stream: false,
-            ...(req.json ? { response_format: { type: 'json_object' } } : {}),
+            ...(req.jsonSchema
+              ? { response_format: { type: 'json_schema', json_schema: { name: req.flow, schema: req.jsonSchema } } }
+              : req.json
+                ? { response_format: { type: 'json_object' } }
+                : {}),
+            ...(req.maxTokens ? { max_tokens: req.maxTokens } : {}),
             ...(reasoningEffort ? { reasoning_effort: reasoningEffort } : {}),
           }),
           signal: ctrl.signal,
@@ -39,7 +45,7 @@ export function createOpenAIProvider({ baseUrl, timeoutMs, reasoningEffort }: Op
       } catch {
         clearTimeout(timer)
         if (timedOut) {
-          throw new AIError('timeout', `El modelo ha tardado más de ${Math.round(timeoutMs / 1000)} s y he cancelado la petición.`)
+          throw new AIError('timeout', `El modelo ha tardado más de ${Math.round(limiteMs / 1000)} s y he cancelado la petición.`)
         }
         throw new AIError('unreachable', 'No consigo hablar con el modelo local. ¿Está Ollama en marcha?')
       }

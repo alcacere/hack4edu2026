@@ -34,3 +34,117 @@ export function validatePerfil(v: unknown, esperado: NivelCode): Validation<Perf
   if (primerPaso.length > 300) return { ok: false, error: '«primerPaso» demasiado largo' }
   return { ok: true, value: { nivel: esperado, explicacion, primerPaso } }
 }
+
+/** Flujo 2 · plan de estudio. Cada paso cita un fragmento de la biblioteca (A1, A2…). */
+export interface PasoPlan {
+  texto: string
+  fuente: string
+}
+export interface SesionPlan {
+  titulo: string
+  minutos: number
+  pasos: PasoPlan[]
+}
+export interface PlanOut {
+  titulo: string
+  objetivo: string
+  sesiones: SesionPlan[]
+  materiales: string[]
+  comprobacion: string[]
+  microaccion: string
+}
+
+export interface LimitesPlan {
+  sesiones: number
+  minutos: number
+  fuentes: string[]
+}
+
+/** Esquema para la decodificación guiada del servidor. validatePlan comprueba además lo que depende del pedido. */
+export function esquemaPlan({ sesiones, fuentes }: Pick<LimitesPlan, 'sesiones' | 'fuentes'>) {
+  const texto = { type: 'string' }
+  const lista = { type: 'array', items: texto, minItems: 1, maxItems: 4 }
+  return {
+    type: 'object',
+    properties: {
+      titulo: texto,
+      objetivo: texto,
+      sesiones: {
+        type: 'array',
+        minItems: sesiones,
+        maxItems: sesiones,
+        items: {
+          type: 'object',
+          properties: {
+            titulo: texto,
+            minutos: { type: 'integer' },
+            pasos: {
+              type: 'array',
+              minItems: 3,
+              maxItems: 5,
+              items: {
+                type: 'object',
+                properties: { texto, fuente: { type: 'string', enum: fuentes } },
+                required: ['texto', 'fuente'],
+              },
+            },
+          },
+          required: ['titulo', 'minutos', 'pasos'],
+        },
+      },
+      materiales: lista,
+      comprobacion: lista,
+      microaccion: texto,
+    },
+    required: ['titulo', 'objetivo', 'sesiones', 'materiales', 'comprobacion', 'microaccion'],
+  }
+}
+
+function listaStr(v: unknown): string[] | null {
+  if (!Array.isArray(v)) return null
+  const l = v.map(str).filter((x): x is string => !!x)
+  return l.length ? l : null
+}
+
+/**
+ * `limites` null = no comprobar número de sesiones ni minutos (modo demo: la respuesta grabada es fija
+ * y el docente puede haber pedido otra duración). Las fuentes se comprueban siempre.
+ */
+export function validatePlan(v: unknown, fuentes: string[], limites: Omit<LimitesPlan, 'fuentes'> | null): Validation<PlanOut> {
+  if (!v || typeof v !== 'object') return { ok: false, error: 'no es un objeto JSON' }
+  const o = v as Record<string, unknown>
+  const titulo = str(o.titulo)
+  const objetivo = str(o.objetivo)
+  const microaccion = str(o.microaccion)
+  const materiales = listaStr(o.materiales)
+  const comprobacion = listaStr(o.comprobacion)
+  if (!titulo) return { ok: false, error: 'falta «titulo»' }
+  if (!objetivo) return { ok: false, error: 'falta «objetivo»' }
+  if (!materiales) return { ok: false, error: 'falta «materiales»' }
+  if (!comprobacion) return { ok: false, error: 'falta «comprobacion»' }
+  if (!microaccion) return { ok: false, error: 'falta «microaccion»' }
+  if (microaccion.split(/\s+/).length > 40) return { ok: false, error: '«microaccion» supera las 40 palabras' }
+  if (!Array.isArray(o.sesiones) || !o.sesiones.length) return { ok: false, error: 'falta «sesiones»' }
+  if (limites && o.sesiones.length !== limites.sesiones) {
+    return { ok: false, error: `hay ${o.sesiones.length} sesiones y se pidieron ${limites.sesiones}` }
+  }
+  const sesiones: SesionPlan[] = []
+  for (const s of o.sesiones as Record<string, unknown>[]) {
+    const tituloS = str(s?.titulo)
+    const minutos = s?.minutos
+    if (!tituloS) return { ok: false, error: 'una sesión no tiene «titulo»' }
+    if (typeof minutos !== 'number' || !Number.isInteger(minutos) || minutos <= 0) return { ok: false, error: 'una sesión no tiene «minutos» válidos' }
+    if (limites && minutos > limites.minutos) return { ok: false, error: `una sesión dura ${minutos} min y el máximo es ${limites.minutos}` }
+    if (!Array.isArray(s.pasos) || s.pasos.length < 3 || s.pasos.length > 5) return { ok: false, error: 'una sesión no tiene de 3 a 5 pasos' }
+    const pasos: PasoPlan[] = []
+    for (const p of s.pasos as Record<string, unknown>[]) {
+      const texto = str(p?.texto)
+      const fuente = str(p?.fuente)
+      if (!texto) return { ok: false, error: 'un paso no tiene «texto»' }
+      if (!fuente || !fuentes.includes(fuente)) return { ok: false, error: `un paso cita una fuente que no se le dio (${fuente})` }
+      pasos.push({ texto, fuente })
+    }
+    sesiones.push({ titulo: tituloS, minutos, pasos })
+  }
+  return { ok: true, value: { titulo, objetivo, sesiones, materiales, comprobacion, microaccion } }
+}

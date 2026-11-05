@@ -17,5 +17,5 @@
     "baseUrl": ".",
     "paths": { "@ai/*": ["ai/*"], "@fixtures/*": ["fixtures/*"] }
   },
-  "include": ["app/src", "ai", "fixtures", "vite.config.ts"]
+  "include": ["app/src", "ai", "fixtures", "scripts/*.ts", "vite.config.ts"]
 }

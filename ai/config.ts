@@ -8,6 +8,8 @@ export interface AIConfig {
   defaultModel: string
   models: string[]
   timeoutMs: number
+  /** Tiempo máximo del plan de estudio, mucho más largo que una respuesta corta en CPU. */
+  planTimeoutMs: number
   /** `reasoning_effort` que se envía al modelo. Por defecto 'none' (sin razonamiento: mucho más rápido en CPU). */
   reasoningEffort: string
   demoMode: boolean
@@ -32,12 +34,14 @@ export function loadConfig(env: Record<string, string | undefined> = import.meta
   const models = parseList(env.LLM_MODELS ?? 'gemma4:e2b')
   if (!models.includes(defaultModel)) models.unshift(defaultModel)
   const timeout = Number(env.LLM_TIMEOUT_MS)
+  const planTimeout = Number(env.LLM_PLAN_TIMEOUT_MS)
   return {
     baseUrl: '/llm',
     upstreamUrl: env.LLM_BASE_URL || 'http://localhost:11434/v1',
     defaultModel,
     models,
     timeoutMs: Number.isFinite(timeout) && timeout > 0 ? timeout : 60000,
+    planTimeoutMs: Number.isFinite(planTimeout) && planTimeout > 0 ? planTimeout : 180000,
     reasoningEffort: (env.LLM_REASONING_EFFORT ?? 'none').trim(),
     demoMode: env.DEMO_MODE === '1' || env.DEMO_MODE === 'true' || urlDemoFlag(),
   }

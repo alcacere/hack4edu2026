@@ -5,11 +5,15 @@ import { createFixtureProvider } from './providers/fixtures'
 import { PROMPTS } from './prompts'
 import { AIError, type ChatRequest, type ChatResult, type LLMProvider } from './types'
 import { extractJsonObject, type Validation } from './json'
-import { validatePerfil, type NivelCode, type PerfilOut } from './schemas'
+import { esquemaPlan, validatePerfil, validatePlan, type NivelCode, type PerfilOut, type PlanOut } from './schemas'
+import { fragmentos, type Ficha } from './library/search'
 
 export * from './types'
 export { NIVEL_CODES } from './schemas'
-export type { NivelCode, PerfilOut } from './schemas'
+export type { NivelCode, PasoPlan, PerfilOut, PlanOut, SesionPlan } from './schemas'
+export { biblioteca } from './library/index'
+export { buscar, fragmentos, parsePedido } from './library/search'
+export type { Busqueda, Ficha, Fragmento, Pedido } from './library/search'
 export type { AIConfig }
 
 export const config: AIConfig = loadConfig()
@@ -95,4 +99,48 @@ export function perfilRapido(model: string, input: PerfilInput, signal?: AbortSi
   )
 }
 
-// Pendientes (B3–B4): planClase(), reflexion(), con chatJson() y el nivel de la sesión.
+export interface PlanInput {
+  grado: number
+  fichas: Ficha[]
+  sesiones: number
+  /** Minutos de cada sesión. */
+  minutos: number
+  /** El aula no tiene dispositivos para el alumnado. */
+  sinDispositivos: boolean
+  /** Punto de partida del docente, si hizo el perfil. Solo ajusta la micro-acción. */
+  nivelNombre?: string
+}
+
+/** Mensaje para el modelo. El texto libre del docente NO entra aquí: solo datos elegidos y fichas. */
+export function mensajePlan(input: PlanInput): string {
+  const frags = fragmentos(input.fichas)
+  return [
+    `Grado: ${input.grado}.º de primaria. Área: ${input.fichas[0].area}. Tema: ${input.fichas[0].tema}.`,
+    `Sesiones: ${input.sesiones}, de ${input.minutos} minutos como máximo cada una.`,
+    input.sinDispositivos ? 'Aula: el alumnado no tiene dispositivos ni conexión.' : 'Aula: puede haber algún dispositivo, pero el plan debe funcionar sin ellos.',
+    ...(input.nivelNombre ? [`Experiencia digital del docente: ${input.nivelNombre}. Tenla en cuenta solo en la micro-acción.`] : []),
+    'FRAGMENTOS:',
+    ...frags.map((f) => `[${f.etiqueta}] ${f.seccion.titulo}: ${f.seccion.texto}`),
+  ].join('\n')
+}
+
+/** Flujo 2: plan de estudio a partir de las fichas ya elegidas por la búsqueda. */
+export function planClase(model: string, input: PlanInput, signal?: AbortSignal): Promise<JsonResult<PlanOut>> {
+  const fuentes = fragmentos(input.fichas).map((f) => f.etiqueta)
+  return chatJson(
+    {
+      flow: 'plan',
+      model,
+      fixtureKey: input.fichas[0].id,
+      jsonSchema: esquemaPlan({ sesiones: input.sesiones, fuentes }),
+      timeoutMs: config.planTimeoutMs,
+      maxTokens: 900,
+      messages: [
+        { role: 'system', content: PROMPTS.plan },
+        { role: 'user', content: mensajePlan(input) },
+      ],
+    },
+    (v) => validatePlan(v, fuentes, config.demoMode ? null : { sesiones: input.sesiones, minutos: input.minutos }),
+    signal,
+  )
+}
