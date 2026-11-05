@@ -83,7 +83,7 @@ try {
   const fuentesAlInstante = await evaluate(`[...document.querySelectorAll('[data-ficha]')].map(f => f.dataset.ficha)`)
   if (!faltaGrado || process.env.SMOKE_GRADO) await waitFor(fin, waitMs)
   const segundos = (Date.now() - t0) / 1000
-  await evaluate(`document.querySelector('[data-fuente]')?.click()`)
+  if (!process.env.SMOKE_SIN_CITA) await evaluate(`document.querySelector('[data-fuente]')?.click()`)
   await sleep(150)
   const resultado = await evaluate(`({
     grado: document.querySelector('#grado').value, tema: document.querySelector('#tema').value,

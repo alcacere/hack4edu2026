@@ -9,7 +9,8 @@
 - Último update: 2026-11-05 por builder.
 - Máquina de demo: portátil de 7,5 GB de RAM, 8 núcleos, sin GPU. Ollama 0.40.14 **en Docker** en `127.0.0.1:11435` (`.env`: `LLM_BASE_URL=http://localhost:11435/v1`), con `gemma4:e2b`. El Ollama nativo 0.12.11 de esta máquina (puerto 11434) no puede ejecutar Gemma 4 y no se usa.
 - Qué funciona hoy: pantalla de plan de estudio con biblioteca local, modelo real (18–47 s por plan) y modo demo. Sin probar aún: modo avión real. Resultados: `docs/review/resultados-2026-11-05.md`.
-- Falta, y lo hace una persona: contrastar las fichas con los documentos oficiales del MINEDU, confirmar con la sede el reto y la modalidad, probar con docentes, y grabar y enviar el vídeo y la presentación.
+- Presentación de 5 min: `docs/pitch/ceiba-presentacion.pptx`, con guion en las notas. Vídeo y envío: pendientes.
+- Falta, y lo hace una persona: probar con el Wi-Fi apagado, confirmar con la sede el reto, la modalidad y el contenido de terceros, abrir la presentación en PowerPoint, probar con docentes si es posible, y grabar y enviar el vídeo y la presentación.
 
 ## Producto (alcance vigente)
 **Ceiba**: herramienta sin internet para docentes de primaria. El docente pide un plan («plan de estudio para 5.º sobre el ciclo del agua») y recibe un borrador estructurado paso a paso, ajustado a ese grado y basado en una biblioteca local de fichas, con la fuente de cada paso. Cierra con una micro-acción para el docente: es el vínculo con el Reto 12.

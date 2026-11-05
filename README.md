@@ -66,6 +66,10 @@ npm run typecheck && npm run build && npm run library:check
 npm run smoke:plan -- http://localhost:5173/    # con la app en marcha y Chrome instalado
 ```
 
+## Presentación
+
+Presentación de 5 minutos, con guion en las notas: `docs/pitch/ceiba-presentacion.pptx`. Guion del vídeo: `docs/pitch/pitch-v1.md`.
+
 ## Licencias
 
 Código: [MIT](LICENSE). Fuente Source Serif 4, incluida en la app: [SIL OFL 1.1](https://openfontlicense.org). Documentación: [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es_ES). Biblioteca: CC BY-SA, con el detalle en `library/README.md` y los créditos de cada artículo en `library/ATRIBUCIONES.md`. Sin datos reales de alumnos ni de docentes.

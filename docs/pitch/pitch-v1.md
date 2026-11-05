@@ -39,7 +39,7 @@ Termina con un paso pequeño para su semana, porque el objetivo no es solo este 
 
 ### 4. Cómo funciona (≈ 20 s)
 
-Gemma 4, un modelo abierto, en un portátil de ocho gigas sin tarjeta gráfica. La biblioteca son ficheros: ciento setenta temas con artículos abiertos de Vikidia y Wikipedia, descargados una vez. Un ministerio o una ONG podría añadir los suyos sin servidores. Y lo que escribe la docente no llega ni al modelo, así que los nombres de sus alumnos no salen de ahí. [REAL. Son 7,5 GB medidos; decir «ocho» es redondear la capacidad del equipo.]
+Gemma 4, un modelo abierto, en un portátil de ocho gigas sin tarjeta gráfica. La biblioteca son ficheros: ciento setenta temas con artículos abiertos de Vikidia y Wikipedia, descargados una vez. Un ministerio o una ONG podría añadir los suyos sin servidores externos. Y lo que escribe la docente no llega ni al modelo, así que los nombres de sus alumnos no salen de ahí. [REAL. Son 7,5 GB medidos; decir «ocho» es redondear la capacidad del equipo.]
 
 ### 5. Impacto (≈ 15 s)
 
