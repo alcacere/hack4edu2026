@@ -140,7 +140,7 @@ Teacher's text
 ### Step 6 (17:00–23:00): delivery (Bases 3, 5 and 9)
 - **README** (currently missing): problem, one-command run, architecture, how to add a ficha, what is real / simulated / unvalidated, model and licences.
 - Licences: MIT for code, CC BY-NC-SA 3.0 for docs and fichas. Check ficha sources are compatible.
-- Rewrite `docs/pitch/pitch-v0.md` around the new demo. **3-minute video** (real run, Wi-Fi off, wait time cut and labelled as cut), **5-minute deck**, GitHub link.
+- Rewrite `docs/pitch/pitch-v1.md` around the new demo. **3-minute video** (real run, Wi-Fi off, wait time cut and labelled as cut), **5-minute deck**, GitHub link.
 - Clean-clone test, then **submit by 23:00**. Check the repo is public and that frequent commits today show the Innovadora evidence.
 
 **If time runs short, cut in this order:** the fichas beyond 6 → print and copy → profile link → in-place editing (keep copy). Never cut: source display, the "no material" response, offline operation, the recorded fallback.

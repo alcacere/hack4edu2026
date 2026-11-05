@@ -1,6 +1,6 @@
 # fixtures/
 
-Respuestas grabadas para `DEMO_MODE=1` (sin modelo ni red). Un fichero por flujo: `hola`, `perfil`, `plan`, `reflexion`.
+Respuestas grabadas para `DEMO_MODE=1` (sin modelo ni red). Un fichero por flujo: `perfil` y `plan`. `plan.json` tiene una respuesta por ficha (clave = id de la ficha) y se graba del modelo real con `npm run record:plan`.
 
 Formato:
 ```json
