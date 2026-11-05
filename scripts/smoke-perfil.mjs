@@ -66,7 +66,7 @@ try {
     const ok = await evaluate(`(() => { const r = document.querySelector('fieldset input[value=${JSON.stringify(a === 's' ? 'skip' : a)}]'); r?.click(); return !!r })()`)
     if (!ok) throw new Error(`No encuentro la opción ${a} en la pregunta ${i + 1}.`)
     await sleep(100)
-    await evaluate(`document.querySelector('button[type=submit]').click()`)
+    await evaluate(`document.querySelector('form:has(fieldset) button[type=submit]').click()`)
     await sleep(150)
   }
   const preguntasTrasCinco = await evaluate(`!!document.querySelector('fieldset')`)
