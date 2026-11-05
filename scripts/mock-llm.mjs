@@ -20,11 +20,11 @@ http
         const nivel = String(messages.at(-1)?.content ?? '').match(/código ([ABC][12])/)?.[1] ?? 'A1'
         const esPlan = response_format?.type === 'json_schema' && response_format.json_schema?.name === 'plan'
         const nSes = esPlan ? response_format.json_schema.schema.properties.sesiones.minItems : 0
-        const paso = { texto: '[mock] Paso de prueba.', fuente: 'A1' }
+        const paso = { docente: '[mock] Paso del docente.', alumnado: '[mock] Paso del alumnado.', fuente: 'A1' }
         const plan = {
           titulo: '[mock] Plan de prueba',
           objetivo: 'No soy un modelo.',
-          sesiones: Array.from({ length: nSes }, (_, i) => ({ titulo: `Sesión ${i + 1}`, minutos: 15, pasos: [paso, paso, paso] })),
+          sesiones: Array.from({ length: nSes }, (_, i) => ({ titulo: `Sesión ${i + 1}`, minutos: 15, pasos: [paso, paso, paso, paso] })),
           materiales: ['[mock] Pizarra'],
           comprobacion: ['[mock] Pregunta de salida'],
           microaccion: '[mock] Coméntalo con un colega.',

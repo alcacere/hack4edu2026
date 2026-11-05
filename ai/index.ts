@@ -5,7 +5,7 @@ import { createFixtureProvider } from './providers/fixtures'
 import { PROMPTS } from './prompts'
 import { AIError, type ChatRequest, type ChatResult, type LLMProvider } from './types'
 import { extractJsonObject, type Validation } from './json'
-import { esquemaPlan, validatePerfil, validatePlan, type NivelCode, type PerfilOut, type PlanOut } from './schemas'
+import { esquemaPlan, MAX_TOKENS_PLAN, validatePerfil, validatePlan, type NivelCode, type PerfilOut, type PlanOut } from './schemas'
 import { fuentesPermitidas, mensajePlan, type DatosPlan } from './library/search'
 
 export * from './types'
@@ -97,7 +97,7 @@ export function planClase(model: string, input: PlanInput, signal?: AbortSignal)
       fixtureKey: input.fichas[0].id,
       jsonSchema: esquemaPlan({ sesiones: input.sesiones, fuentes }),
       timeoutMs: config.planTimeoutMs,
-      maxTokens: 900,
+      maxTokens: MAX_TOKENS_PLAN,
       // Variedad entre planes: dos peticiones iguales no dan el mismo resultado.
       temperature: 0.9,
       seed: Math.floor(Math.random() * 1_000_000),

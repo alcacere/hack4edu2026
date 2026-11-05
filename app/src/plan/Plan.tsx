@@ -569,7 +569,13 @@ function PlanVista({ plan, fichas, grado, enfoque }: { plan: PlanOut; fichas: Fi
               const frag = frags.find((f) => f.etiqueta === p.fuente)
               return (
                 <li key={j} className="pl-1 leading-relaxed" data-paso>
-                  <Editable>{p.texto}</Editable>{' '}
+                  <span className="block" data-paso-docente>
+                    <span className="font-semibold text-emerald-900">{es.plan.pasoDocente}: </span>
+                    <Editable>{p.docente}</Editable>
+                  </span>
+                  <span className="block" data-paso-alumnado>
+                    <span className="font-semibold text-emerald-900">{es.plan.pasoAlumnado}: </span>
+                    <Editable>{p.alumnado}</Editable>{' '}
                   {p.fuente === FUENTE_IDEA ? (
                     <span data-idea className="no-print inline-flex min-h-6 items-center rounded bg-barro-100 px-1.5 align-baseline text-xs font-semibold whitespace-nowrap text-barro-700">
                       {es.plan.ideaSinFuente}
@@ -585,6 +591,7 @@ function PlanVista({ plan, fichas, grado, enfoque }: { plan: PlanOut; fichas: Fi
                     {frag ? frag.seccion.titulo : p.fuente}
                   </button>
                   )}
+                  </span>
                   {abierta === clave && frag && (
                     <blockquote data-fragmento className="no-print mt-2 rounded-r border-l-4 border-emerald-600 bg-stone-50 p-3 text-sm">
                       <p className="font-semibold">

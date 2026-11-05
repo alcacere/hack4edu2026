@@ -37,9 +37,17 @@ export function validatePerfil(v: unknown, esperado: NivelCode): Validation<Perf
 
 /** Flujo 2 · plan de estudio. Cada paso cita un fragmento de la biblioteca (A1, A2…). */
 export interface PasoPlan {
-  texto: string
+  /** Qué hace el docente en este paso. */
+  docente: string
+  /** Qué hace el alumnado en este paso. */
+  alumnado: string
   fuente: string
 }
+
+/** Tope de salida del plan. Holgado respecto a lo que ocupa (hasta ~1.100 tokens con 3 sesiones) para no cortar el JSON. */
+export const MAX_TOKENS_PLAN = 1400
+export const PASOS_MIN = 4
+export const PASOS_MAX = 6
 export interface SesionPlan {
   titulo: string
   minutos: number
@@ -80,12 +88,12 @@ export function esquemaPlan({ sesiones, fuentes }: Pick<LimitesPlan, 'sesiones' 
             minutos: { type: 'integer' },
             pasos: {
               type: 'array',
-              minItems: 3,
-              maxItems: 5,
+              minItems: PASOS_MIN,
+              maxItems: PASOS_MAX,
               items: {
                 type: 'object',
-                properties: { texto, fuente: { type: 'string', enum: fuentes } },
-                required: ['texto', 'fuente'],
+                properties: { docente: texto, alumnado: texto, fuente: { type: 'string', enum: fuentes } },
+                required: ['docente', 'alumnado', 'fuente'],
               },
             },
           },
@@ -135,14 +143,16 @@ export function validatePlan(v: unknown, fuentes: string[], limites: Omit<Limite
     if (!tituloS) return { ok: false, error: 'una sesión no tiene «titulo»' }
     if (typeof minutos !== 'number' || !Number.isInteger(minutos) || minutos <= 0) return { ok: false, error: 'una sesión no tiene «minutos» válidos' }
     if (limites && minutos > limites.minutos) return { ok: false, error: `una sesión dura ${minutos} min y el máximo es ${limites.minutos}` }
-    if (!Array.isArray(s.pasos) || s.pasos.length < 3 || s.pasos.length > 5) return { ok: false, error: 'una sesión no tiene de 3 a 5 pasos' }
+    if (!Array.isArray(s.pasos) || s.pasos.length < PASOS_MIN || s.pasos.length > PASOS_MAX) return { ok: false, error: `una sesión no tiene de ${PASOS_MIN} a ${PASOS_MAX} pasos` }
     const pasos: PasoPlan[] = []
     for (const p of s.pasos as Record<string, unknown>[]) {
-      const texto = str(p?.texto)
+      const docente = str(p?.docente)
+      const alumnado = str(p?.alumnado)
       const fuente = str(p?.fuente)
-      if (!texto) return { ok: false, error: 'un paso no tiene «texto»' }
+      if (!docente) return { ok: false, error: 'un paso no dice qué hace el docente' }
+      if (!alumnado) return { ok: false, error: 'un paso no dice qué hace el alumnado' }
       if (!fuente || !fuentes.includes(fuente)) return { ok: false, error: `un paso cita una fuente que no se le dio (${fuente})` }
-      pasos.push({ texto, fuente })
+      pasos.push({ docente, alumnado, fuente })
     }
     sesiones.push({ titulo: tituloS, minutos, pasos })
   }

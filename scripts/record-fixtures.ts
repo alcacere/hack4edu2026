@@ -4,7 +4,7 @@ import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fichasDeArticulos, fuentesPermitidas, mensajePlan, parseFicha, recortarFicha, type DatosTemas, type DatosArticulos } from '../ai/library/search.ts'
 import { extractJsonObject } from '../ai/json.ts'
-import { esquemaPlan, validatePlan } from '../ai/schemas.ts'
+import { esquemaPlan, MAX_TOKENS_PLAN, validatePlan } from '../ai/schemas.ts'
 
 const raiz = new URL('..', import.meta.url).pathname
 const base = process.env.LLM_BASE_URL || 'http://localhost:11435/v1'
@@ -21,7 +21,13 @@ const MUESTRA = ['art-la-fotosintesis-5', 'art-los-volcanes-4', 'art-el-imperio-
 const fichas = [...curadas, ...MUESTRA.map((id) => deArticulos.find((f) => f.id === id)!).map((f) => recortarFicha(f, f.tema))]
 const ENFOQUES = ['observar y experimentar', 'jugar', 'contar una historia', 'resolver un problema del entorno', 'debatir en grupos', 'dibujar y construir']
 
-const entries = []
+const entries: unknown[] = []
+const guardar = () =>
+writeFileSync(
+  join(raiz, 'fixtures/plan.json'),
+  `${JSON.stringify({ flow: 'plan', version: 2, origen: `Generado por ${model} con scripts/record-fixtures.ts el ${new Date().toISOString().slice(0, 10)} en un portátil de 7,5 GB sin GPU. Sin datos de alumnos.`, entries }, null, 2)}\n`,
+)
+
 for (const f of fichas) {
   const sesiones = f.id === 'cyt-5-ciclo-agua' ? 2 : 1
   const fuentes = fuentesPermitidas([f])
@@ -32,7 +38,7 @@ for (const f of fichas) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model, stream: false, reasoning_effort: 'none', max_tokens: 900, temperature: 0.9,
+        model, stream: false, reasoning_effort: 'none', max_tokens: MAX_TOKENS_PLAN, temperature: 0.9,
         response_format: { type: 'json_schema', json_schema: { name: 'plan', schema: esquemaPlan({ sesiones, fuentes }) } },
         messages: [{ role: 'system', content: prompt }, { role: 'user', content: user }],
       }),
@@ -45,12 +51,9 @@ for (const f of fichas) {
     console.log(`${f.id} intento ${intento}: ${seg.toFixed(1)} s, ${tok} tokens, ${v.ok ? 'válido' : v.error}`)
     if (v.ok) {
       entries.push({ key: f.id, text: JSON.stringify(v.value), recordedModel: model, recordedTokensPerSec: Number((tok / seg).toFixed(1)) })
+      guardar() // se guarda tras cada plan: una interrupción no pierde lo ya grabado
       break
     }
   }
 }
-writeFileSync(
-  join(raiz, 'fixtures/plan.json'),
-  `${JSON.stringify({ flow: 'plan', version: 2, origen: `Generado por ${model} con scripts/record-fixtures.ts el ${new Date().toISOString().slice(0, 10)} en un portátil de 7,5 GB sin GPU. Sin datos de alumnos.`, entries }, null, 2)}\n`,
-)
 console.log(`${entries.length} de ${fichas.length} fichas grabadas`)

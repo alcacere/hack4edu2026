@@ -172,6 +172,8 @@ export const es = {
     otrosTemas: 'Ver otros temas',
     totalTemas: (temas: number) => `${temas} temas en la biblioteca`,
     ideaSinFuente: 'Idea de Ceiba, sin fuente',
+    pasoDocente: 'Docente',
+    pasoAlumnado: 'Alumnado',
     temasBiblioteca: 'O empieza por un tema de la biblioteca',
     duracion: (ses: number, min: number) => `${ses} ${ses === 1 ? 'sesión' : 'sesiones'} de ${min} min`,
     cambiarPedido: 'Cambiar',
