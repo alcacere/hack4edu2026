@@ -38,6 +38,11 @@ const casos: { texto: string; grado: number | null; sesiones?: number; minutos?:
   { texto: 'Plan sobre el ciclo del agua', grado: null },
   { texto: '2 sesiones de 45 minutos sobre el agua', grado: null, sesiones: 2, minutos: 45 },
   { texto: '🙂🙂🙂📚📚', grado: null },
+  { texto: 'Plan sobre las cadenas alimentarias para 5.º', grado: 5, ficha: 'cyt-5-cadenas-alimentarias' },
+  { texto: 'food chains for grade 5', grado: 5, ficha: 'cyt-5-cadenas-alimentarias' },
+  { texto: 'Clase para 4.º sobre los estados de la materia', grado: 4, ficha: 'cyt-4-estados-materia' },
+  { texto: 'Plan para cuarto de primaria sobre las regiones del Perú', grado: 4, ficha: 'ps-4-regiones-peru' },
+  { texto: 'Plan para 4.º sobre leer textos informativos', grado: 4, ficha: 'com-4-texto-informativo' },
 ]
 for (const c of casos) {
   const p = parsePedido(c.texto)

@@ -1,6 +1,7 @@
 // Smoke test del plan de estudio con Chrome headless vía CDP (sin dependencias).
 // Uso: node scripts/smoke-plan.mjs <url> [esperaMs]
 //   SMOKE_TEXT="…"       lo que escribe el docente.   SMOKE_GRADO=5  grado elegido a mano después (si faltaba).
+//   SMOKE_PROHIBIDAS=a,b palabras que no deben llegar al modelo.
 //   SMOKE_SHOT=x.png     captura final.               SMOKE_WIDTH=375  ancho de ventana.
 // Muestra: campos entendidos, fichas, plan, avisos, métricas, peticiones a /llm y peticiones externas.
 import { spawn } from 'node:child_process'
@@ -95,6 +96,8 @@ try {
   console.log(JSON.stringify({
     texto, segundos, faltaGrado, fuentesAlInstante, ...resultado, llmCalls: llmBodies.length,
     textoEnPayload: llmBodies.some((b) => b.includes(texto)),
+    // SMOKE_PROHIBIDAS=a,b: palabras que no pueden aparecer en ninguna petición al modelo (datos de alumnos).
+    prohibidasEnPayload: (process.env.SMOKE_PROHIBIDAS || '').split(',').filter((w) => w && llmBodies.some((b) => b.includes(w))),
     llmPayloadUser: llmBodies.map((b) => { try { return JSON.parse(b).messages.at(-1).content.slice(0, 200) } catch { return b } }),
     external: requests.filter((u) => !u.startsWith(origin) && !u.startsWith('data:')), errores: consola,
   }, null, 2))

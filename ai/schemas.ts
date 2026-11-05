@@ -1,5 +1,5 @@
 // Esquemas de salida JSON por flujo. Si la salida no cumple, la capa ai/ reintenta UNA vez (criterio F2).
-import { countSentences, type Validation } from './json'
+import { countSentences, type Validation } from './json.ts'
 
 export const NIVEL_CODES = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] as const
 export type NivelCode = (typeof NIVEL_CODES)[number]

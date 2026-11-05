@@ -14,7 +14,8 @@
     "build:demo": "DEMO_MODE=1 vite build",
     "smoke:perfil": "node scripts/smoke-perfil.mjs",
     "smoke:plan": "node scripts/smoke-plan.mjs",
-    "library:check": "node scripts/check-library.ts"
+    "library:check": "node scripts/check-library.ts",
+    "record:plan": "node scripts/record-fixtures.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
