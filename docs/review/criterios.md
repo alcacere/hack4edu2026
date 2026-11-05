@@ -72,9 +72,11 @@ Si el contenedor `ollama` no existe o no tiene `gemma4:e2b`, el punto 8 queda **
 | C7 | Con «sin dispositivos» marcado, el plan no pide dispositivos ni conexión al alumnado. | Leer el plan. | L1 |
 | B1 | Cada paso cita un fragmento de las fichas entregadas. Abrir la cita muestra ese texto y su fuente. | `validatePlan` rechaza otras etiquetas; pulsar una cita. | L1 |
 | B2 | El mismo tema en 3.º y 5.º usa fichas distintas y el plan cambia de forma visible. Solo REAL. | Comparar los dos planes. | L2 |
-| B3 | Sin ficha para el tema: no hay plan, hay 0 peticiones a `/llm` y se ofrecen los temas de ese grado. | `smoke:plan`: `llmCalls` = 0. | L3 |
+| B3 | Sin ficha ni artículo para el tema: no hay plan, hay 0 peticiones a `/llm` y se ofrecen los temas de ese grado. | `smoke:plan`: `llmCalls` = 0. | L3 |
 | B4 | Si el tema solo existe en otro grado, lo dice y no lo usa salvo que el docente lo elija; en ese caso queda indicado junto a la ficha. | `smoke:plan`; pulsar «Usar la ficha de…». | L3 |
-| B5 | Toda ficha no revisada lleva la marca «Pendiente de revisión docente». Ninguna pantalla dice «alineado» ni «certificado». | Inspección; `grep` en `app/`. | L1 |
+| B5 | Toda ficha o artículo no revisado lleva la marca «Pendiente de revisión docente». Ninguna pantalla dice «alineado» ni «certificado». | Inspección; `grep` en `app/`. | L1 |
+| B7 | Toda actividad sin fragmento de origen se marca «Idea de Ceiba, sin fuente». | Inspección. | L6 |
+| B8 | «Otra versión» cambia el enfoque y el contenido del plan. Solo REAL. | Comparar las dos versiones. | L6 |
 | B6 | Fidelidad: en planes reales, una persona no encuentra hechos ausentes de las fichas. Los fallos se anotan. Solo REAL. | Leer 5 planes, 2 ejecuciones de cada uno, con la ficha al lado. | L5 |
 
 ## 5. Guardarraíles (todos los flujos, DEMO y REAL)

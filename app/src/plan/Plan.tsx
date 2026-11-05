@@ -79,6 +79,9 @@ export function Plan({ model }: { model: string }) {
   const planRef = useRef<HTMLDivElement>(null)
   const pedidoRef = useRef<HTMLTextAreaElement>(null)
 
+  // En modo demo solo hay respuesta grabada para algunas fichas: solo se ofrecen esas.
+  const disponibles = useMemo(() => (config.demoMode ? biblioteca.filter((f) => temasGrabados.has(f.id)) : biblioteca), [])
+
   useEffect(() => () => abortRef.current?.abort(), [])
   useEffect(() => {
     if (gen.status !== 'loading') return
@@ -140,7 +143,7 @@ export function Plan({ model }: { model: string }) {
       return
     }
     setFaltaGrado(false)
-    const b = buscar(biblioteca, g, t)
+    const b = buscar(disponibles, g, t)
     setBusqueda(b)
     if (b.fichas.length) void generar(b.fichas, g, ses, min)
   }
@@ -180,8 +183,6 @@ export function Plan({ model }: { model: string }) {
   const cargando = gen.status === 'loading'
   const fichasEnUso = busqueda?.fichas ?? []
   const plegado = gen.status !== 'idle' && fichasEnUso.length > 0 && !cambiando
-  // En modo demo solo hay respuesta grabada para algunas fichas: solo se ofrecen esas.
-  const disponibles = useMemo(() => (config.demoMode ? biblioteca.filter((f) => temasGrabados.has(f.id)) : biblioteca), [])
   const [tanda, setTanda] = useState(0)
   const totalTemas = useMemo(() => new Set(disponibles.map((f) => f.tema)).size, [disponibles])
   const chips = useMemo(
@@ -459,12 +460,12 @@ function SinMaterial({
   return (
     <div data-sin-material className="rounded-xl border border-stone-300 bg-white p-5">
       <p className="font-serif text-lg font-semibold text-stone-900">{es.plan.sinMaterial(grado)}</p>
-      <p className="mt-1 text-stone-800">{es.plan.sinMaterialAyuda}</p>
+      <p className="mt-1 text-stone-800">{config.demoMode ? es.plan.sinMaterialDemo : es.plan.sinMaterialAyuda}</p>
       {busqueda.otrosGrados.length > 0 && (
         <div className="mt-3" data-otros-grados>
           <p className="text-sm font-semibold text-stone-800">{es.plan.otrosGrados(grado)}</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            {busqueda.otrosGrados.map((f) => (
+            {busqueda.otrosGrados.slice(0, 6).map((f) => (
               <button key={f.id} type="button" className={chip} onClick={() => onOtroGrado(f)}>
                 {es.plan.usarFichaDe(f.grado, f.tema)}
               </button>
@@ -476,7 +477,7 @@ function SinMaterial({
         <div className="mt-3" data-temas-grado>
           <p className="text-sm font-semibold text-stone-800">{es.plan.temasDisponibles(grado)}</p>
           <div className="mt-2 flex flex-wrap gap-2">
-            {busqueda.temasDelGrado.map((t) => (
+            {busqueda.temasDelGrado.slice(0, 10).map((t) => (
               <button key={t} type="button" className={chip} onClick={() => onTema(t)}>
                 {t}
               </button>

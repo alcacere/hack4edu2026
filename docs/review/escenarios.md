@@ -13,6 +13,7 @@
 | L3 | Plan | Sin material y otro grado | B3, B4 |
 | L4 | Plan | Entradas raras y sin grado | C1, F2, F4 |
 | L5 | Plan | Fidelidad a las fichas (lectura humana) | B6, G5 |
+| L6 | Plan | Temas descargados y «Otra versión» | B7, B8 |
 | E1, E2 | Perfil (opcional) | Nivel bajo y alto | P1–P7, F2 |
 | E7 | Plan | **Guardarraíl**: datos de alumnos | G1, G2, G2b |
 | E9 | Plan | **Modelo caído** | F1 |
@@ -29,9 +30,9 @@ Pedir el ciclo del agua para 3.º y para 5.º, con 1 sesión cada uno.
 - **Esperado:** fichas distintas. El plan de 5.º trata condensación o precipitación con esos nombres; el de 3.º usa un lenguaje más sencillo. **Falla si** los dos planes son prácticamente iguales.
 
 ## L3 — Sin material y otro grado
-1. «Plan para 5.º sobre la fotosíntesis»: dice que no tiene material, 0 peticiones a `/llm`, ofrece los temas de 5.º.
+1. «Plan para 5.º sobre las criptomonedas»: dice que no tiene material, 0 peticiones a `/llm`, ofrece temas de 5.º.
 2. «Plan para 5.º sobre el ciclo de las rocas»: igual; no vale devolver el ciclo del agua.
-3. «Plan para 4.º sobre el ciclo del agua»: ofrece las fichas de 3.º y 5.º sin usarlas. Al elegir una, queda indicado junto a la ficha.
+3. «Plan para 1.º sobre el ciclo del agua»: ofrece otros grados sin usarlos. Al elegir uno, queda indicado junto a la ficha.
 
 ## L4 — Entradas raras
 1. Pedido vacío: botón deshabilitado.
@@ -39,6 +40,10 @@ Pedir el ciclo del agua para 3.º y para 5.º, con 1 sesión cada uno.
 3. «Plan sobre el ciclo del agua» sin grado: lo pide, 0 peticiones; al elegirlo, sigue.
 4. Texto de 2.000 caracteres: la interfaz no se rompe.
 5. Salida inválida (`npm run mock-llm`): exactamente 2 peticiones y error amable.
+
+## L6 — Temas descargados y variedad
+«Plan para 5.º sobre la fotosíntesis», y después «Otra versión».
+- **Esperado:** plan basado en el artículo, con su fuente y licencia a la vista; actividades propias marcadas como «Idea de Ceiba, sin fuente»; la segunda versión tiene otro enfoque y otros pasos.
 
 ## L5 — Fidelidad a las fichas
 Una persona lee 5 planes reales, 2 ejecuciones de cada uno, con la ficha al lado. Anota cada hecho que no esté en la ficha, cada cita que no respalde su paso y cada paso que no se pueda hacer en un aula sin dispositivos. Los fallos se publican en los resultados.

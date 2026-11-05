@@ -188,6 +188,7 @@ export const es = {
     sinDispositivos: 'El alumnado no tiene dispositivos ni internet',
     faltaGrado: '¿Para qué grado es? Elígelo arriba y vuelve a pulsar «Preparar plan».',
     sinMaterial: (g: number) => `No tengo material sobre este tema para ${g}.º de primaria.`,
+    sinMaterialDemo: 'En el modo demo solo hay planes grabados para algunos temas. Con el modelo real hay muchos más.',
     sinMaterialAyuda: 'Prefiero decírtelo antes que inventarme un plan. No se ha generado nada.',
     otrosGrados: (g: number) => `Sí lo tengo en otro grado. Puedes usarlo como base para ${g}.º, sabiendo que no está pensado para ese grado:`,
     usarFichaDe: (g: number, tema: string) => `Usar la ficha de ${g}.º: ${tema}`,

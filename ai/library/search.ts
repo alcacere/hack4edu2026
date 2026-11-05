@@ -252,7 +252,7 @@ export interface Busqueda {
 
 export function buscar(biblioteca: Ficha[], grado: number, tema: string): Busqueda {
   const consulta = tokens(tema)
-  const temasDelGrado = biblioteca.filter((f) => f.grado === grado).map((f) => f.tema)
+  const temasDelGrado = [...new Set(biblioteca.filter((f) => f.grado === grado).map((f) => f.tema))]
   if (!consulta.length) return { fichas: [], otrosGrados: [], temasDelGrado }
   const candidatas = biblioteca.filter((f) => cubre(f, consulta))
   const puntos = puntuar(candidatas, consulta)
@@ -266,7 +266,12 @@ export function buscar(biblioteca: Ficha[], grado: number, tema: string): Busque
   const fichas = curadas.length ? curadas.slice(0, 2) : delGrado.slice(0, 1).map((f) => recortarFicha(f, tema))
   return {
     fichas,
-    otrosGrados: candidatas.filter((f) => f.grado !== grado).sort((a, b) => a.grado - b.grado).map((f) => recortarFicha(f, tema)),
+    otrosGrados: candidatas
+      .filter((f) => f.grado !== grado)
+      // Una opción por grado y tema; la curada, si existe.
+      .sort((a, b) => a.grado - b.grado || Number(b.tipo === 'curada') - Number(a.tipo === 'curada'))
+      .filter((f, i, l) => l.findIndex((x) => x.grado === f.grado && (x.tema === f.tema || x.tipo !== f.tipo)) === i)
+      .map((f) => recortarFicha(f, tema)),
     temasDelGrado,
   }
 }

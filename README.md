@@ -2,7 +2,7 @@
 
 **Hack4Edu 2026 · Reto 12 ★ «El entrenador invisible del docente».** Prototipo desarrollado del 3 al 5 de noviembre de 2026.
 
-Un docente de primaria escribe «plan de estudio para 5.º sobre el ciclo del agua» y recibe un borrador paso a paso, ajustado a ese grado y hecho a partir de una biblioteca curricular local. Cada paso muestra en qué parte de la ficha se apoya. No devuelve una lista de libros: devuelve un plan que se puede usar y cambiar. Funciona sin internet, en un portátil corriente, y lo que escribe el docente no sale de su ordenador.
+Un docente de primaria escribe «plan de estudio para 5.º sobre el ciclo del agua» y recibe un borrador paso a paso, ajustado a ese grado y hecho a partir de una biblioteca local con 170 temas de primaria. Cada paso muestra en qué parte de la ficha se apoya. No devuelve una lista de libros: devuelve un plan que se puede usar y cambiar. Funciona sin internet, en un portátil corriente, y lo que escribe el docente no sale de su ordenador.
 
 ## Por qué
 
@@ -39,7 +39,9 @@ Pedido del docente
  → 4. comprobar (sin IA): esquema, minutos y fuentes; un reintento → borrador editable
 ```
 
-- **Biblioteca:** ficheros Markdown en `library/fichas/`, sin base de datos. Con pocas fichas, filtrar por grado y buscar por tema basta, y evita cargar un segundo modelo en poca RAM. Añadir contenido es añadir un fichero: consulta `library/README.md`.
+- **Biblioteca:** sin base de datos. Un mapa de temas por grado (`library/temas.json`), artículos de Vikidia y Wikipedia descargados una sola vez (`library/articulos.json`, menos de 1 MB) y fichas escritas a mano (`library/fichas/`), que se usan primero si existen. Filtrar por grado y buscar por tema basta, y evita cargar un segundo modelo en poca RAM. Para ampliarla: `library/README.md`.
+- **Variedad:** cada plan sigue un enfoque (jugar, contar una historia, debatir…), elegido o al azar, y «Otra versión» propone uno distinto.
+- **Sin fuente, se dice:** si un artículo no trae actividades, el modelo puede proponerlas, y se marcan como «Idea de Ceiba, sin fuente».
 - **Si no hay material, lo dice** y no genera nada. Si el tema solo existe en otro grado, te deja elegir.
 - **Privacidad:** al modelo le llegan los campos y las fichas, nunca el texto libre. Así los nombres de alumnos no llegan al modelo.
 - **Código:** `ai/` (modelo, esquemas, biblioteca), `app/src/plan/` (pantalla principal), `fixtures/` (modo demo).
@@ -53,8 +55,8 @@ Gemma 4 E2B (`gemma4:e2b`) de Google DeepMind, licencia [Apache 2.0](https://www
 | | |
 |---|---|
 | **Real** | Búsqueda en la biblioteca, generación con el modelo local, validación, funcionamiento sin red. Mediciones: `docs/review/resultados-2026-11-05.md` |
-| **Grabado** | En `npm run demo`, el plan es una respuesta real del modelo guardada en `fixtures/`, y la interfaz lo indica |
-| **Sin revisar** | Las 8 fichas son un borrador de demostración basado en el Currículo Nacional del Perú. Sus competencias, documentos y páginas aún deben contrastarse con el MINEDU. No son material oficial y la interfaz las marca como pendientes |
+| **Grabado** | En `npm run demo`, el plan es una respuesta real del modelo guardada en `fixtures/`, solo para los temas grabados, y la interfaz lo indica |
+| **Sin revisar** | Todo el contenido. El mapa de temas y las 8 fichas son un borrador orientado al currículo del Perú, sin contrastar con el MINEDU. Los artículos vienen de enciclopedias abiertas, editables por cualquiera, y pueden tener errores. La interfaz lo marca como pendiente de revisión |
 | **Sin validar** | No hemos demostrado que Ceiba mejore la enseñanza ni el aprendizaje. Citar una ficha no garantiza que el paso sea fiel a ella: por eso el docente puede abrir la fuente y cada plan es un borrador. Los cortes de nivel del perfil tampoco están validados |
 
 ## Comprobar
@@ -66,4 +68,4 @@ npm run smoke:plan -- http://localhost:5173/    # con la app en marcha y Chrome 
 
 ## Licencias
 
-Código: [MIT](LICENSE). Fuente Source Serif 4, incluida en la app: [SIL OFL 1.1](https://openfontlicense.org). Documentación y fichas: [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es_ES). Sin datos reales de alumnos ni de docentes.
+Código: [MIT](LICENSE). Fuente Source Serif 4, incluida en la app: [SIL OFL 1.1](https://openfontlicense.org). Documentación: [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es_ES). Biblioteca: CC BY-SA, con el detalle en `library/README.md` y los créditos de cada artículo en `library/ATRIBUCIONES.md`. Sin datos reales de alumnos ni de docentes.

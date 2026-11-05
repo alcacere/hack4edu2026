@@ -1,8 +1,15 @@
 # Biblioteca de Ceiba
 
-Cada fichero de `fichas/` es una **ficha**: un resumen listo para preparar clase sobre un tema y un grado, no un libro ni un PDF. Ceiba busca en estas fichas y redacta el plan solo con su contenido.
+Dos tipos de contenido, ambos locales: la app no consulta internet.
 
-## Añadir una ficha
+- **Temas descargados:** `temas.json` dice qué temas tocan en cada grado y `articulos.json` guarda el texto de artículos de Vikidia y Wikipedia, con su revisión y licencia. Se generan con `npm run library:build`, una sola vez; lo ya descargado no se vuelve a pedir. Créditos: `ATRIBUCIONES.md`.
+- **Fichas curadas:** los ficheros de `fichas/`, escritos para enseñar, con actividades y errores frecuentes. Si hay una para el tema y el grado, se usa antes que el artículo.
+
+## Añadir un tema descargado
+
+Añade una entrada a `temas.json` (`area`, `tema`, `grados`, `articulo` y `alias`), ejecuta `npm run library:build` y comprueba con `npm run library:check`.
+
+## Añadir una ficha curada
 
 1. Copia una ficha parecida en `fichas/<área>/<grado>-<tema>.md`.
 2. Rellena la cabecera:
@@ -20,6 +27,8 @@ Cada ficha debe ocupar unos 1.500–2.000 caracteres: el modelo la recibe entera
 
 ## Estado del contenido
 
-Las fichas son un **borrador de demostración**, escrito durante el hackathon (noviembre de 2026) y basado en el Currículo Nacional de la Educación Básica del Perú. **Ninguna está revisada todavía**: las competencias, los documentos y las páginas citados deben contrastarse con las publicaciones oficiales del MINEDU. No son material oficial del MINEDU.
+**Nada está revisado todavía.** El mapa de temas por grado y las fichas curadas son un borrador de demostración escrito durante el hackathon (noviembre de 2026), orientado al Currículo Nacional del Perú pero sin contrastar con el documento oficial del MINEDU. Vikidia y Wikipedia son obras abiertas que cualquiera puede editar y pueden contener errores. Nada de esto es material oficial.
 
-Licencia del contenido de esta carpeta: [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.es_ES).
+## Licencia
+
+Todo el contenido de esta carpeta se distribuye bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es), salvo los artículos de Vikidia, que conservan [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es) como su original. Los artículos están recortados y troceados respecto al original.

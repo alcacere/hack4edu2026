@@ -15,7 +15,7 @@ Acompañar a un docente funciona, pero cuando estos programas crecen pierden bue
 
 ### 2. Solución (≈ 20 s)
 
-Esto es Ceiba. Vive en el ordenador del docente, con una biblioteca basada en el currículo de su país y un modelo de IA abierto. No le da una lista de libros: le prepara un plan que puede usar y cambiar.
+Esto es Ceiba. Vive en el ordenador del docente, con una biblioteca de temas de primaria y un modelo de IA abierto. No le da una lista de libros: le prepara un plan que puede usar y cambiar.
 
 ### 3. Demo (≈ 80 s)
 
@@ -31,15 +31,15 @@ Cada paso dice en qué se apoya. Lo abrimos y aquí está el texto de la ficha.
 
 Ella cambia un paso con un clic y lo imprime. Es un borrador: la última palabra es suya. [DECIDE EL DOCENTE.]
 
-Ahora, el mismo tema para tercero. El plan cambia, porque cambia lo que ese grado debe lograr.
+Ahora, el mismo tema para tercero. El plan cambia, porque cambia lo que ese grado debe lograr. Y si no le convence, pide otra versión con otro enfoque: jugar, contar una historia, debatir.
 
-¿Y si pide algo que la biblioteca no tiene, como la fotosíntesis? Ceiba lo dice y no se inventa nada. Le enseña lo que sí tiene.
+¿Y si pide algo que la biblioteca no tiene, como las criptomonedas? Ceiba lo dice y no se inventa nada. Le enseña lo que sí tiene.
 
 Termina con un paso pequeño para su semana, porque el objetivo no es solo este plan, sino acompañar a quien enseña.
 
 ### 4. Cómo funciona (≈ 20 s)
 
-Gemma 4, un modelo abierto, en un portátil de ocho gigas sin tarjeta gráfica. La biblioteca son ficheros de texto: un ministerio o una ONG puede ampliarla sin servidores. Y lo que escribe la docente no llega ni al modelo, así que los nombres de sus alumnos no salen de ahí. [REAL. Son 7,5 GB medidos; decir «ocho» es redondear la capacidad del equipo.]
+Gemma 4, un modelo abierto, en un portátil de ocho gigas sin tarjeta gráfica. La biblioteca son ficheros: ciento setenta temas con artículos abiertos de Vikidia y Wikipedia, descargados una vez. Un ministerio o una ONG podría añadir los suyos sin servidores. Y lo que escribe la docente no llega ni al modelo, así que los nombres de sus alumnos no salen de ahí. [REAL. Son 7,5 GB medidos; decir «ocho» es redondear la capacidad del equipo.]
 
 ### 5. Impacto (≈ 15 s)
 
@@ -47,16 +47,17 @@ Una red como ProFuturo podría llevarlo a los equipos que ya están en las escue
 
 ### 6. Límites honestos (≈ 15 s)
 
-Seamos claros. Son ocho fichas de demostración, aún pendientes de revisión con el currículo oficial, y no hemos medido su efecto en el aprendizaje. Lo probamos con [CONFIRMAR: número] docentes. [Si no hay pruebas, se quita la frase.]
+Seamos claros. El contenido aún no está revisado: viene de enciclopedias abiertas y de un mapa de temas que falta contrastar con el currículo oficial. Y no hemos medido su efecto en el aprendizaje. Lo probamos con [CONFIRMAR: número] docentes. [Si no hay pruebas, se quita la frase.]
 
 Ceiba propone. Decide el docente.
 
 ## Preguntas del jurado: respuestas breves
 
-- **¿Por qué no un RAG con vectores?** Con pocas fichas, el filtro por grado y la búsqueda por tema aciertan en las pruebas (`npm run library:check`), y un segundo modelo competiría por la poca RAM. Con muchas más fichas se reabriría la decisión.
+- **¿Por qué no un RAG con vectores?** Con unos cientos de temas, el filtro por grado y la búsqueda por tema aciertan en las pruebas (`npm run library:check`), y un segundo modelo competiría por la poca RAM. Con muchos más se reabriría la decisión.
+- **¿Es fiable el contenido?** Todavía no lo garantizamos. Es texto abierto, con su versión y su fuente guardadas, y la interfaz lo marca como sin revisar. El siguiente paso es revisarlo con docentes.
 - **¿Cómo evitáis las invenciones?** El modelo solo recibe las fichas, cada paso debe citar una, y sin ficha no se genera nada. Citar no garantiza fidelidad: por eso el docente puede abrir la fuente y el plan es un borrador. Resultados de la lectura de planes reales: `docs/review/resultados-2026-11-05.md`.
 - **¿Qué datos se guardan?** Ninguno en un servidor. El nivel del perfil se queda en la pestaña y se borra al cerrarla.
-- **¿Quién mantiene las fichas?** [SIN VALIDAR] La idea es que lo haga la organización que despliega Ceiba; no lo hemos probado.
+- **¿Quién mantiene la biblioteca?** [SIN VALIDAR] La idea es que lo haga la organización que despliega Ceiba; no lo hemos probado.
 
 ## Qué no decimos
 
