@@ -11,7 +11,7 @@ Máquina: portátil de 7,5 GB de RAM, 8 núcleos, sin GPU. Ollama 0.40.14 en Doc
 | Grabación por script, 24 planes de 1 o 2 sesiones | 19,2–34,0 s |
 | Primer plan tras reiniciar el contenedor | 41,1 s. Es un mínimo: el sistema aún tenía el modelo en caché de disco; tras encender el equipo puede tardar más |
 | Velocidad en la interfaz | 7,4–17,8 tok/s (medida de punta a punta, incluye la carga si la hay) |
-| Salida válida | 33 de 33 planes a la primera, con `json_schema` (3 de la prueba inicial, 24 de la grabación, 6 en la interfaz, según las métricas de cada uno) |
+| Salida válida | 34 de 34 planes a la primera, con `json_schema` (3 de la prueba inicial, 24 de la grabación, 7 en la interfaz, según las métricas de cada uno) |
 | Memoria del contenedor | Pico de 5,1 GB. El sistema usó además 1,5 GB de swap, con Chrome y Vite abiertos |
 
 ## Comprobaciones
