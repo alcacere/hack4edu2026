@@ -24,6 +24,9 @@ const FIXTURES: Record<FlowId, FixtureFile> = {
   plan: plan as FixtureFile,
 }
 
+/** Fichas con plan grabado: en modo demo solo se ofrecen estas. */
+export const temasGrabados = new Set((plan as FixtureFile).entries.map((e) => e.key))
+
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 export function createFixtureProvider({ delayMs = 400 }: { delayMs?: number } = {}): LLMProvider {

@@ -92,6 +92,8 @@ try {
     sinMaterial: document.querySelector('[data-sin-material]')?.innerText ?? null,
     aviso: document.querySelector('[data-aviso-borrador]')?.innerText ?? null,
     sesionesVistas: document.querySelectorAll('[data-sesion]').length,
+    enfoque: document.querySelector('[data-enfoque]')?.innerText ?? null,
+    ideas: document.querySelectorAll('[data-idea]').length,
     pasos: [...document.querySelectorAll('[data-paso]')].map(p => p.innerText.replace(/\\n/g, ' ')),
     microaccion: document.querySelector('[data-microaccion]')?.innerText.replace(/\\n/g, ' ') ?? null,
     fragmentoAbierto: document.querySelector('[data-fragmento]')?.innerText.slice(0, 120) ?? null,
@@ -101,6 +103,16 @@ try {
     anchoVentana: window.innerWidth,
     conexion: document.querySelector('[data-conexion]')?.innerText.replace(/\\n/g, ' ') ?? null,
   })`)
+  // SMOKE_OTRA=1: pulsa «Otra versión» y devuelve los pasos de la segunda versión.
+  let otra = null
+  if (process.env.SMOKE_OTRA) {
+    const antes = await evaluate(`document.querySelector('[data-enfoque]')?.innerText`)
+    await evaluate(`document.querySelector('[data-otra-version]')?.click()`)
+    await sleep(500)
+    await waitFor(`!document.querySelector('[data-generando]') && !!document.querySelector('[data-plan]')`, waitMs)
+    otra = await evaluate(`({ enfoqueAntes: ${JSON.stringify('')} , enfoque: document.querySelector('[data-enfoque]')?.innerText, pasos: [...document.querySelectorAll('[data-paso]')].map(p => p.innerText.replace(/\\n/g, ' ')), microaccion: document.querySelector('[data-microaccion]')?.innerText.replace(/\\n/g,' ') })`)
+    otra.enfoqueAntes = antes
+  }
   if (process.env.SMOKE_SHOT) {
     const shot = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true })
     writeFileSync(process.env.SMOKE_SHOT, Buffer.from(shot.data, 'base64'))
@@ -127,7 +139,7 @@ try {
   }
   const origin = new URL(url).origin
   console.log(JSON.stringify({
-    texto, segundos, faltaGrado, fuentesAlInstante, ...resultado, interaccion, conexionSinRed, llmCalls: llmBodies.length,
+    texto, segundos, faltaGrado, fuentesAlInstante, ...resultado, otra, interaccion, conexionSinRed, llmCalls: llmBodies.length,
     textoEnPayload: llmBodies.some((b) => b.includes(texto)),
     // SMOKE_PROHIBIDAS=a,b: palabras que no pueden aparecer en ninguna petición al modelo (datos de alumnos).
     prohibidasEnPayload: (process.env.SMOKE_PROHIBIDAS || '').split(',').filter((w) => w && llmBodies.some((b) => b.includes(w))),

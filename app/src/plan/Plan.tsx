@@ -5,9 +5,13 @@ import {
   AIError,
   biblioteca,
   buscar,
+  config,
   fragmentos,
+  FUENTE_IDEA,
   parsePedido,
   planClase,
+  recortarFicha,
+  temasGrabados,
   type Busqueda,
   type Ficha,
   type JsonResult,
@@ -29,11 +33,28 @@ const etiqueta = 'block text-sm font-semibold text-stone-800'
 
 const GRADOS = [1, 2, 3, 4, 5, 6]
 const limitar = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n))
+const ENFOQUES: readonly string[] = es.plan.enfoques
+const CHIPS = 8
+
+/** Un enfoque al azar, distinto del anterior: así cada versión cambia de verdad. */
+function otroEnfoque(anterior?: string) {
+  const posibles = ENFOQUES.filter((e) => e !== anterior)
+  return posibles[Math.floor(Math.random() * posibles.length)]
+}
+
+function barajar<T>(l: T[]) {
+  const c = [...l]
+  for (let i = c.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[c[i], c[j]] = [c[j], c[i]]
+  }
+  return c
+}
 
 type Generacion =
   | { status: 'idle' }
   | { status: 'loading' }
-  | { status: 'done'; out: JsonResult<PlanOut>; fichas: Ficha[] }
+  | { status: 'done'; out: JsonResult<PlanOut>; fichas: Ficha[]; enfoque: string }
   | { status: 'error'; error: { docente: string; tecnico: string } }
 
 export function Plan({ model }: { model: string }) {
@@ -44,6 +65,8 @@ export function Plan({ model }: { model: string }) {
   const [sesiones, setSesiones] = useState(1)
   const [minutos, setMinutos] = useState(45)
   const [sinDispositivos, setSinDispositivos] = useState(true)
+  /** '' = Sorpréndeme: se elige uno al azar en cada plan. */
+  const [enfoque, setEnfoque] = useState('')
   const [faltaGrado, setFaltaGrado] = useState(false)
   const [busqueda, setBusqueda] = useState<Busqueda | null>(null)
   const [gen, setGen] = useState<Generacion>({ status: 'idle' })
@@ -67,7 +90,8 @@ export function Plan({ model }: { model: string }) {
     if (cambiando) pedidoRef.current?.focus()
   }, [cambiando])
 
-  async function generar(fichas: Ficha[], g: number, ses: number, min: number) {
+  async function generar(fichas: Ficha[], g: number, ses: number, min: number, enfoqueFijo?: string) {
+    const enfoquePlan = enfoqueFijo ?? (enfoque || otroEnfoque())
     abortRef.current?.abort()
     const ctrl = new AbortController()
     abortRef.current = ctrl
@@ -75,8 +99,8 @@ export function Plan({ model }: { model: string }) {
     setCambiando(false)
     setGen({ status: 'loading' })
     try {
-      const out = await planClase(model, { grado: g, fichas, sesiones: ses, minutos: min, sinDispositivos, nivelNombre: nivel?.nombre }, ctrl.signal)
-      setGen({ status: 'done', out, fichas })
+      const out = await planClase(model, { grado: g, fichas, sesiones: ses, minutos: min, sinDispositivos, nivelNombre: nivel?.nombre, enfoque: enfoquePlan }, ctrl.signal)
+      setGen({ status: 'done', out, fichas, enfoque: enfoquePlan })
     } catch (e) {
       if (abortRef.current !== ctrl) return // ya hay una petición más nueva
       if (ctrl.signal.aborted && !(e instanceof AIError && e.code === 'timeout')) {
@@ -128,8 +152,9 @@ export function Plan({ model }: { model: string }) {
     setGrado(f.grado)
     setTema(f.tema)
     setFaltaGrado(false)
-    setBusqueda({ fichas: [f], otrosGrados: [], temasDelGrado: [] })
-    void generar([f], f.grado, sesiones, minutos)
+    const lista = [recortarFicha(f, f.tema)]
+    setBusqueda({ fichas: lista, otrosGrados: [], temasDelGrado: [] })
+    void generar(lista, f.grado, sesiones, minutos)
   }
 
   function usarOtroGrado(ficha: Ficha) {
@@ -155,7 +180,18 @@ export function Plan({ model }: { model: string }) {
   const cargando = gen.status === 'loading'
   const fichasEnUso = busqueda?.fichas ?? []
   const plegado = gen.status !== 'idle' && fichasEnUso.length > 0 && !cambiando
-  const fichasOrdenadas = useMemo(() => [...biblioteca].sort((a, b) => a.grado - b.grado || a.tema.localeCompare(b.tema)), [])
+  // En modo demo solo hay respuesta grabada para algunas fichas: solo se ofrecen esas.
+  const disponibles = useMemo(() => (config.demoMode ? biblioteca.filter((f) => temasGrabados.has(f.id)) : biblioteca), [])
+  const [tanda, setTanda] = useState(0)
+  const totalTemas = useMemo(() => new Set(disponibles.map((f) => f.tema)).size, [disponibles])
+  const chips = useMemo(
+    () =>
+      barajar(disponibles.filter((f) => grado === null || f.grado === grado))
+        .slice(0, CHIPS)
+        .sort((a, b) => a.grado - b.grado || a.tema.localeCompare(b.tema)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [disponibles, grado, tanda],
+  )
 
   return (
     <div className="flex flex-col gap-4">
@@ -255,6 +291,20 @@ export function Plan({ model }: { model: string }) {
           </div>
         </div>
 
+        <div className="max-w-xs">
+          <label htmlFor="enfoque" className={etiqueta}>
+            {es.plan.enfoqueEtiqueta}
+          </label>
+          <select id="enfoque" value={enfoque} onChange={(e) => setEnfoque(e.target.value)} className={campo}>
+            <option value="">{es.plan.enfoqueSorpresa}</option>
+            {ENFOQUES.map((e) => (
+              <option key={e} value={e}>
+                {e}
+              </option>
+            ))}
+          </select>
+        </div>
+
         <label className="flex min-h-11 items-center gap-2 text-base text-stone-800">
           <input type="checkbox" checked={sinDispositivos} onChange={(e) => setSinDispositivos(e.target.checked)} className="size-5 accent-emerald-800" />
           {es.plan.sinDispositivos}
@@ -269,13 +319,21 @@ export function Plan({ model }: { model: string }) {
 
       {gen.status === 'idle' && !busqueda && !faltaGrado && (
         <section data-temas-biblioteca className="no-print">
-          <h2 className="text-sm font-semibold text-stone-800">{es.plan.temasBiblioteca}</h2>
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 className="text-sm font-semibold text-stone-800">{es.plan.temasBiblioteca}</h2>
+            <p className="text-xs text-stone-700" data-total-temas>
+              {es.plan.totalTemas(totalTemas)}
+            </p>
+          </div>
           <div className="mt-2 flex flex-wrap gap-2">
-            {fichasOrdenadas.map((f) => (
+            {chips.map((f) => (
               <button key={f.id} type="button" className={chip} onClick={() => usarFicha(f)}>
                 <span className="font-semibold text-emerald-900">{f.grado}.º</span> · {f.tema}
               </button>
             ))}
+            <button type="button" className={`${btn} text-sm text-emerald-900 underline underline-offset-2 hover:bg-stone-100`} onClick={() => setTanda((t) => t + 1)}>
+              {es.plan.otrosTemas}
+            </button>
           </div>
         </section>
       )}
@@ -319,12 +377,17 @@ export function Plan({ model }: { model: string }) {
         {gen.status === 'done' && (
           <article data-plan className="hoja rounded-sm border border-stone-300 bg-white p-5 shadow-md sm:p-10">
             <div ref={planRef}>
-              <PlanVista plan={gen.out.data} fichas={gen.fichas} grado={grado} />
+              <PlanVista key={gen.out.result.latencyMs} plan={gen.out.data} fichas={gen.fichas} grado={grado} enfoque={gen.enfoque} />
             </div>
             <div className="no-print mt-6 flex flex-wrap items-center gap-2 border-t border-stone-300 pt-4">
               <button type="button" className={btnPrimary} onClick={() => window.print()}>
                 {es.plan.imprimir}
               </button>
+              {!config.demoMode && grado !== null && (
+                <button type="button" data-otra-version className={btnSecondary} onClick={() => void generar(gen.fichas, grado, sesiones, minutos, otroEnfoque(gen.enfoque))}>
+                  {es.plan.otraVersion}
+                </button>
+              )}
               <button type="button" className={btnSecondary} onClick={() => void copiar()}>
                 {copiado ? es.comun.copiado : es.comun.copiar}
               </button>
@@ -465,7 +528,7 @@ function Bloque({ titulo, children }: { titulo: string; children: React.ReactNod
   )
 }
 
-function PlanVista({ plan, fichas, grado }: { plan: PlanOut; fichas: Ficha[]; grado: number | null }) {
+function PlanVista({ plan, fichas, grado, enfoque }: { plan: PlanOut; fichas: Ficha[]; grado: number | null; enfoque: string }) {
   const frags = useMemo(() => fragmentos(fichas), [fichas])
   const [abierta, setAbierta] = useState<string | null>(null)
   return (
@@ -479,7 +542,7 @@ function PlanVista({ plan, fichas, grado }: { plan: PlanOut; fichas: Ficha[]; gr
       <header className="border-b-2 border-emerald-800 pb-3">
         {grado !== null && (
           <p className="text-sm font-semibold text-stone-700">
-            {es.plan.gradoNombre(grado)} · {fichas[0].area}
+            {es.plan.gradoNombre(grado)} · {fichas[0].area} · <span data-enfoque>{es.plan.enfoqueDelPlan}: {enfoque}</span>
           </p>
         )}
         <Editable as="h2" className="block font-serif text-3xl leading-tight font-semibold text-emerald-900">
@@ -506,6 +569,11 @@ function PlanVista({ plan, fichas, grado }: { plan: PlanOut; fichas: Ficha[]; gr
               return (
                 <li key={j} className="pl-1 leading-relaxed" data-paso>
                   <Editable>{p.texto}</Editable>{' '}
+                  {p.fuente === FUENTE_IDEA ? (
+                    <span data-idea className="no-print inline-flex min-h-6 items-center rounded bg-barro-100 px-1.5 align-baseline text-xs font-semibold whitespace-nowrap text-barro-700">
+                      {es.plan.ideaSinFuente}
+                    </span>
+                  ) : (
                   <button
                     type="button"
                     data-fuente={p.fuente}
@@ -515,6 +583,7 @@ function PlanVista({ plan, fichas, grado }: { plan: PlanOut; fichas: Ficha[]; gr
                   >
                     {frag ? frag.seccion.titulo : p.fuente}
                   </button>
+                  )}
                   {abierta === clave && frag && (
                     <blockquote data-fragmento className="no-print mt-2 rounded-r border-l-4 border-emerald-600 bg-stone-50 p-3 text-sm">
                       <p className="font-semibold">

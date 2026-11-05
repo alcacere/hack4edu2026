@@ -1,7 +1,7 @@
 // Comprueba la biblioteca sin modelo ni red. Uso: npm run library:check (Node ≥ 22.6).
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
-import { buscar, parseFicha, parsePedido, type Ficha } from '../ai/library/search.ts'
+import { buscar, fichasDeArticulos, parseFicha, parsePedido, type Ficha } from '../ai/library/search.ts'
 
 const raiz = new URL('../library/fichas', import.meta.url).pathname
 const rutas = readdirSync(raiz, { recursive: true, encoding: 'utf8' }).filter((r) => r.endsWith('.md'))
@@ -19,10 +19,15 @@ for (const r of rutas) {
     fallo((e as Error).message)
   }
 }
+const leerJson = (r: string) => JSON.parse(readFileSync(new URL(`../library/${r}`, import.meta.url), 'utf8'))
+const deArticulos = fichasDeArticulos(leerJson('temas.json'), leerJson('articulos.json'))
+const curadas = fichas.length
+fichas.push(...deArticulos)
 const ids = fichas.map((f) => f.id)
 for (const id of new Set(ids)) if (ids.filter((x) => x === id).length > 1) fallo(`id duplicado: ${id}`)
-console.log(`${fichas.length} fichas, ${fichas.filter((f) => f.revisado).length} revisadas por una persona`)
-console.table(fichas.map((f) => ({ id: f.id, grado: f.grado, area: f.area, tema: f.tema, revisado: f.revisado })))
+const temasDistintos = new Set(deArticulos.map((f) => f.tema)).size
+console.log(`${curadas} fichas curadas + ${deArticulos.length} combinaciones tema-grado (${temasDistintos} temas). Revisadas por una persona: ${fichas.filter((f) => f.revisado).length}`)
+for (let g = 1; g <= 6; g++) console.log(`  ${g}.º: ${fichas.filter((f) => f.grado === g).length} fichas`)
 
 // Lo que el docente escribe → lo que se debe entender y encontrar.
 const casos: { texto: string; grado: number | null; sesiones?: number; minutos?: number; ficha?: string; otros?: string; nada?: boolean }[] = [
@@ -32,8 +37,16 @@ const casos: { texto: string; grado: number | null; sesiones?: number; minutos?:
   { texto: 'Plan sobre el ciclo del agua para 3er grado', grado: 3, ficha: 'cyt-3-ciclo-agua' },
   { texto: 'lesson on fractions for 5th grade', grado: 5, ficha: 'mat-5-fracciones' },
   { texto: 'Quiero una clase de 3.º de primaria sobre fracciones', grado: 3, ficha: 'mat-3-fracciones' },
-  { texto: 'Plan para 4.º sobre el ciclo del agua', grado: 4, otros: 'cyt-3-ciclo-agua' },
-  { texto: 'Plan para 5.º sobre la fotosíntesis', grado: 5, nada: true },
+  { texto: 'Plan para 1.º sobre el ciclo del agua', grado: 1, otros: 'cyt-3-ciclo-agua' },
+  { texto: 'Plan para 4.º sobre el ciclo del agua', grado: 4, ficha: 'art-el-ciclo-del-agua-4' },
+  { texto: 'Plan para 5.º sobre la fotosíntesis', grado: 5, ficha: 'art-la-fotosintesis-5' },
+  { texto: 'Plan sobre los volcanes para 4.º', grado: 4, ficha: 'art-los-volcanes-4' },
+  { texto: 'lesson about volcanoes for grade 4', grado: 4, ficha: 'art-los-volcanes-4' },
+  { texto: 'Plan para 5.º sobre los incas', grado: 5, ficha: 'art-el-imperio-inca-5' },
+  { texto: 'Plan para 3.º sobre la multiplicación', grado: 3, ficha: 'art-la-multiplicacion-3' },
+  { texto: 'Plan para 2.º sobre la Tierra', grado: 2, ficha: 'art-la-tierra-2' },
+  { texto: 'Plan para 3.º sobre las fábulas', grado: 3, ficha: 'art-la-fabula-3' },
+  { texto: 'Plan para 5.º sobre las criptomonedas', grado: 5, nada: true },
   { texto: 'Plan para 5.º sobre el ciclo de las rocas', grado: 5, nada: true },
   { texto: 'Plan sobre el ciclo del agua', grado: null },
   { texto: '2 sesiones de 45 minutos sobre el agua', grado: null, sesiones: 2, minutos: 45 },

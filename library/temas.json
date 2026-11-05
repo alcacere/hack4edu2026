@@ -1,0 +1,2507 @@
+{
+ "_nota": "Mapa de temas por grado, escrito para la demo. SIN REVISAR contra el currículo oficial.",
+ "guiaCiclo": {
+  "III": "Grados 1.º y 2.º (ciclo III). Observar, nombrar y contar con palabras muy sencillas, jugando y manipulando objetos. Frases cortas, sin términos técnicos.",
+  "IV": "Grados 3.º y 4.º (ciclo IV). Describir, comparar y clasificar con ejemplos del entorno. Introducir pocos términos nuevos, explicados con palabras sencillas.",
+  "V": "Grados 5.º y 6.º (ciclo V). Explicar causas y relaciones, usar los términos propios del tema y justificar con esquemas o datos sencillos."
+ },
+ "temas": [
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El ciclo del agua",
+   "grados": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Ciclo del agua",
+   "alias": [
+    "water cycle",
+    "ciclo hidrológico",
+    "evaporación",
+    "condensación",
+    "precipitación",
+    "lluvia"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La fotosíntesis",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Fotosíntesis",
+   "alias": [
+    "photosynthesis",
+    "clorofila"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las plantas",
+   "grados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "articulo": "Planta",
+   "alias": [
+    "plants",
+    "vegetales",
+    "raíz",
+    "tallo",
+    "hojas"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los animales",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Animal",
+   "alias": [
+    "animals",
+    "fauna"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Animales vertebrados",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Vertebrado",
+   "alias": [
+    "vertebrates",
+    "mamíferos",
+    "aves",
+    "reptiles",
+    "anfibios",
+    "peces"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Animales invertebrados",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Invertebrado",
+   "alias": [
+    "invertebrates",
+    "insectos",
+    "moluscos"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los mamíferos",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Mamífero",
+   "alias": [
+    "mammals"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las aves",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Ave",
+   "alias": [
+    "birds",
+    "pájaros"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los reptiles",
+   "grados": [
+    3,
+    4
+   ],
+   "articulo": "Reptil",
+   "alias": [
+    "reptiles"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los anfibios",
+   "grados": [
+    3,
+    4
+   ],
+   "articulo": "Anfibio",
+   "alias": [
+    "amphibians",
+    "rana",
+    "sapo"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los peces",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Pez",
+   "alias": [
+    "fish"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los insectos",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Insecto",
+   "alias": [
+    "insects",
+    "hormigas",
+    "abejas"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las cadenas alimentarias",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Cadena alimentaria",
+   "alias": [
+    "food chain",
+    "food chains",
+    "cadena trófica",
+    "productores",
+    "consumidores",
+    "descomponedores"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los ecosistemas",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Ecosistema",
+   "alias": [
+    "ecosystem",
+    "ecosystems",
+    "hábitat"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La biodiversidad",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Biodiversidad",
+   "alias": [
+    "biodiversity"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La célula",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Célula",
+   "alias": [
+    "cell",
+    "cells",
+    "células"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El cuerpo humano",
+   "grados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "articulo": "Cuerpo humano",
+   "alias": [
+    "human body",
+    "partes del cuerpo"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El sistema digestivo",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Aparato digestivo",
+   "alias": [
+    "digestive system",
+    "aparato digestivo",
+    "digestión",
+    "estómago"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El sistema circulatorio",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Aparato circulatorio",
+   "alias": [
+    "circulatory system",
+    "aparato circulatorio",
+    "sangre",
+    "corazón"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El sistema respiratorio",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Aparato respiratorio",
+   "alias": [
+    "respiratory system",
+    "aparato respiratorio",
+    "respiración",
+    "pulmones"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El sistema nervioso",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Sistema nervioso",
+   "alias": [
+    "nervous system",
+    "cerebro",
+    "neuronas"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El esqueleto y los huesos",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Esqueleto",
+   "alias": [
+    "skeleton",
+    "bones",
+    "huesos",
+    "sistema óseo"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los músculos",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Músculo",
+   "alias": [
+    "muscles",
+    "sistema muscular"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los sentidos",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Sistema sensorial",
+   "alias": [
+    "senses",
+    "cinco sentidos",
+    "vista",
+    "oído",
+    "olfato",
+    "gusto",
+    "tacto"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los dientes",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Diente",
+   "alias": [
+    "teeth",
+    "dentadura",
+    "higiene dental"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La alimentación saludable",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Alimentación",
+   "alias": [
+    "healthy eating",
+    "nutrición",
+    "alimentos",
+    "dieta"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las vitaminas",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Vitamina",
+   "alias": [
+    "vitamins"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las enfermedades infecciosas",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Enfermedad infecciosa",
+   "alias": [
+    "infectious diseases",
+    "virus",
+    "bacterias",
+    "contagio"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las vacunas",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Vacuna",
+   "alias": [
+    "vaccines"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La materia",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Materia",
+   "alias": [
+    "matter"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los estados de la materia",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Estado de agregación de la materia",
+   "alias": [
+    "states of matter",
+    "sólido",
+    "líquido",
+    "gas",
+    "cambios de estado"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las mezclas",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Mezcla",
+   "alias": [
+    "mixtures",
+    "disolución"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La energía",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Energía",
+   "alias": [
+    "energy",
+    "tipos de energía"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La energía solar",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Energía solar",
+   "alias": [
+    "solar energy",
+    "paneles solares"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La electricidad",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Electricidad",
+   "alias": [
+    "electricity",
+    "circuito eléctrico"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El magnetismo y los imanes",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Imán",
+   "alias": [
+    "magnets",
+    "magnetism",
+    "magnetismo",
+    "imanes"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La luz",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Luz",
+   "alias": [
+    "light",
+    "sombras"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El sonido",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Sonido",
+   "alias": [
+    "sound",
+    "vibración"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El calor y la temperatura",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Temperatura",
+   "alias": [
+    "heat",
+    "temperature",
+    "calor",
+    "termómetro"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las fuerzas y el movimiento",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Fuerza",
+   "alias": [
+    "forces",
+    "motion",
+    "fuerza",
+    "movimiento"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La gravedad",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Gravedad",
+   "alias": [
+    "gravity"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las máquinas simples",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Máquina simple",
+   "alias": [
+    "simple machines",
+    "palanca",
+    "polea"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El sistema solar",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Sistema solar",
+   "alias": [
+    "solar system",
+    "planetas"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La Tierra",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Tierra",
+   "alias": [
+    "earth",
+    "planeta tierra",
+    "capas de la tierra"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El Sol",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Sol",
+   "alias": [
+    "the sun",
+    "estrella"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La Luna",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Luna",
+   "alias": [
+    "the moon",
+    "fases de la luna"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las estaciones del año",
+   "grados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "articulo": "Estación del año",
+   "alias": [
+    "seasons",
+    "primavera",
+    "verano",
+    "otoño",
+    "invierno"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los volcanes",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Volcán",
+   "alias": [
+    "volcanoes",
+    "volcano",
+    "erupción",
+    "lava"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los terremotos",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Terremoto",
+   "alias": [
+    "earthquakes",
+    "earthquake",
+    "sismos",
+    "sismo"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las rocas y los minerales",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Roca",
+   "alias": [
+    "rocks",
+    "minerals",
+    "rocas",
+    "minerales"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El suelo",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Suelo",
+   "alias": [
+    "soil",
+    "tierra de cultivo"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El clima y el tiempo atmosférico",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Clima",
+   "alias": [
+    "climate",
+    "weather",
+    "tiempo atmosférico"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La atmósfera",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Atmósfera",
+   "alias": [
+    "atmosphere",
+    "aire"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El cambio climático",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Cambio climático",
+   "alias": [
+    "climate change",
+    "calentamiento global",
+    "efecto invernadero"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La contaminación",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Contaminación",
+   "alias": [
+    "pollution",
+    "contaminación del agua",
+    "contaminación del aire"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El reciclaje",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Reciclaje",
+   "alias": [
+    "recycling",
+    "residuos",
+    "basura"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "El agua",
+   "grados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "articulo": "Agua",
+   "alias": [
+    "water",
+    "cuidado del agua"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los océanos",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Océano",
+   "alias": [
+    "oceans",
+    "mares"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los ríos",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Río",
+   "alias": [
+    "rivers"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los bosques",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Bosque",
+   "alias": [
+    "forests",
+    "deforestación"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los hongos",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Fungi",
+   "alias": [
+    "fungi",
+    "mushrooms",
+    "setas"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las bacterias",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Bacteria",
+   "alias": [
+    "bacteria",
+    "microbios"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La semilla y la germinación",
+   "grados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "articulo": "Semilla",
+   "alias": [
+    "seeds",
+    "germinación",
+    "semillas"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Las flores y la polinización",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Flor",
+   "alias": [
+    "flowers",
+    "pollination",
+    "polinización"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La metamorfosis",
+   "grados": [
+    3,
+    4
+   ],
+   "articulo": "Metamorfosis (biología)",
+   "alias": [
+    "metamorphosis",
+    "mariposa"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los dinosaurios",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Dinosaurio",
+   "alias": [
+    "dinosaurs"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La evolución de los seres vivos",
+   "grados": [
+    6
+   ],
+   "articulo": "Evolución biológica",
+   "alias": [
+    "evolution",
+    "darwin"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "Los seres vivos",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Ser vivo",
+   "alias": [
+    "living things",
+    "seres vivos"
+   ]
+  },
+  {
+   "area": "Ciencia y Tecnología",
+   "tema": "La tecnología y los inventos",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Tecnología",
+   "alias": [
+    "technology",
+    "inventos"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Las fracciones",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Fracción",
+   "alias": [
+    "fractions",
+    "fracciones",
+    "numerador",
+    "denominador",
+    "mitad",
+    "fraction"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La suma",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Suma",
+   "alias": [
+    "addition",
+    "sumar"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La resta",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Resta",
+   "alias": [
+    "subtraction",
+    "restar"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La multiplicación",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Multiplicación",
+   "alias": [
+    "multiplication",
+    "multiplicar",
+    "tablas de multiplicar"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La división",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "División (matemática)",
+   "alias": [
+    "division",
+    "dividir"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los números naturales",
+   "grados": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "articulo": "Número natural",
+   "alias": [
+    "natural numbers",
+    "números",
+    "contar"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los números decimales",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Número decimal",
+   "alias": [
+    "decimals",
+    "decimales"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los porcentajes",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Porcentaje",
+   "alias": [
+    "percentages",
+    "percent"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los números primos",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Número primo",
+   "alias": [
+    "prime numbers",
+    "primos"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los números romanos",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Numeración romana",
+   "alias": [
+    "roman numerals",
+    "números romanos"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los números negativos",
+   "grados": [
+    6
+   ],
+   "articulo": "Número negativo",
+   "alias": [
+    "negative numbers",
+    "enteros"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Las potencias",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Potenciación",
+   "alias": [
+    "powers",
+    "exponentes",
+    "potencia"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El sistema de numeración decimal",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Sistema de numeración decimal",
+   "alias": [
+    "place value",
+    "valor posicional",
+    "unidades decenas centenas"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La proporcionalidad",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Proporcionalidad",
+   "alias": [
+    "proportion",
+    "ratio",
+    "regla de tres",
+    "razones"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los polígonos",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Polígono",
+   "alias": [
+    "polygons",
+    "figuras geométricas"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El triángulo",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Triángulo",
+   "alias": [
+    "triangle",
+    "triángulos"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El cuadrado",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Cuadrado",
+   "alias": [
+    "square"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El rectángulo",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Rectángulo",
+   "alias": [
+    "rectangle"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El círculo y la circunferencia",
+   "grados": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Círculo",
+   "alias": [
+    "circle",
+    "circunferencia",
+    "radio",
+    "diámetro"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los ángulos",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Ángulo",
+   "alias": [
+    "angles"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El perímetro",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Perímetro",
+   "alias": [
+    "perimeter"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El área",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Área",
+   "alias": [
+    "area",
+    "superficie"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "El volumen",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Volumen",
+   "alias": [
+    "volume"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Los cuerpos geométricos",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Cuerpo geométrico",
+   "alias": [
+    "solids",
+    "cubo",
+    "esfera",
+    "cilindro",
+    "pirámide"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La simetría",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Simetría",
+   "alias": [
+    "symmetry"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Las medidas de longitud",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Metro",
+   "alias": [
+    "length",
+    "metro",
+    "centímetro",
+    "medir"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La medida del tiempo",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Reloj",
+   "alias": [
+    "time",
+    "hora",
+    "reloj",
+    "calendario"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Las estadísticas y los gráficos",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Estadística",
+   "alias": [
+    "statistics",
+    "graphs",
+    "gráficos",
+    "tablas de datos"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "La probabilidad",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Probabilidad",
+   "alias": [
+    "probability",
+    "azar"
+   ]
+  },
+  {
+   "area": "Matemática",
+   "tema": "Las ecuaciones",
+   "grados": [
+    6
+   ],
+   "articulo": "Ecuación",
+   "alias": [
+    "equations"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El sustantivo",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Sustantivo",
+   "alias": [
+    "nouns",
+    "nombre común"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El adjetivo",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Adjetivo",
+   "alias": [
+    "adjectives"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El verbo",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Verbo",
+   "alias": [
+    "verbs",
+    "tiempos verbales"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El pronombre",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Pronombre",
+   "alias": [
+    "pronouns"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El adverbio",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Adverbio",
+   "alias": [
+    "adverbs"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La oración",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Oración (gramática)",
+   "alias": [
+    "sentences",
+    "sujeto y predicado"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El alfabeto",
+   "grados": [
+    1,
+    2
+   ],
+   "articulo": "Alfabeto",
+   "alias": [
+    "alphabet",
+    "abecedario",
+    "letras"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La sílaba",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Sílaba",
+   "alias": [
+    "syllables"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La acentuación",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Tilde",
+   "alias": [
+    "accents",
+    "tilde",
+    "palabras agudas",
+    "graves",
+    "esdrújulas"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "Los signos de puntuación",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Signo de puntuación",
+   "alias": [
+    "punctuation",
+    "coma",
+    "punto"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "Los sinónimos",
+   "grados": [
+    3,
+    4
+   ],
+   "articulo": "Sinónimo",
+   "alias": [
+    "synonyms",
+    "sinónimos",
+    "antónimos"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La metáfora",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Metáfora",
+   "alias": [
+    "metaphor",
+    "figuras literarias"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El cuento",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Cuento",
+   "alias": [
+    "short story",
+    "tale",
+    "cuentos",
+    "narración"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La fábula",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Fábula",
+   "alias": [
+    "fables",
+    "fable",
+    "moraleja",
+    "esopo"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La leyenda",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Leyenda",
+   "alias": [
+    "legends",
+    "legend"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El mito",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Mito",
+   "alias": [
+    "myths",
+    "myth",
+    "mitología"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La poesía",
+   "grados": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Poesía",
+   "alias": [
+    "poetry",
+    "poema",
+    "poemas",
+    "rima",
+    "verso"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El teatro",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Teatro",
+   "alias": [
+    "theatre",
+    "obra de teatro",
+    "dramatización"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La novela",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Novela",
+   "alias": [
+    "novels"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La carta",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Carta",
+   "alias": [
+    "letter",
+    "cartas",
+    "correspondencia"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La noticia",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Noticia",
+   "alias": [
+    "news",
+    "periódico",
+    "prensa"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La biografía",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Biografía",
+   "alias": [
+    "biography"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "La lengua española",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Idioma español",
+   "alias": [
+    "spanish language",
+    "castellano",
+    "español"
+   ]
+  },
+  {
+   "area": "Comunicación",
+   "tema": "El quechua",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Idioma quechua",
+   "alias": [
+    "quechua",
+    "runasimi",
+    "lenguas originarias"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "El Imperio inca",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Imperio incaico",
+   "alias": [
+    "incas",
+    "inca empire",
+    "tahuantinsuyo",
+    "imperio incaico",
+    "incaico"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Machu Picchu",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Machu Picchu",
+   "alias": [
+    "machu picchu"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "El Perú",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Perú",
+   "alias": [
+    "peru",
+    "nuestro país",
+    "geografía del perú"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Lima",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Lima",
+   "alias": [
+    "lima"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Cusco",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Cuzco",
+   "alias": [
+    "cusco",
+    "cuzco"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Arequipa",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Arequipa",
+   "alias": [
+    "arequipa"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La cordillera de los Andes",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Cordillera de los Andes",
+   "alias": [
+    "andes",
+    "sierra",
+    "montañas"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La Amazonía",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Amazonia",
+   "alias": [
+    "amazon",
+    "amazonía",
+    "selva",
+    "amazonia"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "El río Amazonas",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Río Amazonas",
+   "alias": [
+    "amazon river"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "El lago Titicaca",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Lago Titicaca",
+   "alias": [
+    "lake titicaca",
+    "titicaca"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "América del Sur",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "América del Sur",
+   "alias": [
+    "south america",
+    "sudamérica"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Los continentes",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Continente",
+   "alias": [
+    "continents"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Los mapas",
+   "grados": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "articulo": "Mapa",
+   "alias": [
+    "maps",
+    "cartografía",
+    "puntos cardinales"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La independencia del Perú",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Independencia del Perú",
+   "alias": [
+    "peruvian independence",
+    "san martín",
+    "bolívar"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La conquista de América",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Conquista de América",
+   "alias": [
+    "conquest",
+    "pizarro",
+    "colón"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Cristóbal Colón",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Cristóbal Colón",
+   "alias": [
+    "columbus",
+    "colón"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Túpac Amaru II",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Túpac Amaru II",
+   "alias": [
+    "tupac amaru"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Los derechos del niño",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Derechos del niño",
+   "alias": [
+    "children's rights",
+    "derechos de los niños",
+    "derechos humanos"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La democracia",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Democracia",
+   "alias": [
+    "democracy",
+    "elecciones",
+    "votar"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La familia",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Familia",
+   "alias": [
+    "family"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La escuela",
+   "grados": [
+    1,
+    2
+   ],
+   "articulo": "Escuela",
+   "alias": [
+    "school"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Los oficios y las profesiones",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Profesión",
+   "alias": [
+    "jobs",
+    "trabajos",
+    "oficios",
+    "profesiones"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La agricultura",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Agricultura",
+   "alias": [
+    "farming",
+    "agriculture",
+    "cultivos",
+    "chacra"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La ganadería",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Ganadería",
+   "alias": [
+    "livestock"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La pesca",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Pesca",
+   "alias": [
+    "fishing"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La minería",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Minería",
+   "alias": [
+    "mining"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "El comercio",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Comercio",
+   "alias": [
+    "trade",
+    "mercado"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "El dinero",
+   "grados": [
+    2,
+    3,
+    4
+   ],
+   "articulo": "Dinero",
+   "alias": [
+    "money",
+    "monedas",
+    "ahorro"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Los medios de transporte",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Transporte",
+   "alias": [
+    "transport",
+    "transportes"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La población",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Población",
+   "alias": [
+    "population",
+    "demografía"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Las Naciones Unidas",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Organización de las Naciones Unidas",
+   "alias": [
+    "united nations",
+    "onu"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "Los desastres naturales",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Desastre natural",
+   "alias": [
+    "natural disasters",
+    "gestión de riesgos",
+    "prevención"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La Revolución francesa",
+   "grados": [
+    6
+   ],
+   "articulo": "Revolución francesa",
+   "alias": [
+    "french revolution"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "El antiguo Egipto",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Antiguo Egipto",
+   "alias": [
+    "ancient egypt",
+    "pirámides",
+    "faraones"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La antigua Grecia",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Antigua Grecia",
+   "alias": [
+    "ancient greece",
+    "grecia"
+   ]
+  },
+  {
+   "area": "Personal Social",
+   "tema": "La antigua Roma",
+   "grados": [
+    5,
+    6
+   ],
+   "articulo": "Antigua Roma",
+   "alias": [
+    "ancient rome",
+    "romanos"
+   ]
+  },
+  {
+   "area": "Arte y Cultura",
+   "tema": "La música",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Música",
+   "alias": [
+    "music",
+    "instrumentos"
+   ]
+  },
+  {
+   "area": "Arte y Cultura",
+   "tema": "La pintura",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Pintura",
+   "alias": [
+    "painting"
+   ]
+  },
+  {
+   "area": "Arte y Cultura",
+   "tema": "Los colores",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Color",
+   "alias": [
+    "colors",
+    "colours",
+    "colores primarios"
+   ]
+  },
+  {
+   "area": "Arte y Cultura",
+   "tema": "La danza",
+   "grados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Danza",
+   "alias": [
+    "dance",
+    "bailes"
+   ]
+  },
+  {
+   "area": "Arte y Cultura",
+   "tema": "La escultura",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Escultura",
+   "alias": [
+    "sculpture"
+   ]
+  },
+  {
+   "area": "Arte y Cultura",
+   "tema": "La artesanía",
+   "grados": [
+    3,
+    4,
+    5
+   ],
+   "articulo": "Artesanía",
+   "alias": [
+    "crafts",
+    "cerámica"
+   ]
+  },
+  {
+   "area": "Educación Física",
+   "tema": "El fútbol",
+   "grados": [
+    3,
+    4,
+    5,
+    6
+   ],
+   "articulo": "Fútbol",
+   "alias": [
+    "football",
+    "soccer"
+   ]
+  },
+  {
+   "area": "Educación Física",
+   "tema": "El atletismo",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Atletismo",
+   "alias": [
+    "athletics",
+    "carrera"
+   ]
+  },
+  {
+   "area": "Educación Física",
+   "tema": "El voleibol",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Voleibol",
+   "alias": [
+    "volleyball",
+    "vóley"
+   ]
+  },
+  {
+   "area": "Educación Física",
+   "tema": "Los Juegos Olímpicos",
+   "grados": [
+    4,
+    5,
+    6
+   ],
+   "articulo": "Juegos Olímpicos",
+   "alias": [
+    "olympic games",
+    "olimpiadas"
+   ]
+  },
+  {
+   "area": "Educación Física",
+   "tema": "La higiene personal",
+   "grados": [
+    1,
+    2,
+    3
+   ],
+   "articulo": "Higiene",
+   "alias": [
+    "hygiene",
+    "lavarse las manos",
+    "aseo"
+   ]
+  }
+ ]
+}

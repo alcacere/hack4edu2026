@@ -20,7 +20,7 @@ export const es = {
     conRed: 'Todo se queda en este ordenador',
     sinRed: 'Sin internet: funciona igual',
     modeloLocal: 'Modelo local',
-    pie: 'Prototipo Hack4Edu 2026 · Reto 12 · Licencia MIT. Basado en el Currículo Nacional del Perú; no es un material oficial. Ceiba propone: decides tú.',
+    pie: 'Prototipo Hack4Edu 2026 · Reto 12 · Licencia MIT. Temas orientados al currículo del Perú y artículos libres de Vikidia y Wikipedia, sin revisar; no es material oficial. Ceiba propone: decides tú.',
   },
 
   comun: {
@@ -164,6 +164,14 @@ export const es = {
 
   plan: {
     pedidoEtiqueta: '¿Qué plan necesitas?',
+    enfoqueEtiqueta: 'Enfoque',
+    enfoqueSorpresa: 'Sorpréndeme',
+    enfoques: ['observar y experimentar', 'jugar', 'contar una historia', 'resolver un problema del entorno', 'debatir en grupos', 'dibujar y construir'],
+    enfoqueDelPlan: 'Enfoque',
+    otraVersion: 'Otra versión',
+    otrosTemas: 'Ver otros temas',
+    totalTemas: (temas: number) => `${temas} temas en la biblioteca`,
+    ideaSinFuente: 'Idea de Ceiba, sin fuente',
     temasBiblioteca: 'O empieza por un tema de la biblioteca',
     duracion: (ses: number, min: number) => `${ses} ${ses === 1 ? 'sesión' : 'sesiones'} de ${min} min`,
     cambiarPedido: 'Cambiar',

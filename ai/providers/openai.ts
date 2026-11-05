@@ -38,6 +38,8 @@ export function createOpenAIProvider({ baseUrl, timeoutMs, reasoningEffort }: Op
                 ? { response_format: { type: 'json_object' } }
                 : {}),
             ...(req.maxTokens ? { max_tokens: req.maxTokens } : {}),
+            ...(req.temperature !== undefined ? { temperature: req.temperature } : {}),
+            ...(req.seed !== undefined ? { seed: req.seed } : {}),
             ...(reasoningEffort ? { reasoning_effort: reasoningEffort } : {}),
           }),
           signal: ctrl.signal,

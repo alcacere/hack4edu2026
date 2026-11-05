@@ -1,0 +1,174 @@
+# Atribuciones de los artículos
+
+Texto de los artículos descargado el 2026-11-05, recortado y troceado (sin apartados de enlaces). Se distribuye bajo la misma licencia que cada original. Autoría: las personas editoras de cada artículo, en el historial de su página.
+
+- [Ciclo del agua](https://es.vikidia.org/wiki/Ciclo_del_agua), Vikidia, revisión 178652. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Fotosíntesis](https://es.vikidia.org/wiki/Fotos%C3%ADntesis), Vikidia, revisión 208012. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Plantae](https://es.vikidia.org/wiki/Plantae), Vikidia, revisión 162992. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Animalia](https://es.vikidia.org/wiki/Animalia), Vikidia, revisión 219055. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Vertebrata](https://es.wikipedia.org/wiki/Vertebrata), Wikipedia, revisión 175800922. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Invertebrado](https://es.vikidia.org/wiki/Invertebrado), Vikidia, revisión 188175. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Mammalia](https://es.vikidia.org/wiki/Mammalia), Vikidia, revisión 179654. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Aves](https://es.vikidia.org/wiki/Aves), Vikidia, revisión 179642. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Reptilia](https://es.vikidia.org/wiki/Reptilia), Vikidia, revisión 210808. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Amphibia](https://es.vikidia.org/wiki/Amphibia), Vikidia, revisión 188079. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Pez](https://es.vikidia.org/wiki/Pez), Vikidia, revisión 170708. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Insecta](https://es.vikidia.org/wiki/Insecta), Vikidia, revisión 183503. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Cadena alimentaria](https://es.vikidia.org/wiki/Cadena_alimentaria), Vikidia, revisión 153587. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Ecosistema](https://es.vikidia.org/wiki/Ecosistema), Vikidia, revisión 210829. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Biodiversidad](https://es.vikidia.org/wiki/Biodiversidad), Vikidia, revisión 188106. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Célula](https://es.vikidia.org/wiki/C%C3%A9lula), Vikidia, revisión 208342. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Cuerpo humano](https://es.vikidia.org/wiki/Cuerpo_humano), Vikidia, revisión 162994. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sistema digestivo](https://es.vikidia.org/wiki/Sistema_digestivo), Vikidia, revisión 142575. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sistema circulatorio](https://es.vikidia.org/wiki/Sistema_circulatorio), Vikidia, revisión 207589. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Aparato respiratorio](https://es.vikidia.org/wiki/Aparato_respiratorio), Vikidia, revisión 132209. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sistema nervioso](https://es.vikidia.org/wiki/Sistema_nervioso), Vikidia, revisión 203854. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sistema óseo](https://es.vikidia.org/wiki/Sistema_%C3%B3seo), Vikidia, revisión 195235. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Músculo](https://es.vikidia.org/wiki/M%C3%BAsculo), Vikidia, revisión 179159. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Diente](https://es.vikidia.org/wiki/Diente), Vikidia, revisión 184570. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Alimentación](https://es.vikidia.org/wiki/Alimentaci%C3%B3n), Vikidia, revisión 187557. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Vitamina](https://es.vikidia.org/wiki/Vitamina), Vikidia, revisión 213058. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Enfermedad infecciosa](https://es.wikipedia.org/wiki/Enfermedad_infecciosa), Wikipedia, revisión 175827419. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Vacuna](https://es.vikidia.org/wiki/Vacuna), Vikidia, revisión 187518. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Materia](https://es.vikidia.org/wiki/Materia), Vikidia, revisión 188943. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Estado de agregación de la materia](https://es.wikipedia.org/wiki/Estado_de_agregaci%C3%B3n_de_la_materia), Wikipedia, revisión 175938657. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Mezcla](https://es.vikidia.org/wiki/Mezcla), Vikidia, revisión 154544. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Energía](https://es.vikidia.org/wiki/Energ%C3%ADa), Vikidia, revisión 219565. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Energía solar](https://es.vikidia.org/wiki/Energ%C3%ADa_solar), Vikidia, revisión 163585. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Electricidad](https://es.vikidia.org/wiki/Electricidad), Vikidia, revisión 219562. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Imán](https://es.wikipedia.org/wiki/Im%C3%A1n), Wikipedia, revisión 175090119. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Luz](https://es.vikidia.org/wiki/Luz), Vikidia, revisión 218317. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sonido](https://es.vikidia.org/wiki/Sonido), Vikidia, revisión 188964. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Temperatura](https://es.vikidia.org/wiki/Temperatura), Vikidia, revisión 206434. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Fuerza](https://es.vikidia.org/wiki/Fuerza), Vikidia, revisión 195623. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Gravedad](https://es.vikidia.org/wiki/Gravedad), Vikidia, revisión 195632. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Máquina simple](https://es.vikidia.org/wiki/M%C3%A1quina_simple), Vikidia, revisión 211936. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sistema solar](https://es.vikidia.org/wiki/Sistema_solar), Vikidia, revisión 179669. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Tierra (planeta)](https://es.vikidia.org/wiki/Tierra_(planeta)), Vikidia, revisión 218533. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sol](https://es.vikidia.org/wiki/Sol), Vikidia, revisión 176759. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Luna](https://es.vikidia.org/wiki/Luna), Vikidia, revisión 211903. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Estaciones del año](https://es.vikidia.org/wiki/Estaciones_del_a%C3%B1o), Vikidia, revisión 190677. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Volcán](https://es.vikidia.org/wiki/Volc%C3%A1n), Vikidia, revisión 190842. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sismo](https://es.vikidia.org/wiki/Sismo), Vikidia, revisión 188817. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Roca](https://es.vikidia.org/wiki/Roca), Vikidia, revisión 188820. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Suelo](https://es.vikidia.org/wiki/Suelo), Vikidia, revisión 218575. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Clima](https://es.vikidia.org/wiki/Clima), Vikidia, revisión 218488. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Atmósfera](https://es.vikidia.org/wiki/Atm%C3%B3sfera), Vikidia, revisión 195226. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Cambio climático](https://es.wikipedia.org/wiki/Cambio_clim%C3%A1tico), Wikipedia, revisión 176149668. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Contaminación](https://es.vikidia.org/wiki/Contaminaci%C3%B3n), Vikidia, revisión 205471. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Reciclaje](https://es.vikidia.org/wiki/Reciclaje), Vikidia, revisión 216565. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Agua](https://es.vikidia.org/wiki/Agua), Vikidia, revisión 184133. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Océano](https://es.vikidia.org/wiki/Oc%C3%A9ano), Vikidia, revisión 190560. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Río](https://es.wikipedia.org/wiki/R%C3%ADo), Wikipedia, revisión 175931145. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Bosque](https://es.vikidia.org/wiki/Bosque), Vikidia, revisión 218485. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Hongo](https://es.vikidia.org/wiki/Hongo), Vikidia, revisión 163276. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Bacteria](https://es.vikidia.org/wiki/Bacteria), Vikidia, revisión 218602. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Semilla](https://es.vikidia.org/wiki/Semilla), Vikidia, revisión 178796. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Flor](https://es.vikidia.org/wiki/Flor), Vikidia, revisión 118600. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Metamorfosis (biología)](https://es.wikipedia.org/wiki/Metamorfosis_(biolog%C3%ADa)), Wikipedia, revisión 175281939. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Dinosauria](https://es.vikidia.org/wiki/Dinosauria), Vikidia, revisión 161380. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Evolución biológica](https://es.vikidia.org/wiki/Evoluci%C3%B3n_biol%C3%B3gica), Vikidia, revisión 208015. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Ser vivo](https://es.vikidia.org/wiki/Ser_vivo), Vikidia, revisión 208018. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Tecnología](https://es.vikidia.org/wiki/Tecnolog%C3%ADa), Vikidia, revisión 146944. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Fracción](https://es.vikidia.org/wiki/Fracci%C3%B3n), Vikidia, revisión 135263. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Adición](https://es.vikidia.org/wiki/Adici%C3%B3n), Vikidia, revisión 177638. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Resta](https://es.vikidia.org/wiki/Resta), Vikidia, revisión 127308. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Multiplicación](https://es.vikidia.org/wiki/Multiplicaci%C3%B3n), Vikidia, revisión 161337. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [División (matemática)](https://es.wikipedia.org/wiki/Divisi%C3%B3n_(matem%C3%A1tica)), Wikipedia, revisión 174246516. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Número natural](https://es.vikidia.org/wiki/N%C3%BAmero_natural), Vikidia, revisión 150249. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Número decimal](https://es.vikidia.org/wiki/N%C3%BAmero_decimal), Vikidia, revisión 129827. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Porcentaje](https://es.vikidia.org/wiki/Porcentaje), Vikidia, revisión 213685. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Número primo](https://es.vikidia.org/wiki/N%C3%BAmero_primo), Vikidia, revisión 168853. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Numeración romana](https://es.wikipedia.org/wiki/Numeraci%C3%B3n_romana), Wikipedia, revisión 173990098. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Número negativo](https://es.wikipedia.org/wiki/N%C3%BAmero_negativo), Wikipedia, revisión 171148343. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Potenciación](https://es.vikidia.org/wiki/Potenciaci%C3%B3n), Vikidia, revisión 143685. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sistema de numeración decimal](https://es.wikipedia.org/wiki/Sistema_de_numeraci%C3%B3n_decimal), Wikipedia, revisión 172460258. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Proporcionalidad](https://es.vikidia.org/wiki/Proporcionalidad), Vikidia, revisión 209104. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Polígono](https://es.vikidia.org/wiki/Pol%C3%ADgono), Vikidia, revisión 153727. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Triángulo](https://es.wikipedia.org/wiki/Tri%C3%A1ngulo), Wikipedia, revisión 175461216. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Cuadrado](https://es.wikipedia.org/wiki/Cuadrado), Wikipedia, revisión 175585772. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Rectángulo](https://es.wikipedia.org/wiki/Rect%C3%A1ngulo), Wikipedia, revisión 174706854. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Círculo](https://es.wikipedia.org/wiki/C%C3%ADrculo), Wikipedia, revisión 175714743. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Ángulo](https://es.vikidia.org/wiki/%C3%81ngulo), Vikidia, revisión 93748. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Perímetro](https://es.wikipedia.org/wiki/Per%C3%ADmetro), Wikipedia, revisión 173736295. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Área](https://es.vikidia.org/wiki/%C3%81rea), Vikidia, revisión 163117. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Volumen](https://es.vikidia.org/wiki/Volumen), Vikidia, revisión 206431. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Figura geométrica](https://es.wikipedia.org/wiki/Figura_geom%C3%A9trica), Wikipedia, revisión 172679977. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Metro](https://es.vikidia.org/wiki/Metro), Vikidia, revisión 195310. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Reloj](https://es.vikidia.org/wiki/Reloj), Vikidia, revisión 209980. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Estadística](https://es.vikidia.org/wiki/Estad%C3%ADstica), Vikidia, revisión 189243. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Probabilidad](https://es.vikidia.org/wiki/Probabilidad), Vikidia, revisión 213478. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Ecuación](https://es.vikidia.org/wiki/Ecuaci%C3%B3n), Vikidia, revisión 217981. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Sustantivo](https://es.vikidia.org/wiki/Sustantivo), Vikidia, revisión 154085. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Adjetivo](https://es.vikidia.org/wiki/Adjetivo), Vikidia, revisión 134869. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Verbo](https://es.vikidia.org/wiki/Verbo), Vikidia, revisión 129758. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Oración (gramática)](https://es.vikidia.org/wiki/Oraci%C3%B3n_(gram%C3%A1tica)), Vikidia, revisión 164712. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Alfabeto](https://es.vikidia.org/wiki/Alfabeto), Vikidia, revisión 177500. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Metáfora](https://es.wikipedia.org/wiki/Met%C3%A1fora), Wikipedia, revisión 176134276. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Cuento](https://es.wikipedia.org/wiki/Cuento), Wikipedia, revisión 175662177. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Fábula](https://es.vikidia.org/wiki/F%C3%A1bula), Vikidia, revisión 159501. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Leyenda](https://es.vikidia.org/wiki/Leyenda), Vikidia, revisión 128569. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Mito](https://es.vikidia.org/wiki/Mito), Vikidia, revisión 163910. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Poesía](https://es.vikidia.org/wiki/Poes%C3%ADa), Vikidia, revisión 193120. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Teatro](https://es.vikidia.org/wiki/Teatro), Vikidia, revisión 118872. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Novela](https://es.vikidia.org/wiki/Novela), Vikidia, revisión 132467. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Carta](https://es.wikipedia.org/wiki/Carta), Wikipedia, revisión 172241164. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Noticia](https://es.vikidia.org/wiki/Noticia), Vikidia, revisión 117435. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Biografía](https://es.wikipedia.org/wiki/Biograf%C3%ADa), Wikipedia, revisión 175347841. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Idioma español](https://es.vikidia.org/wiki/Idioma_espa%C3%B1ol), Vikidia, revisión 151887. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Idioma quechua](https://es.vikidia.org/wiki/Idioma_quechua), Vikidia, revisión 120402. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Imperio incaico](https://es.vikidia.org/wiki/Imperio_incaico), Vikidia, revisión 199060. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Machu Picchu](https://es.vikidia.org/wiki/Machu_Picchu), Vikidia, revisión 193826. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Perú](https://es.vikidia.org/wiki/Per%C3%BA), Vikidia, revisión 190287. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Lima](https://es.vikidia.org/wiki/Lima), Vikidia, revisión 213922. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Cusco](https://es.vikidia.org/wiki/Cusco), Vikidia, revisión 98523. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Arequipa](https://es.wikipedia.org/wiki/Arequipa), Wikipedia, revisión 176091663. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Cordillera de los Andes](https://es.vikidia.org/wiki/Cordillera_de_los_Andes), Vikidia, revisión 195954. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Amazonía](https://es.vikidia.org/wiki/Amazon%C3%ADa), Vikidia, revisión 218560. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Río Amazonas](https://es.vikidia.org/wiki/R%C3%ADo_Amazonas), Vikidia, revisión 193474. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Lago Titicaca](https://es.vikidia.org/wiki/Lago_Titicaca), Vikidia, revisión 162741. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [América del Sur](https://es.vikidia.org/wiki/Am%C3%A9rica_del_Sur), Vikidia, revisión 216490. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Continente](https://es.wikipedia.org/wiki/Continente), Wikipedia, revisión 176026022. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Mapa](https://es.vikidia.org/wiki/Mapa), Vikidia, revisión 119983. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Independencia del Perú](https://es.wikipedia.org/wiki/Independencia_del_Per%C3%BA), Wikipedia, revisión 175728599. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Conquista de América](https://es.wikipedia.org/wiki/Conquista_de_Am%C3%A9rica), Wikipedia, revisión 175894701. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Cristóbal Colón](https://es.vikidia.org/wiki/Crist%C3%B3bal_Col%C3%B3n), Vikidia, revisión 170742. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Túpac Amaru II](https://es.wikipedia.org/wiki/T%C3%BApac_Amaru_II), Wikipedia, revisión 176134924. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Derechos del niño](https://es.wikipedia.org/wiki/Derechos_del_ni%C3%B1o), Wikipedia, revisión 175950448. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Democracia](https://es.vikidia.org/wiki/Democracia), Vikidia, revisión 217546. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Familia](https://es.vikidia.org/wiki/Familia), Vikidia, revisión 218869. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Colegio](https://es.vikidia.org/wiki/Colegio), Vikidia, revisión 217972. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Agricultura](https://es.vikidia.org/wiki/Agricultura), Vikidia, revisión 161268. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Ganadería](https://es.vikidia.org/wiki/Ganader%C3%ADa), Vikidia, revisión 184804. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Pesca](https://es.vikidia.org/wiki/Pesca), Vikidia, revisión 108841. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Minería](https://es.vikidia.org/wiki/Miner%C3%ADa), Vikidia, revisión 188826. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Comercio](https://es.vikidia.org/wiki/Comercio), Vikidia, revisión 160747. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Dinero](https://es.vikidia.org/wiki/Dinero), Vikidia, revisión 200569. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Transporte](https://es.vikidia.org/wiki/Transporte), Vikidia, revisión 161176. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Población](https://es.vikidia.org/wiki/Poblaci%C3%B3n), Vikidia, revisión 117518. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Organización de las Naciones Unidas](https://es.vikidia.org/wiki/Organizaci%C3%B3n_de_las_Naciones_Unidas), Vikidia, revisión 196503. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Revolución francesa](https://es.vikidia.org/wiki/Revoluci%C3%B3n_francesa), Vikidia, revisión 188835. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Antiguo Egipto](https://es.vikidia.org/wiki/Antiguo_Egipto), Vikidia, revisión 214216. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Antigua Grecia](https://es.vikidia.org/wiki/Antigua_Grecia), Vikidia, revisión 181130. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Antigua Roma](https://es.vikidia.org/wiki/Antigua_Roma), Vikidia, revisión 181133. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Pintura](https://es.vikidia.org/wiki/Pintura), Vikidia, revisión 213982. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Color](https://es.vikidia.org/wiki/Color), Vikidia, revisión 153125. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Escultura](https://es.vikidia.org/wiki/Escultura), Vikidia, revisión 171167. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Fútbol](https://es.vikidia.org/wiki/F%C3%BAtbol), Vikidia, revisión 214180. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Atletismo](https://es.vikidia.org/wiki/Atletismo), Vikidia, revisión 200122. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Voleibol](https://es.vikidia.org/wiki/Voleibol), Vikidia, revisión 143927. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Juegos Olímpicos](https://es.vikidia.org/wiki/Juegos_Ol%C3%ADmpicos), Vikidia, revisión 158680. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Higiene](https://es.vikidia.org/wiki/Higiene), Vikidia, revisión 202672. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Simetría](https://es.wikipedia.org/wiki/Simetr%C3%ADa), Wikipedia, revisión 176128597. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Pronombre](https://es.wikipedia.org/wiki/Pronombre), Wikipedia, revisión 173622173. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Adverbio](https://es.wikipedia.org/wiki/Adverbio), Wikipedia, revisión 175719167. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Sílaba](https://es.wikipedia.org/wiki/S%C3%ADlaba), Wikipedia, revisión 176128082. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Signos de puntuación](https://es.wikipedia.org/wiki/Signos_de_puntuaci%C3%B3n), Wikipedia, revisión 175488716. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Profesión](https://es.wikipedia.org/wiki/Profesi%C3%B3n), Wikipedia, revisión 174633768. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Desastre natural](https://es.wikipedia.org/wiki/Desastre_natural), Wikipedia, revisión 174561924. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Música](https://es.wikipedia.org/wiki/M%C3%BAsica), Wikipedia, revisión 175510522. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Danza](https://es.wikipedia.org/wiki/Danza), Wikipedia, revisión 175647103. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Artesanía](https://es.wikipedia.org/wiki/Artesan%C3%ADa), Wikipedia, revisión 175359579. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Sistema sensorial](https://es.vikidia.org/wiki/Sistema_sensorial), Vikidia, revisión 153997. [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/deed.es).
+- [Tilde](https://es.wikipedia.org/wiki/Tilde), Wikipedia, revisión 175901130. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).
+- [Sinonimia (semántica)](https://es.wikipedia.org/wiki/Sinonimia_(sem%C3%A1ntica)), Wikipedia, revisión 174975877. [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es).

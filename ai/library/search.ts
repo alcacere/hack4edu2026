@@ -17,6 +17,8 @@ export interface Ficha {
   url: string
   /** true solo cuando una persona la ha contrastado con la fuente. */
   revisado: boolean
+  /** curada: escrita para enseñar, con actividades. articulo: enciclopedia libre + guía del grado. */
+  tipo: 'curada' | 'articulo'
   secciones: Seccion[]
 }
 
@@ -67,8 +69,61 @@ export function parseFicha(raw: string, origen = 'ficha'): Ficha {
     fuente: meta.fuente,
     url: meta.url,
     revisado: meta.revisado === 'true',
+    tipo: 'curada',
     secciones,
   }
+}
+
+// ---- Fichas a partir de artículos descargados (library/temas.json + library/articulos.json) ----
+
+export interface DatosTemas {
+  guiaCiclo: Record<string, string>
+  temas: { area: string; tema: string; grados: number[]; articulo: string; alias: string[] }[]
+}
+export interface DatosArticulos {
+  articulos: { articulo: string; titulo: string; fuente: string; url: string; revision: number; licencia: string; secciones: Seccion[] }[]
+}
+
+const cicloDe = (grado: number) => (grado <= 2 ? 'III' : grado <= 4 ? 'IV' : 'V')
+const slug = (s: string) => quitarAcentos(s.toLowerCase()).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
+export function fichasDeArticulos({ guiaCiclo, temas }: DatosTemas, { articulos }: DatosArticulos): Ficha[] {
+  return temas.flatMap((t) => {
+    const a = articulos.find((x) => x.articulo === t.articulo)
+    if (!a) return []
+    return t.grados.map((grado) => ({
+      id: `art-${slug(t.tema)}-${grado}`,
+      grado,
+      area: t.area,
+      tema: t.tema,
+      alias: t.alias,
+      competencia: '',
+      fuente: `${a.fuente}, «${a.titulo}», revisión ${a.revision} (${a.licencia})`,
+      url: a.url,
+      revisado: false,
+      tipo: 'articulo' as const,
+      secciones: [{ titulo: 'Qué debe lograr', texto: guiaCiclo[cicloDe(grado)] }, ...a.secciones],
+    }))
+  })
+}
+
+/** Un artículo no cabe entero en el contexto del modelo: guía del grado + los pasajes más relevantes. */
+export function recortarFicha(f: Ficha, consulta: string, maxCaracteres = 2800): Ficha {
+  if (f.tipo !== 'articulo') return f
+  const q = new Set([...tokens(consulta), ...tokens(f.tema), ...f.alias.flatMap(tokens)])
+  const [guia, intro, ...resto] = f.secciones
+  const orden = resto
+    .map((s, i) => ({ s, i, puntos: tokens(`${s.titulo} ${s.texto}`).filter((t) => q.has(t)).length / Math.sqrt(s.texto.length + 1) }))
+    .sort((a, b) => b.puntos - a.puntos)
+  let total = guia.texto.length + (intro?.texto.length ?? 0)
+  const elegidas: typeof orden = []
+  for (const o of orden) {
+    if (total + o.s.texto.length > maxCaracteres) continue
+    elegidas.push(o)
+    total += o.s.texto.length
+  }
+  elegidas.sort((a, b) => a.i - b.i)
+  return { ...f, secciones: [guia, ...(intro ? [intro] : []), ...elegidas.map((e) => e.s)] }
 }
 
 // ---- Entender el pedido (sin IA) ----
@@ -200,11 +255,18 @@ export function buscar(biblioteca: Ficha[], grado: number, tema: string): Busque
   const temasDelGrado = biblioteca.filter((f) => f.grado === grado).map((f) => f.tema)
   if (!consulta.length) return { fichas: [], otrosGrados: [], temasDelGrado }
   const candidatas = biblioteca.filter((f) => cubre(f, consulta))
-  const puntos = puntuar(biblioteca, consulta)
-  const orden = (a: Ficha, b: Ficha) => (puntos.get(b.id) ?? 0) - (puntos.get(a.id) ?? 0)
+  const puntos = puntuar(candidatas, consulta)
+  const pedidas = new Set(consulta)
+  // Primero la ficha cuyo nombre es justo lo pedido («la tierra» → La Tierra, no El suelo).
+  const nombreExacto = (f: Ficha) => (tokens(f.tema).every((t) => pedidas.has(t)) ? 100 : 0)
+  const orden = (a: Ficha, b: Ficha) => nombreExacto(b) + (puntos.get(b.id) ?? 0) - nombreExacto(a) - (puntos.get(a.id) ?? 0)
+  const delGrado = candidatas.filter((f) => f.grado === grado).sort(orden)
+  // Las fichas curadas mandan: enseñan mejor que un artículo. Un artículo solo, porque el contexto es limitado.
+  const curadas = delGrado.filter((f) => f.tipo === 'curada')
+  const fichas = curadas.length ? curadas.slice(0, 2) : delGrado.slice(0, 1).map((f) => recortarFicha(f, tema))
   return {
-    fichas: candidatas.filter((f) => f.grado === grado).sort(orden).slice(0, 2),
-    otrosGrados: candidatas.filter((f) => f.grado !== grado).sort((a, b) => a.grado - b.grado),
+    fichas,
+    otrosGrados: candidatas.filter((f) => f.grado !== grado).sort((a, b) => a.grado - b.grado).map((f) => recortarFicha(f, tema)),
     temasDelGrado,
   }
 }
@@ -222,4 +284,38 @@ export function fragmentos(fichas: Ficha[]): Fragmento[] {
   return fichas.flatMap((ficha, i) =>
     ficha.secciones.map((seccion, j) => ({ etiqueta: `${'AB'[i]}${j + 1}`, ficha, seccion })),
   )
+}
+
+// ---- Lo que recibe el modelo ----
+
+/** El modelo puede proponer una actividad sin fuente, si la ficha no trae ninguna; la interfaz lo indica. */
+export const FUENTE_IDEA = 'IDEA'
+
+export function fuentesPermitidas(fichas: Ficha[]): string[] {
+  const etiquetas = fragmentos(fichas).map((f) => f.etiqueta)
+  return fichas.some((f) => f.tipo === 'articulo') ? [...etiquetas, FUENTE_IDEA] : etiquetas
+}
+
+export interface DatosPlan {
+  grado: number
+  fichas: Ficha[]
+  sesiones: number
+  minutos: number
+  sinDispositivos: boolean
+  nivelNombre?: string
+  /** Forma de plantear la clase; da variedad entre planes. Viene de una lista fija, nunca de texto libre. */
+  enfoque?: string
+}
+
+/** Mensaje para el modelo. El texto libre del docente NO entra aquí: solo datos elegidos y fichas. */
+export function mensajePlan(input: DatosPlan): string {
+  return [
+    `Grado: ${input.grado}.º de primaria. Área: ${input.fichas[0].area}. Tema: ${input.fichas[0].tema}.`,
+    `Sesiones: ${input.sesiones}, de ${input.minutos} minutos como máximo cada una.`,
+    input.sinDispositivos ? 'Aula: el alumnado no tiene dispositivos ni conexión.' : 'Aula: puede haber algún dispositivo, pero el plan debe funcionar sin ellos.',
+    ...(input.enfoque ? [`Enfoque de este plan: ${input.enfoque}. Que se note en los pasos.`] : []),
+    ...(input.nivelNombre ? [`Experiencia digital del docente: ${input.nivelNombre}. Tenla en cuenta solo en la micro-acción.`] : []),
+    'FRAGMENTOS:',
+    ...fragmentos(input.fichas).map((f) => `[${f.etiqueta}] ${f.seccion.titulo}: ${f.seccion.texto}`),
+  ].join('\n')
 }

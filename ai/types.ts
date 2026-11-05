@@ -21,6 +21,8 @@ export interface ChatRequest {
   timeoutMs?: number
   /** Tope de tokens de salida, para que una respuesta desbocada no bloquee la CPU. */
   maxTokens?: number
+  temperature?: number
+  seed?: number
 }
 
 export interface ChatResult {
